@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import User, Profile
 from argon2 import PasswordHasher
 from .forms import SignupForm, LoginForm, ProfileForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def signup(request):
@@ -43,3 +44,11 @@ def login(request):
                 for value in loginform.errors.values():
                     context['error'] = value
         return render(request, 'account/login.html', context)
+    
+@login_required
+def profile(request):
+    profileForm = ProfileForm()
+
+    context = {'forms':profileForm}
+
+    return render(request,'account/profile.html',context)

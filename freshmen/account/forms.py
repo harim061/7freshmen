@@ -216,11 +216,11 @@ class ProfileForm(forms.ModelForm):
             'school','major','gender','mbti','age'
         ]
 
-    def clean(self):
-        cleaned_data = super().clean()
+    # def clean(self):
+    #     cleaned_data = super().clean()
 
-        self.school = cleaned_data.get('school','')
-        self.major = cleaned_data.get('major','')
-        self.gender = cleaned_data.get('gender','')
-        self.mbti = cleaned_data.get('mbti','')
-        self.age = cleaned_data.get('age','')
+    #     self.school = cleaned_data.get('school','')
+    #     self.major = cleaned_data.get('major','')
+    #     self.gender = cleaned_data.get('gender','')
+    #     self.mbti = cleaned_data.get('mbti','')
+    #     self.age = cleaned_data.get('age','')

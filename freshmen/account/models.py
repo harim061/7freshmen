@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-
+from PIL import Image
 # Create your models here.
 
 # 초기 회원가입 시 유저 모델
@@ -84,7 +84,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=16, choices=GENDER_CHOICES, null=True)
     mbti = models.CharField(max_length=16, choices=MBTI_CHOICES, null=True)
     age = models.IntegerField(null=True)
-    image = models.ImageField(blank=True, null=True, upload_to='profile/')
+    image = models.ImageField(blank=True, null=True, upload_to='profile/', default='default.jpg')
 
     @receiver(post_save,sender=User)
     def create_user_profile(sender,instance,created,**kwargs):
@@ -94,3 +94,15 @@ class Profile(models.Model):
     @receiver(post_save,sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+    
+    def save(self):
+        super().save()
+        img = Image.open(self.image.path)
+
+        if img.height>300 or img.width>300:
+            output_size = (300,300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
