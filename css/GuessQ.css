@@ -1,10 +1,10 @@
 
 .NameBoxContainer{
     width: 289px;
-    height: 35px;
+    height: 30px;
 
     background: #FFFFFF;
-    border: 3px solid #FFBEBE;
+    border: 2px solid #FFBEBE;
     border-radius: 15px;
     margin:0 auto;
     margin-top: 1.5em;
@@ -19,8 +19,9 @@
     color: #5F5F5F;
 
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
 }
+
 
 
 /* form{
@@ -33,8 +34,9 @@
 
 } */
 
+/*guessQ*/
 
-form input{
+.gq{
 
     width: 200px;
     height: 200px;
@@ -50,7 +52,9 @@ form input{
 
 }
 
-form input::placeholder{
+
+
+.gq::placeholder{
     text-align: center;
 
 }
@@ -154,20 +158,21 @@ form input::placeholder{
     color: #FF9F9F;
     border: none;
     margin-right: 20px;
-    margin-top:10px
+    margin-top:8px
 }
 
 .goResult{
-    margin-top:65px;
+    margin-top:55px;
     margin-left:10px;
     margin-right:10px;
+    padding-left:20px;
     border-top:2px solid #FF9F9F;
     display: flex;
 }
 
 .Qnum{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin-top:15px;
     margin-left : 10px;
     background: #FFFFFF;
@@ -192,8 +197,8 @@ form input::placeholder{
 }
 
 .Anum{
-    width: 130px;
-    height: 130px;
+    width: 110px;
+    height: 110px;
     background: #FFFFFF;
     border-radius: 50%;
     display: flex;
@@ -202,13 +207,16 @@ form input::placeholder{
     color : #FF9F9F;
     font-size: 50px;
 }
+
 .goResult2{
     margin-top:15px;
     padding-bottom: 15px;
     border-bottom:2px solid #FF9F9F;
     display: flex;
     justify-content: center;
-    
+    margin-left:10px;
+    margin-right:10px;
+    padding-left:70px;
 }
 
 .goResult2 span{
@@ -222,4 +230,215 @@ form input::placeholder{
     color: #5F5F5F;
     align-items: end;
 
+}
+
+.share{
+    width: 70px;
+    height: 32px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #FF9F9F;
+    border: none;
+    margin-left: 20px;
+    margin-top:10px
+}
+
+.guestBook{
+    width: 90px;
+    height: 60px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #FF9F9F;
+    border: none;
+    margin-left: 20px;
+    margin-top:10px;
+}
+
+.GoForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.makeMine{
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: auto;
+    margin-top: -8vh;
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+
+.makeMine img{
+    width: 110px;
+    height: 60px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+
+.saveBtn{
+
+    width: 108px;
+    height: 45px;
+    float:right;
+
+    background: #FFBEBE;
+    border-radius: 15px;
+    border: none;
+    color:white;
+    margin-right: 20px;
+    margin-top:10vh;
+    font-size: 18px;
+    font-weight: 700;
+
+}
+
+/*guestBook*/
+.guestBook{
+
+    width: 310px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    overflow-y: scroll;
+    background: none;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 450px) {
+
+    .guestBook{
+        width: 310px;
+        height: 60vh;
+        margin: 0 auto;
+        margin-top: 20px;
+        overflow-y: scroll;
+        background: none;
+        box-shadow: none;
+    }
+}
+.guestBook div{
+    width: 289px;
+    height: fit-content;
+
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    padding: 15px 2px 15px 2px;
+    text-align: center;
+    margin-bottom: 15px;
+
+    /*글씨*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+    word-break:break-all;
+
+}
+
+.plus{
+    width: 44px;
+    height: 44px;
+
+    background: #FFFFFF;
+    border-radius: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    
+    letter-spacing: -0.04em;
+    
+    color: #8C8C8C;
+    text-align: center;
+
+    margin-left: 5px;
+    margin-right: -50px;
+    margin-top :-7px;
+}
+
+.nameBox{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.guestBook::-webkit-scrollbar{
+    width: 5px; 
+}
+
+.guestBook::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #FFBEBE; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+.guestBook::-webkit-scrollbar-track {
+    background: #fff; 
+}
+
+/*WRITEGB*/
+
+.writeGB{
+    width: fit-content;
+    margin:  0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.writeGB input:nth-child(1){
+    width: 120px;
+    height: 45px;
+
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.writeGB input:nth-child(2){
+    width: 289px;
+    height: 186px;
+    
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+}
+
+.writeGB .saveBtn{
+    margin: 0 auto;
+    margin-top:10vh;
+}
+
+/*See*/
+
+
+/*SeeQuizResult*/
+.qResult{
+    width: fit-content;
+    height: fit-content;
+    color:white;
+
+    background: #FFBEBE;
+    border-radius: 15px;
+    margin:  0 auto;
+    padding: 5px 10px 5px 10px;
 }

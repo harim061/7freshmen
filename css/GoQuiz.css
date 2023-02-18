@@ -1,18 +1,42 @@
-.QuizBox{
+.next{
+    width: 197px;
+    height: 45px;
 
+    background: #FFBEBE;
+    border-radius: 15px;
+    margin:  0 auto;
+    margin-top: 10vh;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
 }
-
+.number{
+    width: 58.25px;
+    height: 58.25px;
+    border-radius: 50%;
+    margin:  0 auto;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#FF9F9F;
+    font-size: 30px;
+    font-weight: 800;
+    margin-top:25px;
+}
 .QuizContainer{
     width: 270px;
     height: fit-content;
 
     background: #FFFFFF;
-    border: 3px solid #FFBEBE;
+    border: 2px solid #FFBEBE;
     border-radius: 15px;
 
     display: flex;
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 30px;
     /*글자*/
     font-family: 'Inter';
     font-style: normal;
@@ -23,7 +47,8 @@
     color: #5F5F5F;
 
     word-wrap: break-word;
-    padding : 10px 2px 10px 2px;
+    display: flex;
+    justify-content: center;
 }
 
 .AnsContainer{
@@ -39,7 +64,7 @@
     text-align: center;
     box-sizing: border-box;
     background: #FFFFFF;
-    border: 3px solid #FFBEBE;
+    border: 2px solid #FFBEBE;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -52,7 +77,7 @@
     text-align: center;
     box-sizing: border-box;
     background: #FFFFFF;
-    border: 3px solid #FFBEBE;
+    border: 2px solid #FFBEBE;
     border-radius: 10px;
     display: flex;
     align-items: center;
