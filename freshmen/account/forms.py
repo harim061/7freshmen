@@ -41,21 +41,20 @@ class SignupForm(forms.ModelForm):
         error_messages={'required':'비밀번호를 한번 더 입력해주세요.'}
     )
 
-    user_name = forms.CharField(
+    username = forms.CharField(
         label='닉네임',
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-name',
+                'class' : 'username',
                 'placeholder' : '닉네임'
             }
         ),
-        error_messages={'required':'닉네임을 입력해주세요.',
-        'unique':'중복된 닉네임입니다.'}
+        error_messages={'required':'닉네임을 입력해주세요.'}
     )
 
     field_order = [
-        'user_name',
+        'username',
         'user_id',
         'user_pw',
         'user_pw_confirm'
@@ -64,7 +63,7 @@ class SignupForm(forms.ModelForm):
     class Meta:
         model = User
         fields = [
-            'user_name','user_id','user_pw','user_pw_confirm'
+            'username','user_id','user_pw','user_pw_confirm'
         ]
     
     def clean(self):
@@ -73,15 +72,15 @@ class SignupForm(forms.ModelForm):
         user_id = cleaned_data.get('user_id','')
         user_pw = cleaned_data.get('user_pw','')
         user_pw_confirm = cleaned_data.get('user_pw_confirm','')
-        user_name = cleaned_data.get('user_name','')
+        username = cleaned_data.get('username','')
 
         if user_pw != user_pw_confirm:
-            return self.add_error('user_pw_confirm','비밀번호가 일치하지 않습니다.')
+            raise forms.ValidationError('비밀번호가 일치하지 않습니다.')
         else:
             self.user_id = user_id
             self.user_pw = PasswordHasher().hash(user_pw)
             self.user_pw_confirm = user_pw_confirm
-            self.user_name = user_name
+            self.username = username
 
 # 로그인 폼
 class LoginForm(forms.Form):
@@ -217,11 +216,11 @@ class ProfileForm(forms.ModelForm):
             'school','major','gender','mbti','age'
         ]
 
-    def clean(self):
-        cleaned_data = super().clean()
+    # def clean(self):
+    #     cleaned_data = super().clean()
 
-        self.school = cleaned_data.get('school','')
-        self.major = cleaned_data.get('major','')
-        self.gender = cleaned_data.get('gender','')
-        self.mbti = cleaned_data.get('mbti','')
-        self.age = cleaned_data.get('age','')
+    #     self.school = cleaned_data.get('school','')
+    #     self.major = cleaned_data.get('major','')
+    #     self.gender = cleaned_data.get('gender','')
+    #     self.mbti = cleaned_data.get('mbti','')
+    #     self.age = cleaned_data.get('age','')
