@@ -14,13 +14,10 @@ def signup(request):
     elif request.method == 'POST':
         signup_form = SignupForm(request.POST)
         if signup_form.is_valid():
-            user = User(
-                user_id = signup_form.user_id,
-                user_pw = signup_form.user_pw,
-                user_name = signup_form.user_name
-            )
+            user = signup_form.save(commit=False)
+            user.set_password(signup_form.cleaned_data['user_pw'])
             user.save()
-            return redirect('/')
+            return render(request,'account/signup.html',{'user':user})
         else:
             context['forms']=signup_form
             if signup_form.errors:
