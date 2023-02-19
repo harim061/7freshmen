@@ -1,0 +1,29 @@
+body{
+    margin :0 ;
+    background-color:rgb(54, 54, 54);
+    margin-top : 30px;
+}
+
+.root{
+    box-sizing:border-box;
+    background-color: #FFE4E2;
+    width: 400px;
+    height: 700px;
+    margin : 0 auto;
+    padding-top: 50px;
+}    
+
+@media screen and (max-width: 450px) {
+
+    body{
+        margin :0 ;
+        background-color:rgb(54, 54, 54);
+    }
+    
+    .root{
+        width : 100%;
+        height: 100vh;
+    }
+
+}
+
