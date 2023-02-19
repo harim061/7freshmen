@@ -1,5 +1,12 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
 <div class="header">
-    <div class="ImgBox">
-        <img class="LogoImg" src="/static/img/Logo.png" alt="chatBallon"/>
-    </div>
+  <div class="ImgBox">
+    <img
+      class="LogoImg"
+      src="{% static '/static/img/Logo.png%}"
+      alt="chatBallon"
+    />
+  </div>
 </div>
+{% endblock %}

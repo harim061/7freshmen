@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" src="{% static 'css/MakeQ.css' %}" />
+    <link rel="stylesheet" src="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" src="{% static 'css/header.css' %}" />
+    <script defer src="{% static 'js/MakeQ.css' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="root">
+      <div class="header">
+        <div class="inform_text">
+          <p>나의 TMI를 다른 사람들에게 맞출 수 있게 문제를 내보세요!</p>
+        </div>
+      </div>
+
+      <section class="buttons">
+        <button onclick="add_question()" class="question_update">+</button>
+        <div class="inform_chatBalloon">
+          <p>문제 만들기</p>
+        </div>
+        <button onclick="submit_form()" class="button" id="visible_submit">
+          완성
+        </button>
+        <p class="alert_text" id="smaller_alert"></p>
+      </section>
+
+      <form name="question" id="question">
+        <section class="question_warp">
+          <div class="question_list">
+            <div class="question_num">1</div>
+            <input
+              name="question"
+              class="question_input"
+              type="text"
+              placeholder="문제를 써주세요 ex)내가 좋아하는 음식은?"
+            />
+            <button
+              type="button"
+              class="question_delete"
+              onclick="delete_question(event)"
+            >
+              x
+            </button>
+          </div>
+
+          <div class="answer_warp">
+            <input
+              name="answer_true"
+              class="answer"
+              id="answer_true"
+              type="text"
+              placeholder="정답 : ex) 떡볶이"
+            />
+
+            <div class="vs_circle">VS</div>
+
+            <input
+              name="answer_false"
+              class="answer"
+              id="answer_false"
+              type="text"
+              placeholder="오답 : ex) 치킨"
+            />
+          </div>
+
+          <p class="alert_text">
+            정답은 왼쪽 칸에 오답은 오른쪽 칸에 적어주세요!
+          </p>
+        </section>
+
+        <button type="submit" style="display: none" id="submitQ"></button>
+      </form>
+    </div>
+  </body>
+</html>
+{% endblock %}

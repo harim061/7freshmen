@@ -1,0 +1,252 @@
+/* background */
+.flower
+{
+    position: absolute;
+    width:400px;
+    height:250px;
+    top:-20px;
+    z-index:2;
+}
+#f_1
+{
+    position: absolute;
+    left:330px;
+    top:70px;
+    width:40px;
+}
+#f_2
+{
+    position: absolute;
+    width:20px;
+    left:300px;
+}
+#f_3
+{
+    position: absolute;
+    width:20px;
+    top: 170px;
+    left:30px;
+}
+
+/* profile */
+#profile
+{
+    display:flex;
+    position: absolute;
+    width:400px;
+    height:270px;
+    z-index:3;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    top:-15px;
+}
+#profile_background
+{
+    position: absolute;
+    display:flex;
+    position: absolute;
+    width:130px;
+    height:130px;
+    border-radius: 50%;
+    background: #EDEDED;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#profile_title,#save_button,#share_button
+{
+    display:flex;
+    width: 248px;
+    height: 45px;
+    background: #FFBEBE;
+    color:white;
+    border-radius: 15px;
+    border-color: #FFBEBE;
+    z-index: 3;
+    margin:10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 25px;
+    letter-spacing: -0.04em;
+    align-items: center;
+    justify-content: center;
+}
+#profile #profile_title
+{
+    position:absolute;
+    width:160px;
+    height:40px;
+    top:3px;
+}
+.information
+{
+    position: absolute;
+    width:400px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    top:190px;
+    z-index:3;
+    flex-direction: column;
+}
+.information .inputbox
+{
+    margin:5px;
+    width:280px;
+    height:40px;
+    font-size: 12px;
+    padding:10px;
+    color: #5F5F5F;
+    font-weight: 600;
+    
+}
+.information .inputbox::placeholder
+{
+    color: #5F5F5F;
+    font-weight: 400;
+}
+
+#profile_button
+{
+    position:absolute;
+    z-index:3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top:485px;
+    left:30px;
+
+}
+#save_button
+{
+    width:70px;
+}
+#share_button
+{
+    width:50px;
+    height:50px;
+    position: absolute;
+    left:300px;
+    top:120px;
+    font-size: 14px;
+    visibility: hidden;
+    font-family: 'Cafe24 Ssurround';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.04em;
+
+    color: #FFFFFF;
+}
+
+#comment_button
+{
+    background: #FFFFFF;
+    border-radius: 10px;
+    border-color: #FFFFFF;
+    color:#FFBEBE;
+    width: 75px;
+    height: 70px;
+}
+
+#GoQuiz_button
+{
+    position: absolute;
+    width:200px;
+    height:130px;
+    z-index: 3;
+    top:510px;
+    left:240px;
+}
+#click_me
+{
+    position: absolute;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2px;
+    line-height: 8px;
+    letter-spacing: -0.04em;
+    color: #8C8C8C;
+    top:14px;
+    left:40px;
+    display: flex;
+}
+#chat_background
+{
+    top:25px;
+    left:30px;
+    background: #FFFFFF;
+    position: absolute;
+    display:flex;
+    width:90px;
+    height:90px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+#chat_button
+{
+    width:150px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+#bubble
+{
+    width:120px;
+    height:20px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 17px;
+    padding:2px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #8C8C8C;
+    position: absolute;
+    top:-15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#bubble:after {
+    content: '';
+    position: absolute;
+    border-top: 10px solid #FFFFFF;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    bottom: -9px;
+    left: 105px;
+}
+#chooseFile
+{
+    visibility: hidden;
+    position: absolute;
+}
+#chooseFile_button
+{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 42px;
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+}
+#click_button
+{
+    position: absolute;
+}
