@@ -21,9 +21,10 @@ class UserManager(BaseUserManager):
         user = self.model(
             user_id = user_id,
             username = username,
+            password = password,
             **extra_fields
         )
-        user.set_password(password)
+        # user.set_password(password)
         user.save (using=self._db)
         return user
     
@@ -84,16 +85,16 @@ class Profile(models.Model):
     gender = models.CharField(max_length=16, choices=GENDER_CHOICES, null=True)
     mbti = models.CharField(max_length=16, choices=MBTI_CHOICES, null=True)
     age = models.IntegerField(null=True)
-    image = models.ImageField(blank=True, null=True, upload_to='profile/', default='default.jpg')
+    image = models.ImageField(blank=True, null=True, upload_to='profile/')
 
-    @receiver(post_save,sender=User)
-    def create_user_profile(sender,instance,created,**kwargs):
-        if created:
-            Profile.objects.create(user=instance)
+    # @receiver(post_save,sender=User)
+    # def create_user_profile(sender,instance,created,**kwargs):
+    #     if created:
+    #         Profile.objects.create(user=instance)
     
-    @receiver(post_save,sender=User)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+    # @receiver(post_save,sender=User)
+    # def save_user_profile(sender, instance, **kwargs):
+    #     instance.profile.save()
 
     def __str__(self):
         return f'{self.user.username} Profile'

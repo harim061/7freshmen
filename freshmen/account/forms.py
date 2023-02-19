@@ -78,7 +78,8 @@ class SignupForm(forms.ModelForm):
             raise forms.ValidationError('비밀번호가 일치하지 않습니다.')
         else:
             self.user_id = user_id
-            self.user_pw = PasswordHasher().hash(user_pw)
+            # self.user_pw = PasswordHasher().hash(user_pw)
+            self.user_pw = user_pw
             self.user_pw_confirm = user_pw_confirm
             self.username = username
 
@@ -224,3 +225,6 @@ class ProfileForm(forms.ModelForm):
     #     self.gender = cleaned_data.get('gender','')
     #     self.mbti = cleaned_data.get('mbti','')
     #     self.age = cleaned_data.get('age','')
+
+class FindIdForm(forms.Form):
+    nickname = forms.CharField(label='nickname')
