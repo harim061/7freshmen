@@ -128,3 +128,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'account.User'
+
+EMAIL_HOST = 'smtp.gamil.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = '7freshmen@gmail.com'
+EMAIL_HOST_PASSWORD = 'fresh7men!'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
