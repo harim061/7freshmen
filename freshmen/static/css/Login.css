@@ -1,0 +1,226 @@
+/* 배경 */
+.banner_s
+{
+    position: absolute;
+    width:400px;
+    height:80px;
+    top:10px;
+    z-index:2;
+}
+#logo_s
+{
+    position:absolute;
+    left:30px;
+    width:180px;
+}
+#flower2_s
+{
+    position: absolute;
+    height:25px;
+    top:-18px;
+    left:160px;
+}
+#flower3_s
+{
+    position: absolute;
+    height:20px;
+    top:70px;
+    left:20px;
+}
+#chat_s
+{
+    position: absolute;
+    top:50px;
+    left:150px;
+    width:250px;
+    z-index: 2;
+}
+
+/* 입력창 */
+.inputbox
+{
+    box-sizing: border-box;
+    width: 307px;
+    height: 45px;
+    display: block;
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    outline:  #FF5C5C;
+    border-radius: 15px;
+    z-index: 3;
+    margin-bottom:30px;
+    padding:10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #8C8C8C;
+    }
+.inputboxs_sign .inputbox
+{
+    box-sizing: border-box;
+    width: 307px;
+    height: 45px;
+    display: block;
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    outline:  #FF5C5C;
+    border-radius: 15px;
+    z-index: 3;
+    margin-bottom:20px;
+}
+.inputboxs
+{
+    position: absolute;
+    top:240px;
+    left:50px;
+    z-index:2;
+}
+.inputboxs_sign
+{
+    position: absolute;
+    top:220px;
+    left:50px;
+    z-index:2;
+}
+/* button */
+#login_button
+{
+    display: flex;
+    position: absolute;
+    width:400px;
+    top:420px;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+}
+#sign_button
+{
+    position: absolute;
+    top:500px;
+    left:110px;
+    z-index:2;
+}
+.find_button
+{
+    display:flex;
+    position: absolute;
+    top:410px;
+    width:400px;
+    z-index:2;
+    align-items: center;
+    justify-content: center;
+}
+.find_button .button,#login_button .button, #to_login .button,#sign_button .button
+{
+    width:170px;
+}
+
+
+/* input */
+.findtext .inputbox,.find_input .inputbox
+{
+    width: 307px;
+    height: 70px;
+    display: block;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    margin: 10px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+
+}
+.findtext .inputbox
+{
+    height:90px;
+}
+.find_input .inputbox
+{
+    font-size:13px;
+}
+
+.id_password
+{
+    position: absolute;
+    color:gray;
+    z-index: 2;
+    top:490px;
+    left:150px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    align-items: center;
+    justify-content: center;
+    /* identical to box height */
+    display:flex;
+    letter-spacing: -0.04em;
+}
+
+#to_login
+{
+    position: absolute;
+    top:420px;
+    left:110px;
+    z-index:2;
+}
+
+.find_input
+{
+    position: absolute;
+    top:250px;
+    left:45px;
+    z-index: 2;
+}
+
+.findtext
+{
+    position: absolute;
+    z-index: 3;
+    top:230px;
+    left:41px;
+    align-items: center;
+    justify-content: center;
+}
+.findtext #findtext
+{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.find_input #findtext
+{
+    position: absolute;
+    top:-15px;
+    left:15px;
+}
+#findtext
+{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+}

@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main</title>
+    <link rel="stylesheet" src="{% static 'css/style.css' %}" />
+    <style>
+      .QmarkBox {
+        text-align: center;
+        margin-top: 20vh;
+      }
+
+      .errorMsg {
+        text-align: center;
+
+        margin: auto;
+      }
+
+      .errorMsg > p:first-child {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 21px;
+        line-height: 25px;
+      }
+
+      .errorMsg > p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 23px;
+        color: #5f5f5f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="Qmark">
+        <div class="QmarkBox">
+          <img class="QImg" src="../img/Qmark.png" alt="Qmark" />
+        </div>
+      </div>
+      <div class="errorMsg">
+        <p>페이지를 찾을 수 없습니다</p>
+        <p>링크를 확인해 주세요</p>
+      </div>
+    </div>
+  </body>
+</html>

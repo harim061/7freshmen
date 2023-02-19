@@ -1,0 +1,126 @@
+#Ellipse_5
+{
+    position: absolute;
+    left:255px;
+    top:255px;
+    height:445px;
+}
+#Ellipse_6
+{
+    position: absolute;
+    height:430px;
+}
+#Ellipse_7
+{
+    position: absolute;
+    top:455px;
+    left:45px;
+    height:40px;
+    width:40px;
+}
+#Ellipse_8
+{
+    position: absolute;
+    left:130px;
+    top:550px;
+    bottom:30px;
+}
+#logo
+{
+    position:absolute;
+    left:68px;
+    width:280px;
+}
+#flower2
+{
+    position: absolute;
+    height:35px;
+    top:-18px;
+    left:225px;
+}
+#flower3
+{
+    position: absolute;
+    height:25px;
+    top:90px;
+    left:30px;
+}
+#chat
+{
+    position: relative;
+    top:220px;
+    left:50px;
+    width:310px;
+    z-index: 2;
+}
+#touch_msg
+{
+    position: relative;
+    top:70px;
+    left:120px;
+    color: gray;
+}
+.start_button
+{
+    position: absolute;
+    top:520px;
+    width:400px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index:2;
+}
+.button
+{
+    display:block;
+    width: 248px;
+    height: 45px;
+    background: #FFBEBE;
+    color:white;
+    border-radius: 15px;
+    border-color: #FFBEBE;
+    z-index: 3;
+    margin:10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: -0.04em;
+}
+#button:hover
+{
+    background-color: #FF9F9F;
+    border-color: #FF9F9F;
+}
+#touch
+{
+    position:relative;
+    top:320px;
+    left:130px;
+    color:gray;
+    z-index:2;
+}
+.background
+{
+    margin-top: -60px;
+    position: absolute;
+    height:700px;
+    width:400px;
+    z-index:1;
+}
+.banner
+{
+    position: absolute;
+    width:400px;
+    height:130px;
+    top:170px;
+    z-index:2;
+}
+.ground
+{
+    height:700px;
+    width:400px;
+    position: absolute;
+}
