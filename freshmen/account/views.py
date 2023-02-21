@@ -11,7 +11,7 @@ def signup(request):
     context = {'forms':signup_form}
 
     if request.method == 'GET':
-        return render(request, 'account/signup.html', context)
+        return render(request, 'templates/account/Sign.html', context)
     
     elif request.method == 'POST':
         signup_form = SignupForm(request.POST)
@@ -24,20 +24,20 @@ def signup(request):
                 username = signup_form.username
             )
             user.save()
-            return render(request,'account/signup.html',{'user':user})
+            return render(request,'templates/account/Sign.html',{'user':user})
         else:
             context['forms']=signup_form
             if signup_form.errors:
                 for value in signup_form.errors.values():
                     context['error'] = value
-        return render(request, 'account/signup.html', context)
+        return render(request, 'templates/account/Sign.html', context)
 
 def login(request):
     loginform = LoginForm()
     context = {'forms':loginform}
 
     if request.method == 'GET':
-        return render(request,'account/login.html',context)
+        return render(request,'templates/account/login.html',context)
     
     elif request.method=='POST':
         loginform = LoginForm(request.POST)
@@ -49,7 +49,7 @@ def login(request):
             if loginform.errors:
                 for value in loginform.errors.values():
                     context['error'] = value
-        return render(request, 'account/login.html', context)
+        return render(request, 'templates/account/login.html', context)
     
 @login_required
 def profile(request):
@@ -64,7 +64,7 @@ def profile(request):
 
     context = {'forms':profileForm}
 
-    return render(request,'account/profile.html',context)
+    return render(request,'templates/account/profile.html',context)
 
 def find_id(request):
     context = {}
@@ -76,11 +76,11 @@ def find_id(request):
             if user is not None:
                 id = user.user_id
                 context = {'id':id}
-                return render(request, 'account/findid.html', context)
+                return render(request, 'templates/account/accountfindid.html', context)
         except:
             messages.error(request, '존재하지 않는 닉네임입니다.')
     context={}
-    return render(request,'account/findid.html',context)
+    return render(request,'templates/account/findid.html',context)
 
 def find_password(request):
     context = {}
@@ -92,8 +92,8 @@ def find_password(request):
             if user is not None:
                 password = user.password
                 context = {'password':password}
-                return render(request, 'account/findpassword.html', context)
+                return render(request, 'templates/account/findpassword.html', context)
         except:
             messages.error(request, '존재하지 않는 아이디입니다.')
     context={}
-    return render(request,'account/findpassword.html',context)
+    return render(request,'templates/account/findpassword.html',context)

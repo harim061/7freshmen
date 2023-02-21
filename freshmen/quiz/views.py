@@ -20,13 +20,13 @@ def home(request):
             'correct':correct,
             'total':total
         }
-        return render(request,'quiz/result.html',context)
+        return render(request,'templates/result.html',context)
     else:
         questions=QuesModel.objects.all()
         context = {
             'questions':questions
         }
-        return render(request,'quiz/home.html',context)
+        return render(request,'templates/home.html',context)
     
 def addQuestion(request):    
     if request.user.is_staff:
@@ -37,6 +37,6 @@ def addQuestion(request):
                 form.save()
                 return redirect('/')
         context={'form':form}
-        return render(request,'quiz/addQuestion.html',context)
+        return render(request,'templates/addQuestion.html',context)
     else: 
         return redirect('home') 
