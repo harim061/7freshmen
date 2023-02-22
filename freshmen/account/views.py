@@ -26,10 +26,10 @@ def signup(request):
         signup_form = SignupForm(request.POST)
         if signup_form.is_valid():
             user = signup_form.save(commit=False)
-            user.set_password(signup_form.cleaned_data['user_pw'])
             user = User(
                 user_id = signup_form.user_id,
-                username = signup_form.username
+                username = signup_form.username,
+                password = signup_form.user_pw
             )
             user.is_active = False
             user.save()
@@ -42,7 +42,6 @@ def signup(request):
                 'token': account_activation_token.make_token(user),
             })
             mail_subject = "[친해지길 바라] 회원가입 인증 메일입니다."
-            user_email = user.username
             email = EmailMessage(mail_subject, message, to=[signup_form.user_id])
             email.send()
             return HttpResponse(
@@ -76,7 +75,7 @@ def login(request):
     context = {'forms':loginform}
 
     if request.method == 'GET':
-        return render(request,'templates/account/login.html',context)
+        return render(request,'templates/account/log_in.html',context)
     
     elif request.method=='POST':
         loginform = LoginForm(request.POST)
@@ -88,7 +87,7 @@ def login(request):
             if loginform.errors:
                 for value in loginform.errors.values():
                     context['error'] = value
-        return render(request, 'templates/account/login.html', context)
+        return render(request, 'templates/account/log_in.html', context)
     
 @login_required
 def profile(request):
