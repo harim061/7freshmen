@@ -1,6 +1,7 @@
 from django import forms
 from .models import User, Profile
 from argon2 import PasswordHasher, exceptions
+from django.contrib.auth.hashers import make_password, check_password
 
 # 회원가입 폼
 class SignupForm(forms.ModelForm):
@@ -77,8 +78,9 @@ class SignupForm(forms.ModelForm):
         if user_pw != user_pw_confirm:
             raise forms.ValidationError('비밀번호가 일치하지 않습니다.')
         else:
+            self.user_pw = make_password(user_pw)
             self.user_id = user_id
-            self.user_pw = PasswordHasher().hash(user_pw)
+            # self.user_pw = PasswordHasher().hash(user_pw)
             self.user_pw_confirm = user_pw_confirm
             self.username = username
 
@@ -132,8 +134,10 @@ class LoginForm(forms.Form):
                 return self.add_error('user_id','아이디가 존재하지 않습니다.')
             
             try:
-                PasswordHasher().verify(user.password,user_pw)
-            except exceptions.VerifyMismatchError:
+                # PasswordHasher().verify(user.password,user_pw)
+                check_password(user.password, user_pw)
+            # except exceptions.VerifyMismatchError:
+            except Exception:
                 return self.add_error('user_pw', '비밀번호가 일치하지 않습니다.')
 
 # 프로필 폼
