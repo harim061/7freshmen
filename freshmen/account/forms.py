@@ -132,7 +132,7 @@ class LoginForm(forms.Form):
                 return self.add_error('user_id','아이디가 존재하지 않습니다.')
             
             try:
-                PasswordHasher().verify(user.user_pw,user_pw)
+                PasswordHasher().verify(user.password,user_pw)
             except exceptions.VerifyMismatchError:
                 return self.add_error('user_pw', '비밀번호가 일치하지 않습니다.')
 
