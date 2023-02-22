@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/Start.css' %}" >
+    <title>Sign</title>
+</head>
+<body>
+    <div class="root">
+        <div class="ground">
+            <div class="background">
+                <img id='Ellipse_6' src="{% static 'img/account/Ellipse 6.png' %}" alt='E_6' title='E_6'/>
+                <img id='Ellipse_5' src="{% static 'img/account/Ellipse 5.png' %}"alt='E_5' title='E_5'/>
+                <img id='Ellipse_7' src="{% static 'img/account/Ellipse 7.png' %}" alt='E_7' title='E_7'/>
+                <img id='Ellipse_8' src="{% static 'img/account/Ellipse 8.png' %}" alt='E_8' title='E_8'/>
+            </div>
+            <div class="banner_s">
+                <img id='logo_s' src="{% static 'img/logo.png' %}" alt='logo' title='logo'/>
+                <img id='flower2_s' src="{% static 'img/account/꽃 2.png' %}"  alt='flower2' title='flower2'/>
+                <img id='flower3_s' src="{% static 'img/account/꽃 3.png' %}" alt='flower3' title='flower3'/>
+
+            </div>
+            <img id='chat_s'src="{% static 'img/account/채팅5 1.png' %}" alt='chat' title='chat'/>
+            <div class='inputboxs_sign'>
+                {% autoescape off %}
+                    안녕하세요
+                
+                    아래 링크를 클릭하면 회원가입 인증이 완료됩니다.
+
+                    회원가입 링크 : http://{{ domain }}{% url 'account:activate' uid64=uid token=token %}
+
+                {% endautoescape %}
+            </div>
+            <div id='sign_button'><button class='button'>확인</button></div>
+        </div>
+    </div>
+</body>
+</html>

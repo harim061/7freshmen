@@ -4,10 +4,10 @@ from argon2 import PasswordHasher, exceptions
 
 # 회원가입 폼
 class SignupForm(forms.ModelForm):
-    user_id = forms.CharField(
+    user_id = forms.EmailField(
         label='아이디',
         required=True,
-        widget=forms.TextInput(
+        widget=forms.EmailInput(
             attrs={
                 'class' : 'user-id',
                 'placeholder' : '아이디'
@@ -78,18 +78,17 @@ class SignupForm(forms.ModelForm):
             raise forms.ValidationError('비밀번호가 일치하지 않습니다.')
         else:
             self.user_id = user_id
-            # self.user_pw = PasswordHasher().hash(user_pw)
-            self.user_pw = user_pw
+            self.user_pw = PasswordHasher().hash(user_pw)
             self.user_pw_confirm = user_pw_confirm
             self.username = username
 
 # 로그인 폼
 class LoginForm(forms.Form):
-    user_id = forms.CharField(
+    user_id = forms.EmailField(
         max_length=32,
         label='아이디',
         required=True,
-        widget=forms.TextInput(
+        widget=forms.EmailInput(
             attrs={
                 'class' : 'user-id',
                 'placeholder' : '아이디'
@@ -225,6 +224,3 @@ class ProfileForm(forms.ModelForm):
     #     self.gender = cleaned_data.get('gender','')
     #     self.mbti = cleaned_data.get('mbti','')
     #     self.age = cleaned_data.get('age','')
-
-class FindIdForm(forms.Form):
-    nickname = forms.CharField(label='nickname')

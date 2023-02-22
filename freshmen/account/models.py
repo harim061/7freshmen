@@ -21,10 +21,9 @@ class UserManager(BaseUserManager):
         user = self.model(
             user_id = user_id,
             username = username,
-            password = password,
             **extra_fields
         )
-        # user.set_password(password)
+        user.set_password(password)
         user.save (using=self._db)
         return user
     
@@ -45,9 +44,10 @@ class UserManager(BaseUserManager):
         return self._create_user(user_id,username,password,**extra_fields)
     
 class User(AbstractUser):
-    user_id = models.CharField(max_length=32, unique=True, verbose_name='아이디')
+    user_id = models.EmailField(max_length=128, unique=True, verbose_name='아이디')
     username = models.CharField(max_length=32, verbose_name='닉네임', unique=True)
     objects = UserManager()
+    is_active = models.BooleanField(default=False)
     USERNAME_FIELD = 'user_id'
     REQUIRED_FIELDS = ['username']
 
