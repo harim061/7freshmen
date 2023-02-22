@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from .models import User, Profile
 from argon2 import PasswordHasher
 from .forms import SignupForm, LoginForm, ProfileForm
@@ -12,7 +12,19 @@ from django.utils.encoding import force_bytes
 from django.core.mail import EmailMessage
 from .tokens import account_activation_token
 from django.utils.encoding import force_bytes, force_str
-from django.contrib import auth
+from django.urls import reverse_lazy
+
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail, BadHeaderError
+from django.db.models.query_utils import Q
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+from django.conf import settings
+
 
 # Create your views here.
 def signup(request):
@@ -31,6 +43,7 @@ def signup(request):
                 username = signup_form.username,
                 password = signup_form.user_pw
             )
+            # user.password = PasswordHasher(signup_form.user_pw)
             user.is_active = False
             user.save()
             current_site = get_current_site(request) 
@@ -135,3 +148,38 @@ def find_id(request):
 #             messages.error(request, '존재하지 않는 아이디입니다.')
 #     context={}
 #     return render(request,'templates/account/findpassword.html',context)
+
+def password_reset_request(request):
+	if request.method == "POST":
+		password_reset_form = PasswordResetForm(request.POST)
+		if password_reset_form.is_valid():
+			data = password_reset_form.cleaned_data['email']
+			associated_users = get_object_or_404(User,user_id=data)
+			if associated_users.exists():
+				for user in associated_users:
+					subject = '[친해지길 바라] 비밀번호 재설정'
+					email_template_name = "account/password_reset_email.txt"
+					c = {
+						"email": user.user_id,
+						# local: '127.0.0.1:8000', prod: 'givwang.herokuapp.com'
+						'domain': settings.HOSTNAME,
+						'site_name': 'givwang',
+						# MTE4
+						"uid": urlsafe_base64_encode(force_bytes(user.pk)),
+						"user": user,
+						# Return a token that can be used once to do a password reset for the given user.
+						'token': default_token_generator.make_token(user),
+						# local: http, prod: https
+						'protocol': settings.PROTOCOL,
+					}
+					email = render_to_string(email_template_name, c)
+					try:
+						send_mail(subject, email, 'givwang.official@gmail.com' , [user.email], fail_silently=False)
+					except BadHeaderError:
+						return HttpResponse('Invalid header found.')
+					return redirect("/password_reset/done/")
+	password_reset_form = PasswordResetForm()
+	return render(
+		request=request,
+		template_name='account/password_reset.html',
+		context={'password_reset_form': password_reset_form})
