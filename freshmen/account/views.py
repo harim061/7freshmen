@@ -100,7 +100,7 @@ def login(request):
         if loginform.is_valid():
             request.session['login_session'] = loginform.login_session
             request.session.set_expiry(0)
-            return render(request,'templates/account/profile.html',context)
+            return render(request,'templates/account/profile.html')
         else:
             context['forms'] = loginform
             if loginform.errors:
@@ -110,6 +110,7 @@ def login(request):
     
 @login_required
 def profile(request):
+    
     if request.method == 'POST':
         profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
 
@@ -118,8 +119,8 @@ def profile(request):
             return render(request,'templates/account/profile.html',context)
     else:
         profileForm = ProfileForm(instance=request.user.profile)
-
-    context = {'forms':profileForm}
+    profileForm = ProfileForm()
+    context = {'profileForm':profileForm}
 
     return render(request,'templates/account/profile.html',context)
 
@@ -208,5 +209,5 @@ def check_login(request):
         context['login_session'] = False
     else:
         context['login_session'] = True
-
+    
     return render(request, '홈 연결 링크 넣어주세요 !', context)

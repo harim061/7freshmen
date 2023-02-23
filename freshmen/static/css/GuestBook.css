@@ -114,3 +114,81 @@
     text-align: center;
     padding-top: 15px;
 }
+
+.saveBtn{
+
+    width: 108px;
+    height: 45px;
+    float:right;
+
+    background: #FFBEBE;
+    border-radius: 15px;
+    border: none;
+    color:white;
+    margin-right: 20px;
+    margin-top:8vh;
+    font-size: 18px;
+    font-weight: 700;
+
+}
+
+
+
+.writeGB{
+    width: fit-content;
+    margin:  0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+#id_name{
+    width: 120px;
+    height: 45px;
+
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding:0px 5px 0px 5px;
+}
+
+#id_name::placeholder{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+    
+    letter-spacing: -0.04em;
+    
+    color: #8C8C8C;
+    text-align: center;
+}
+#id_comment{
+    width: 289px;
+    height: 186px;
+    
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    padding:5px 15px 5px 15px;
+}
+#id_comment::placeholder{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+    
+    letter-spacing: -0.04em;
+    
+    color: #8C8C8C;
+}
+
+.writeGB .saveBtn{
+    margin: 0 auto;
+    margin-top:5vh;
+}

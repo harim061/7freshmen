@@ -7,14 +7,16 @@
         <div class="card card-body">
            <form action="" method="POST">
               {% csrf_token %}
-                {{form.as_p}}
-                <br>
+
+                {% for form in quizform %}
+                    {{form}}
+                {% endfor %}
              <input type="submit" name="Submit">
              </form>
             </div>
         </div>
     </div>
-
+ㄴ
 </div>
 
 {% endblock %}
