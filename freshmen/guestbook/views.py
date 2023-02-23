@@ -14,7 +14,9 @@ from .forms import CommentForm
 
 def guestbook(request, pk):
     comments = Comment.objects.filter(person=pk)
-    context = {'comments':comments}
+    user = get_object_or_404(User, pk=pk)
+    user_name = user.username
+    context = {'comments':comments, 'name':user_name}
 
 
     return render(request,'templates/guestBook/guestbook.html', context)
@@ -35,10 +37,11 @@ def guestbook(request, pk):
 def add_comment(request, pk):
     main_user = get_object_or_404(User, pk=pk) # 방명록 주인
     main_user_name = main_user.username # html에서 이렇게 사용
+    context = {'username' : main_user_name}
     
     if request.method == 'POST':
         new_comment = Comment(name=request.POST['name'], comment=request.POST['comment'])
         new_comment.person = main_user.pk
         new_comment.save()
-    return redirect('guestbook:guestbook',main_user.pk)
+    return redirect('guestbook:guestbook',main_user.pk,context)
 
