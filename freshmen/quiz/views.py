@@ -31,7 +31,7 @@ def solveQuiz(request, pk):
         
     quiz = get_object_or_404(QuesModel, id=num)
 
-    return render(request, "퀴즈 뜨는 html", {'quiz':quiz})
+    return render(request, "templates/quiz/QuizDetail.html", {'quiz':quiz})
 
 def result(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)

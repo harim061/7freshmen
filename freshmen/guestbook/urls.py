@@ -3,6 +3,6 @@ from . import views
 
 app_name = 'guestbook'
 urlpatterns = [
-    path('index/', views.guestbook, name='guestbook'),
-    path('sign/', views.index, name='index'),
+    path('addcomment/<int:pk>', views.add_comment, name='add_comment'),
+    path('guestbook/<int:pk>', views.guestbook, name='guestbook'),
 ]
