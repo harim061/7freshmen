@@ -1,0 +1,39 @@
+{% block content %}
+
+{% load static %}
+<div class="container ">
+<h1>{{request.user.username}}의 퀴즈</h1>
+
+<div align="right "></div>
+
+ <form method='post' action=''>
+    {% csrf_token %}
+    {% for q  in questions%}
+    <div class="form-group">
+      <label for="question">{{q.question}}</label>
+    </div>
+    <div class="form-check">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option1" checked>
+            <label class="form-check-label" for="gridRadios1">
+                {{q.op1}}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios2" value="option2">
+            <label class="form-check-label" for="gridRadios2">
+                {{q.op2}}
+            </label>
+        </div>
+        <br>
+    </div>    
+    {% endfor %}
+    <input id='timer' type='hidden' name="timer" value="">
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    {% block script %}
+    {% endblock script %}
+
+</div>
+{% endblock %}

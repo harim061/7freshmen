@@ -155,11 +155,10 @@
 
 .id_password
 {
-    position: absolute;
+
     color:gray;
     z-index: 2;
-    top:490px;
-    left:150px;
+
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;

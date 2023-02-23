@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_area %}
+<link rel='stylesheet' href="{% static 'css/GuestBook.css' %}">
+
+<div class="GuessQ">
+    <div class="nameBox">
+        {% if request.user.is_authenticated %}
+        <a class="plus" href="/guestbook/sign/" ><div>+</div></a>
+        {% else %}
+        <div class='NameBoxContainer' style="margin-top: 15px;">
+            <strong>{{ request.user.username }}</strong>
+            님의 방명록
+        </div>
+    </div>
+
+    <div class="guestBook">
+        {% for c in comments %}
+        {% if c.person == request.user %}
+        <div>{{ c.name }} : {{ c.comment }}</div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <a id="shareTw" class="link-icon twitter" onclick="btnShareTw()">트위터</a>
+</div>
+
+<script src="{% static 'js/Share.js' %}"></script>
+{% endblock %}

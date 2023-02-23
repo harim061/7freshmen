@@ -6,10 +6,11 @@ from .forms import CommentForm
 
 # Create your views here.
 def guestbook(request):
+    #author= request.user
     comments = Comment.objects.order_by("-date_added")
-
+    #user = Comment.objects.filter(author)
     context = {'comments' : comments}
-    return render(request,'guestbook/index.html',context)
+    return render(request,'templates/guestBook/guestbook.html',context)
 
 def index(request):
     if request.method == 'POST':
@@ -18,8 +19,8 @@ def index(request):
             new_comment = Comment(name=request.POST['name'],comment=request.POST['comment'])
             # new_comment.person = get_object_or_404(User, pk=user_id)
             new_comment.save()
-        return redirect('home')
+        return redirect('guestbook:guestbook')
     else:
-        form = CommentForm()
-    context = {'form' : form}
-    return render(request,'guestbook/sign.html',context)
+        form = CommentForm(request.POST)
+        context = {'comment':CommentForm}
+    return render(request,'templates/guestbook/sign.html',context)

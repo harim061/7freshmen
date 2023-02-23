@@ -1,0 +1,66 @@
+.nameBox{
+    display: flex;
+    justify-content: flex-start;
+}
+
+a{
+    text-decoration-line: none;
+}
+
+.NameBoxContainer{
+    width: 289px;
+    height: 30px;
+
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    margin:0 auto;
+    margin-top: 1.5em;
+
+    /*글자*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+
+    text-align: center;
+    padding-top: 15px;
+}
+
+.QNum{
+    width: 200px;
+    height: 200px;
+
+    background: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 73px;
+
+    border: 5px solid #FFE4E2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF9F9F;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+
+.touch{
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+
+    color: #8C8C8C;
+    text-align: center;
+    margin-top: 60px;
+
+}
