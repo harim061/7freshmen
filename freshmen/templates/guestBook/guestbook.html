@@ -3,13 +3,13 @@
 
 {% block main_area %}
 <link rel='stylesheet' href="{% static 'css/GuestBook.css' %}">
-<div class="root">
+
     {% include "header.html" %}
 <div class="GuessQ">
     <div class="nameBox">
-
+        <a class="plus" href="/guestbook/addcomment/{{pk}}" ><div>+</div></a>
         <div class='NameBoxContainer' style="margin-top: 15px;">
-            <strong>{{ request.user.username }}</strong>
+            <strong>{{ name }}</strong>
             님의 방명록
         </div>
     </div>

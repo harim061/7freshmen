@@ -1,0 +1,47 @@
+
+.writeGB{
+    width: fit-content;
+    margin:  0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.writeGB input:nth-child(2){
+    width: 120px;
+    height: 40px;
+
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.writeGB input:nth-child(3){
+    width: 289px;
+    height: 186px;
+    
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+}
+
+.writeGB .saveBtn{
+    margin: 0 auto;
+    margin-top:10vh;
+   
+
+        width: 108px;
+        height: 45px;
+        float:right;
+    
+        background: #FFBEBE;
+        border-radius: 15px;
+        border: none;
+        color:white;
+        margin-right: 20px;
+        margin-top:5vh;
+        font-size: 18px;
+        font-weight: 700;
+    
+
+}

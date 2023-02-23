@@ -6,9 +6,9 @@ from account.models import User
 
 # Create your views here.
 
-def solveName(request, id):
+def solveName(request, pk):
     if request.GET:
-        quiz_user = get_object_or_404(User, pk=id)
+        quiz_user = get_object_or_404(User, pk=pk)
         user = SolveQuiz()
         user.nickname = request.GET['nickname']
         if request.GET['name'] == "":
