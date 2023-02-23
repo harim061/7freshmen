@@ -5,10 +5,6 @@ from .forms import SignupForm, LoginForm, ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import views as auth_views
-<<<<<<< HEAD
-=======
-
->>>>>>> 1da281c9768edcbe8c6dabad20f4ce20776a7930
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
@@ -103,7 +99,7 @@ def login(request):
         if loginform.is_valid():
             request.session['login_session'] = loginform.login_session
             request.session.set_expiry(0)
-            return redirect('/')
+            return render(request,'templates/account/profile.html')
         else:
             context['forms'] = loginform
             if loginform.errors:
