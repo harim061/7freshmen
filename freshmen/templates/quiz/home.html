@@ -1,0 +1,22 @@
+{% extends 'templates/base.html' %}
+
+{% block main_area %}
+    <div class="GuessQ">
+        <a href="templates/quiz/quizDetail/{{q.pk}}/">
+            
+            <div class="nameBox">
+                <div class='NameBoxContainer'>
+                    <strong>{{ username }}</strong> 님의 문제
+                </div>
+            </div>
+            <div> 
+                <div class="QNum">
+                    {{ q.pk }}
+                </div>
+                <div class='touch'>화면을 터치해 주세요
+                </div>
+            </div>
+        </a>
+    </div>
+
+{% endblock %}

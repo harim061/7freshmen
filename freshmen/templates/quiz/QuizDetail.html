@@ -1,0 +1,27 @@
+{% extends 'templates/base.html' %}
+
+{% block main_area %}
+        <div class="GoQuizBox">
+            <div class="nameBox">
+                <div class='NameBoxContainer'>
+                    <strong>한벚꽃</strong> 님의 문제
+                </div>
+            </div>
+            <div class="QuizBox"> 
+                <div class="number"><p>1</p></div>
+                <div class='QuizContainer'>
+                    <p>문제 내용</p>
+                </div>
+
+                <div class='AnsContainer'>
+                    <span class="oBox"><p>정답</p></span>
+                    <span class="vs">vs</span>
+                    <span class="xBox"><p>오답</p></span>
+                </div>
+
+                <div class="next"><p>다음 문제</p></div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

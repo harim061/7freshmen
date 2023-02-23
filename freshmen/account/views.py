@@ -24,8 +24,9 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.conf import settings
-from django.contrib.auth import views as auth_views
 
+def main(request):
+    return render(request,'templates/quiz2/home.html')
 
 # Create your views here.
 def signup(request):
@@ -42,13 +43,12 @@ def signup(request):
             user = User(
                 user_id = signup_form.user_id,
                 username = signup_form.username,
-                # password = signup_form.user_pw
+                password = signup_form.user_pw
             )
-            user.set_password(signup_form.user_pw)
             # user.password = PasswordHasher(signup_form.user_pw)
             user.is_active = False
             user.save()
-            current_site = get_current_site(request)
+            current_site = get_current_site(request) 
             # localhost:8000
             message = render_to_string('templates/account/user_activate_email.html',                         {
                 'user': user,
@@ -81,7 +81,7 @@ def activate(request, uid64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        return render(request,'templates/account/login.html')
+        return render(request,'templates/account/log_in.html')
     else:
         return HttpResponse('비정상적인 접근입니다.')
 
@@ -96,7 +96,9 @@ def login(request):
         loginform = LoginForm(request.POST)
 
         if loginform.is_valid():
-            return redirect('/')
+            profileForm = ProfileForm(request.POST)
+            context = {'forms':profileForm}
+            return render(request,'templates/account/profile.html',context)
         else:
             context['forms'] = loginform
             if loginform.errors:
@@ -111,7 +113,7 @@ def profile(request):
 
         if profileForm.is_valid():
             profileForm.save()
-            return redirect('/')
+            return render(request,'templates/account/profile.html',context)
     else:
         profileForm = ProfileForm(instance=request.user.profile)
 
@@ -152,45 +154,36 @@ def find_id(request):
 #     return render(request,'templates/account/findpassword.html',context)
 
 def password_reset_request(request):
-    current_site = get_current_site(request)
-
-    if request.method == "POST":
-        password_reset_form = PasswordResetForm(request.POST)
-        try:
-            if password_reset_form.is_valid():
-                data = password_reset_form.cleaned_data['email']
-                associated_users = get_object_or_404(User,user_id=data)
-                if associated_users is not None:
-                    subject = '[친해지길 바라] 비밀번호 재설정'
-                    email_template_name = "account/password_reset_email.txt"
-                    c = {
-                        "email": associated_users.user_id,
-                        # local: '127.0.0.1:8000'
-                        'domain': current_site.domain,
-                        'site_name': '7blossom',
-                        # MTE4
-                        "uid": urlsafe_base64_encode(force_bytes(associated_users.pk)),
-                        "user": associated_users,
-                        # Return a token that can be used once to do a password reset for the given user.
-                        'token': default_token_generator.make_token(associated_users),
-                        # local: http, prod: https
-                        # 'protocol': settings.PROTOCOL,
-                    }
-                    email = render_to_string(email_template_name, c)
-                    try:
-                        send_mail(subject, email, '7freshmen@gmail.com' , [associated_users.user_id], fail_silently=False)
-                    except BadHeaderError:
-                        return HttpResponse('Invalid header found.')
-                    return redirect("/password_reset/done/")
-        except:
-            # messages.error(request, '존재하지 않는 아이디입니다.')
-            return HttpResponse('존재하지 않는 아이디입니다.')
-    password_reset_form = PasswordResetForm()
-    return render(
+	if request.method == "POST":
+		password_reset_form = PasswordResetForm(request.POST)
+		if password_reset_form.is_valid():
+			data = password_reset_form.cleaned_data['email']
+			associated_users = get_object_or_404(User,user_id=data)
+			if associated_users.exists():
+				for user in associated_users:
+					subject = '[친해지길 바라] 비밀번호 재설정'
+					email_template_name = "account/password_reset_email.txt"
+					c = {
+						"email": user.user_id,
+						# local: '127.0.0.1:8000', prod: 'givwang.herokuapp.com'
+						'domain': settings.HOSTNAME,
+						'site_name': 'givwang',
+						# MTE4
+						"uid": urlsafe_base64_encode(force_bytes(user.pk)),
+						"user": user,
+						# Return a token that can be used once to do a password reset for the given user.
+						'token': default_token_generator.make_token(user),
+						# local: http, prod: https
+						'protocol': settings.PROTOCOL,
+					}
+					email = render_to_string(email_template_name, c)
+					try:
+						send_mail(subject, email, 'givwang.official@gmail.com' , [user.email], fail_silently=False)
+					except BadHeaderError:
+						return HttpResponse('Invalid header found.')
+					return redirect("/password_reset/done/")
+	password_reset_form = PasswordResetForm()
+	return render(
 		request=request,
 		template_name='account/password_reset.html',
 		context={'password_reset_form': password_reset_form})
-
-class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
-    template_name = 'account/password_reset_confirm.html'
-    success_url = reverse_lazy('account:login')

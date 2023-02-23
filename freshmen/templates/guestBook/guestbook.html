@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block main_area %}
+
+<div class="GuessQ">
+    <div class="nameBox">
+        <a class="plus" href="/guestbook/sign/" ><div>+</div></a>
+        <div class='NameBoxContainer' style="margin-top: 15px;">
+            {% if request.user.is_authenticated %}
+            <strong>{{ request.user.username }}</strong>
+            {% endif %}
+            님의 방명록
+        </div>
+    </div>
+
+    <div class="guestBook">
+        {% for c in comments %}
+        <div>{{ c.name }} : {{ c.comment }}</div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
