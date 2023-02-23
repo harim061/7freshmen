@@ -38,6 +38,13 @@ def result(request, pk):
     total_score = user.solve_num
     return render(request, "결과 html", {"user":user, 'total_score':total_score})
     
+def each_result(request, pk):
+    results = get_object_or_404(SolveQuiz, quiz_writer = pk)
+    nickname = results.nickname
+    score = results.solve_num
+
+    return render(request, "사람 마다 결과값", {"nickname":nickname, 'score':score})
+
 @login_required()
 def addQuestion(request):
     if request.user.is_staff:
