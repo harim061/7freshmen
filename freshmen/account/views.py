@@ -4,7 +4,7 @@ from argon2 import PasswordHasher
 from .forms import SignupForm, LoginForm, ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.contrib.auth import views as auth_views
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
@@ -24,6 +24,7 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.conf import settings
+
 
 def main(request):
     return render(request,'templates/main.html')
@@ -97,8 +98,8 @@ def login(request):
         loginform = LoginForm(request.POST)
 
         if loginform.is_valid():
-            profileForm = ProfileForm(request.POST)
-            context = {'forms':profileForm}
+            request.session['login_session'] = loginform.login_session
+            request.session.set_expiry(0)
             return render(request,'templates/account/profile.html',context)
         else:
             context['forms'] = loginform
@@ -188,3 +189,24 @@ def password_reset_request(request):
 		request=request,
 		template_name='account/password_reset.html',
 		context={'password_reset_form': password_reset_form})
+
+class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'account/password_reset_confirm.html'
+    success_url = reverse_lazy('account:login')
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')
+
+# 로그인 상태인지 확인하는 view
+def check_login(request):
+    context = {}
+
+    login_session = request.session.get('login_session','')
+
+    if login_session == '':
+        context['login_session'] = False
+    else:
+        context['login_session'] = True
+
+    return render(request, '홈 연결 링크 넣어주세요 !', context)
