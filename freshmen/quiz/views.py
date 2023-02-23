@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -27,16 +28,21 @@ def home(request):
             'questions':questions
         }
         return render(request,'templates/home.html',context)
-    
-def addQuestion(request):    
+
+@login_required()
+def addQuestion(request):
     if request.user.is_staff:
-        form=addQuestionForm()
-        if(request.method=='POST'):
-            form=addQuestionForm(request.POST)
-            if(form.is_valid()):
-                form.save()
+        quizform=addQuestionForm()
+        context= {'quizform':quizform}
+
+        if request.method=='POST':
+            quizform=addQuestionForm(request.POST)
+            if quizform.is_valid():
+                quiz = quizform.save(commit=False)
+                quiz.writer = request.user
+                quiz.save()
                 return redirect('/')
-        context={'form':form}
+        context={'quizform':quizform}
         return render(request,'templates/addQuestion.html',context)
     else: 
         return redirect('home') 
