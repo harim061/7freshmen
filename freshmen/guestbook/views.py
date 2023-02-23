@@ -13,8 +13,9 @@ from .forms import CommentForm
 #     return render(request,'templates/guestBook/guestbook.html',context)
 
 def guestbook(request, pk):
-    comments = get_object_or_404(Comment, person=pk)
+    comments = Comment.objects.filter(person=pk)
     context = {'comments':comments}
+
 
     return render(request,'templates/guestBook/guestbook.html', context)
 
