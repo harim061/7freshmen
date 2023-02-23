@@ -32,6 +32,7 @@
             {{ form }}
         </div>
         {% endfor %}
+        <div onclick="location.href='/logout/'">로그아웃</div>
 
         {% for form in forms %}
         {{ form.errors}}

@@ -16,46 +16,42 @@
     z-index: 2;
     margin-top: 9vh;
 }
-#touch_msg
-{
-    position: relative;
-    top:70px;
-    left:120px;
-    color: gray;
+#touch_msg {
+  position: relative;
+  top: 70px;
+  left: 120px;
+  color: gray;
 }
-.start_button
-{
-    position: absolute;
-    top:520px;
-    width:400px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index:2;
+.start_button {
+  position: absolute;
+  top: 520px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
 }
-.button
-{
-    display:block;
-    width: 248px;
-    height: 45px;
-    background: #FFBEBE;
-    color:white;
-    border-radius: 15px;
-    border-color: #FFBEBE;
-    z-index: 3;
-    margin:10px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 25px;
-    letter-spacing: -0.04em;
+.button {
+  display: block;
+  width: 248px;
+  height: 45px;
+  background: #ffbebe;
+  color: white;
+  border-radius: 15px;
+  border-color: #ffbebe;
+  z-index: 3;
+  margin: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: -0.04em;
 }
-#button:hover
-{
-    background-color: #FF9F9F;
-    border-color: #FF9F9F;
+#button:hover {
+  background-color: #ff9f9f;
+  border-color: #ff9f9f;
 }
 #touch
 {
@@ -67,13 +63,12 @@
     z-index:2;
     margin-top: 10vh;
 }
-.background
-{
-    margin-top: -60px;
-    position: absolute;
-    height:700px;
-    width:400px;
-    z-index:1;
+.background {
+  margin-top: -60px;
+  position: absolute;
+  height: 700px;
+  width: 400px;
+  z-index: 1;
 }
 
 .ground

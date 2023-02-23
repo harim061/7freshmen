@@ -97,9 +97,9 @@ def login(request):
         loginform = LoginForm(request.POST)
 
         if loginform.is_valid():
-            profileForm = ProfileForm(request.POST)
-            context = {'forms':profileForm}
-            return render(request,'templates/account/profile.html',context)
+            request.session['login_session'] = loginform.login_session
+            request.session.set_expiry(0)
+            return redirect('/')
         else:
             context['forms'] = loginform
             if loginform.errors:
@@ -188,3 +188,24 @@ def password_reset_request(request):
 		request=request,
 		template_name='account/password_reset.html',
 		context={'password_reset_form': password_reset_form})
+
+class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'account/password_reset_confirm.html'
+    success_url = reverse_lazy('account:login')
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')
+
+# 로그인 상태인지 확인하는 view
+def check_login(request):
+    context = {}
+
+    login_session = request.session.get('login_session','')
+
+    if login_session == '':
+        context['login_session'] = False
+    else:
+        context['login_session'] = True
+    
+    return render(request, '홈 연결 링크 넣어주세요 !', context)
