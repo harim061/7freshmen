@@ -96,6 +96,8 @@ def login(request):
         loginform = LoginForm(request.POST)
 
         if loginform.is_valid():
+            request.session['login_session'] = loginform.login_session
+            request.session.set_expiry(0)
             return redirect('/')
         else:
             context['forms'] = loginform
@@ -194,3 +196,20 @@ def password_reset_request(request):
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     template_name = 'account/password_reset_confirm.html'
     success_url = reverse_lazy('account:login')
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')
+
+# 로그인 상태인지 확인하는 view
+def check_login(request):
+    context = {}
+
+    login_session = request.session.get('login_session','')
+
+    if login_session == '':
+        context['login_session'] = False
+    else:
+        context['login_session'] = True
+    
+    return render(request, '홈 연결 링크 넣어주세요 !', context)
