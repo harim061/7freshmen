@@ -80,6 +80,12 @@ class Profile(models.Model):
         ('INFJ','INFJ'),
         ('INFP','INFP'),
     }
+
+    LIVE_CHOICES ={
+        ('Y', '유'), 
+        ('N', '무'),
+    }
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     school = models.CharField(max_length=128, null=True, blank=False)
     major = models.CharField(max_length=128, null=True, blank=False)
@@ -87,6 +93,12 @@ class Profile(models.Model):
     mbti = models.CharField(max_length=16, choices=MBTI_CHOICES, null=True)
     age = models.IntegerField(null=True)
     image = models.ImageField(blank=True, null=True, upload_to='profile/')
+    major = models.CharField(max_length=128, null=True, blank=False)
+    live = models.CharField(max_length=16, choices=LIVE_CHOICES, null=True)
+    favfood = models.CharField(max_length=128, null=True, blank=False)
+    drink = models.CharField(max_length=128, null=True, blank=False)
+    hometown = models.CharField(max_length=128, null=True, blank=False)
+    timetable = models.ImageField(blank=True, null=True, upload_to='profile/')
 
     # @receiver(post_save,sender=User)
     # def create_user_profile(sender,instance,created,**kwargs):

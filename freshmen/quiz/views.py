@@ -31,13 +31,20 @@ def solveQuiz(request, pk):
         
     quiz = get_object_or_404(QuesModel, id=num)
 
-    return render(request, "퀴즈 뜨는 html", {'quiz':quiz})
+    return render(request, "templates/quiz/QuizDetail.html", {'quiz':quiz})
 
 def result(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)
     total_score = user.solve_num
     return render(request, "결과 html", {"user":user, 'total_score':total_score})
     
+def each_result(request, pk):
+    results = get_object_or_404(SolveQuiz, quiz_writer = pk)
+    nickname = results.nickname
+    score = results.solve_num
+
+    return render(request, "사람 마다 결과값", {"nickname":nickname, 'score':score})
+
 @login_required()
 def addQuestion(request):
     if request.user.is_staff:

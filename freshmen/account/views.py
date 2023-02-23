@@ -109,6 +109,7 @@ def login(request):
     
 @login_required
 def profile(request):
+    
     if request.method == 'POST':
         profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
 
@@ -117,8 +118,8 @@ def profile(request):
             return render(request,'templates/account/profile.html',context)
     else:
         profileForm = ProfileForm(instance=request.user.profile)
-
-    context = {'forms':profileForm}
+    profileForm = ProfileForm()
+    context = {'profileForm':profileForm}
 
     return render(request,'templates/account/profile.html',context)
 
