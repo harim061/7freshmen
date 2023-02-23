@@ -26,8 +26,9 @@ from django.utils.http import urlsafe_base64_encode
 from django.conf import settings
 
 def main(request):
-    return render(request,'templates/quiz2/home.html')
-
+    return render(request,'templates/main.html')
+def main2(request):
+    return render(request,'templates/main2.html')
 # Create your views here.
 def signup(request):
     signup_form = SignupForm()

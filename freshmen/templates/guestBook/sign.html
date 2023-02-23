@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block main_area %}
+<link rel='stylesheet' href="{% static 'css/GuestBook.css' %}">
 
+<div class="root">
+    {% include "header.html" %}
 <form action="" method="POST" >
     {% csrf_token %}
 
@@ -20,5 +23,5 @@
 <button type="submit" name="login-submit" value="login" class='button'>저장하기</button>
 
 </form>
-
+</div>
 {% endblock %}
