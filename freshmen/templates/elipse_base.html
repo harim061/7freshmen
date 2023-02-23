@@ -1,16 +1,15 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>회원가입</title>
+    <title>GuessQ</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
-    <div>
-      <h2>패스워드 변경 완료</h2>
-      <hr />
-      <p>패스워드 변경이 완료되었습니다. 다시 로그인 해주세요.</p>
-    </div>
+    <div class="root elipse_background">{% block content %} {% endblock %}</div>
   </body>
 </html>

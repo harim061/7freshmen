@@ -1,29 +1,33 @@
-body{
-    margin :0 ;
-    background-color:rgb(54, 54, 54);
-    margin-top : 30px;
+body {
+  margin: 0;
+  background-color: rgb(54, 54, 54);
+  margin-top: 30px;
 }
 
-.root{
-    box-sizing:border-box;
-    background-color: #FFE4E2;
-    width: 400px;
-    height: 700px;
-    margin : 0 auto;
-    padding-top: 50px;
-}    
+.root {
+  box-sizing: border-box;
+  background-color: #ffe4e2;
+  width: 400px;
+  height: 700px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.elipse_background {
+  background-image: url("../img/elipse_background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
 @media screen and (max-width: 450px) {
+  body {
+    margin: 0;
+    background-color: rgb(54, 54, 54);
+  }
 
-    body{
-        margin :0 ;
-        background-color:rgb(54, 54, 54);
-    }
-    
-    .root{
-        width : 100%;
-        height: 100vh;
-    }
-
+  .root {
+    width: 100%;
+    height: 100vh;
+  }
 }
-
