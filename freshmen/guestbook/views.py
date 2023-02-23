@@ -6,8 +6,10 @@ from .forms import CommentForm
 
 # Create your views here.
 def guestbook(request):
+    author = request.user
     comments = Comment.objects.order_by("-date_added")
-    context = {'comments' : comments}
+    user = Comment.objects.filter(author=author)
+    context = {'comments' : comments,'user':user}
     return render(request,'templates/guestBook/guestbook.html',context)
 
 def index(request):
