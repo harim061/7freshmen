@@ -29,8 +29,6 @@ def home(request):
         }
         return render(request,'templates/quiz2/home.html',context)
     
-def addQuestion(request):    
-        return render(request,'templates/home.html',context)
 
 @login_required()
 def addQuestion(request):
@@ -46,6 +44,6 @@ def addQuestion(request):
                 quiz.save()
                 return redirect('/')
         context={'quizform':quizform}
-        return render(request,'templates/addQuestion.html',context)
+        return render(request,'templates/quiz2/addQuestion.html',context)
     else: 
         return redirect('quiz:home') 

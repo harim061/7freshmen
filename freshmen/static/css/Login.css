@@ -2,7 +2,7 @@
 .banner_s
 {
     position: absolute;
-    width:400px;
+
     height:80px;
     top:10px;
     z-index:2;
@@ -29,9 +29,8 @@
 }
 #chat_s
 {
-    position: absolute;
-    top:50px;
-    left:150px;
+
+
     width:250px;
     z-index: 2;
 }
