@@ -35,14 +35,6 @@ def addQuestion(request):
 @login_required()
 def addQuestion(request):
     if request.user.is_staff:
-        form=addQuestionForm()
-        if(request.method=='POST'):
-            form=addQuestionForm(request.POST)
-            if(form.is_valid()):
-                form.save()
-                return redirect('quiz:home')
-        context={'form':form}
-        return render(request,'templates/quiz2/addQuestion.html',context)
         quizform=addQuestionForm()
         context= {'quizform':quizform}
 
