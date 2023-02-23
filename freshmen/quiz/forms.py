@@ -62,3 +62,21 @@ class addQuestionForm(forms.ModelForm):
         self.op1 = op1
         self.op2 = op2
         self.ans = ans
+
+class solveQuestionForm(forms.ModelForm):
+    nickname = forms.CharField(
+        label = '이름',
+        required=True,
+        widget = forms.TextInput(
+            attrs = {
+                'class' : '이름',
+                'placeholder' : 'nicknmae' 
+            }
+        )
+    )
+
+    class Meta:
+        model = SolveQuiz
+        fields = [
+            'nickname'
+        ]

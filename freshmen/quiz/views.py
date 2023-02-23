@@ -1,16 +1,20 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from .models import *
 from django.contrib.auth.decorators import login_required
+from account.models import User
 
 # Create your views here.
 
-def home(request):
+def solveQuestion(request, id):
+    quiz_user = get_object_or_404(User, pk=id) # 문제 내는 사람
+
     if request.method == 'POST':
+
         print(request.POST)
-        questions=QuesModel.objects.all()
+        questions=QuesModel.objects.get(writer=quiz_user)
         correct=0
-        total=0
+        total = len(questions)
         for q in questions:
             total+=1
             print(request.POST.get(q.question))
@@ -29,7 +33,6 @@ def home(request):
         }
         return render(request,'templates/quiz2/home.html',context)
     
-
 @login_required()
 def addQuestion(request):
     if request.user.is_staff:

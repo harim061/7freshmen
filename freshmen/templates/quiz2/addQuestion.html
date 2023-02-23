@@ -6,11 +6,20 @@
         <h1>Add Question</h1>
         <div class="card card-body">
            <form action="" method="POST">
+<<<<<<< Updated upstream
               {% csrf_token %}
 
             {% for form in quizform %}
                 {{form}}
             {% endfor %}
+=======
+            {% csrf_token %}
+            {% for form in quizform %}
+                {{form}}
+            {% endfor %}
+            </div>
+                <br>
+>>>>>>> Stashed changes
              <input type="submit" name="Submit">
              </form>
             </div>
