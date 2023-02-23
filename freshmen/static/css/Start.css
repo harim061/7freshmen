@@ -1,3 +1,4 @@
+
 .banner
 {
     display: flex;
@@ -23,14 +24,15 @@
   color: gray;
 }
 .start_button {
-  position: absolute;
-  top: 520px;
-  width: 400px;
+
+  width: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin: 0 auto;
   z-index: 2;
+
 }
 .button {
   display: block;
@@ -76,4 +78,11 @@
     height:700px;
     width:400px;
     position: absolute;
+
+}
+
+@media screen and (max-width: 450px){
+    .ground{
+        width: 100vw;
+    }
 }
