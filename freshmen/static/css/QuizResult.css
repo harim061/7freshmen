@@ -1,0 +1,153 @@
+
+.nameBox{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.NameBoxContainer{
+    width: 289px;
+    height: 30px;
+
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    margin:0 auto;
+    margin-top: 1.5em;
+
+    /*글자*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+
+    text-align: center;
+    padding-top: 15px;
+}
+
+
+.goResult{
+    margin-top:55px;
+    margin-left:10px;
+    margin-right:10px;
+    padding-left:20px;
+    border-top:2px solid #FF9F9F;
+    display: flex;
+}
+
+.Qnum{
+    width: 80px;
+    height: 80px;
+    margin-top:15px;
+    margin-left : 10px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color : #FF9F9F;
+    font-size: 50px;
+}
+
+.goResult span{
+    display: flex;
+    font-family: 'Cafe24 Ssurround air';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    /* identical to box height */
+    color: #5F5F5F;
+    align-items: end;
+}
+
+.Anum{
+    width: 110px;
+    height: 110px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color : #FF9F9F;
+    font-size: 50px;
+}
+
+.goResult2{
+    margin-top:15px;
+    padding-bottom: 15px;
+    border-bottom:2px solid #FF9F9F;
+    display: flex;
+    justify-content: center;
+    margin-left:10px;
+    margin-right:10px;
+    padding-left:70px;
+}
+
+.goResult2 span{
+    display: flex;
+    font-family: 'Cafe24 Ssurround air';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height */
+    color: #5F5F5F;
+    align-items: end;
+
+}
+
+.share{
+    width: 70px;
+    height: 32px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #FF9F9F;
+    border: none;
+    margin-left: 20px;
+    margin-top:10px
+}
+
+.guestBook{
+    width: 90px;
+    height: 60px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #FF9F9F;
+    border: none;
+    margin-left: 20px;
+    margin-top:10px;
+}
+.GoForm{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.makeMine{
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: auto;
+    margin-top: -8vh;
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+
+.makeMine img{
+    width: 110px;
+    height: 60px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+

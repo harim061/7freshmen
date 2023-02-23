@@ -21,17 +21,28 @@ def home(request):
             'correct':correct,
             'total':total
         }
-        return render(request,'templates/result.html',context)
+        return render(request,'templates/quiz2/result.html',context)
     else:
         questions=QuesModel.objects.all()
         context = {
             'questions':questions
         }
+        return render(request,'templates/quiz2/home.html',context)
+    
+def addQuestion(request):    
         return render(request,'templates/home.html',context)
 
 @login_required()
 def addQuestion(request):
     if request.user.is_staff:
+        form=addQuestionForm()
+        if(request.method=='POST'):
+            form=addQuestionForm(request.POST)
+            if(form.is_valid()):
+                form.save()
+                return redirect('quiz:home')
+        context={'form':form}
+        return render(request,'templates/quiz2/addQuestion.html',context)
         quizform=addQuestionForm()
         context= {'quizform':quizform}
 
@@ -45,4 +56,4 @@ def addQuestion(request):
         context={'quizform':quizform}
         return render(request,'templates/addQuestion.html',context)
     else: 
-        return redirect('home') 
+        return redirect('quiz:home') 

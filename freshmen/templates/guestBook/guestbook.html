@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_area %}
+<link rel='stylesheet' href="{% static 'css/GuestBook.css' %}">
+<div class="root">
+    {% include "header.html" %}
+<div class="GuessQ">
+    <div class="nameBox">
+
+        <div class='NameBoxContainer' style="margin-top: 15px;">
+            <strong>{{ request.user.username }}</strong>
+            님의 방명록
+        </div>
+    </div>
+
+    <div class="guestBook">
+        {% for c in comments %}
+        {% if c.person == request.user %}
+        <div>{{ c.name }} : {{ c.comment }}</div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+</div>
+
+{% endblock %}

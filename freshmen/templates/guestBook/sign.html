@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_area %}
+<link rel='stylesheet' href="{% static 'css/GuestBook.css' %}">
+
+<div class="root">
+    {% include "header.html" %}
+<form action="" method="POST" >
+    {% csrf_token %}
+
+    {% for form in forms %}
+    <div>
+        <label for="{{ form.id_for_label }}">{{ form.label }}</label>
+        {{ form }}
+    </div>
+    {% endfor %}
+
+    {% for form in forms %}
+    {{ form.errors}}
+
+    {% endfor %}
+
+<button type="submit" name="login-submit" value="login" class='button'>저장하기</button>
+
+</form>
+</div>
+{% endblock %}

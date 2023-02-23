@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_area %}
+<link rel="stylesheet" href="{% static 'css/QuizResult.css' %}" >
+
+<div class="root">
+    {% include "header.html" %}
+    <div class="GuessQ">
+        <div class="nameBox">
+            <div class='NameBoxContainer'>
+                <strong>{{request.user.username}}</strong> 님의 문제
+            </div>
+        </div>
+
+        <div class="goResult"> 
+            <div class="Qnum">{{total}}</div>
+            <span>개 중</span>
+        </div>
+        <div class="goResult2">
+            <div class="Anum">{{correct}}</div>
+            <span>개 맞았어요!</span>
+        </div>
+
+        <form class="GoForm">
+            <button type="button" class="share" onclick="btnShareTw()">트위터</button>
+            <button type="button" class="guestBook" onclick="location.href='/guestbook/index/'">한벚꽃님께 방명록 쓰기</button>
+        </form>
+        
+        
+        <div class="makeMine">
+            <img src="{% static 'img/Logo.png' %}"/>
+        </div>
+    </div>
+
+    
+</div>
+
+<script>
+    function btnShareTw(){
+        const sendText = "{{request.user.username}}님의 문제 {{total}}중 {{correct}} 개 맞췄습니다!";
+
+        window.open(`https://twitter.com/intent/tweet?text=${sendText}`);
+    }
+</script>
+
+{% endblock %}
+

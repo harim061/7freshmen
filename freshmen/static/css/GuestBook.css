@@ -1,0 +1,116 @@
+.guestBook{
+
+    width: 310px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    overflow-y: scroll;
+    background: none;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 450px) {
+
+    .guestBook{
+        width: 310px;
+        height: 60vh;
+        margin: 0 auto;
+        margin-top: 20px;
+        overflow-y: scroll;
+        background: none;
+        box-shadow: none;
+    }
+}
+.guestBook div{
+    width: 289px;
+    height: fit-content;
+
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    padding: 15px 2px 15px 2px;
+    text-align: center;
+    margin-bottom: 15px;
+
+    /*글씨*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+    word-break:break-all;
+
+}
+
+.plus{
+    width: 44px;
+    height: 44px;
+
+    background: #FFFFFF;
+    border-radius: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    
+    letter-spacing: -0.04em;
+    
+    color: #8C8C8C;
+    text-align: center;
+
+    margin-left: 5px;
+    margin-right: -50px;
+    margin-top :18px;
+    text-decoration: none;
+}
+
+.nameBox{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.guestBook::-webkit-scrollbar{
+    width: 5px; 
+}
+
+.guestBook::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #FFBEBE; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+.guestBook::-webkit-scrollbar-track {
+    background: #fff; 
+}
+
+.NameBoxContainer{
+    width: 289px;
+    height: 30px;
+
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    margin:0 auto;
+    margin-top: 1.5em;
+
+    /*글자*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+
+    text-align: center;
+    padding-top: 15px;
+}
