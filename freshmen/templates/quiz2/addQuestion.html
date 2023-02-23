@@ -8,9 +8,9 @@
            <form action="" method="POST">
               {% csrf_token %}
 
-            {% for form in quizform %}
-                {{form}}
-            {% endfor %}
+                {% for form in quizform %}
+                    {{form}}
+                {% endfor %}
              <input type="submit" name="Submit">
              </form>
             </div>

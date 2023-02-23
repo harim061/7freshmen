@@ -19,15 +19,14 @@
                 <img id='logo_s' src="{% static 'img/logo2.png' %}" alt='logo' title='logo2'/>
                 <img id='flower2_s' src="{% static 'img/account/꽃 2.png' %}"  alt='flower2' title='flower2'/>
                 <img id='flower3_s' src="{% static 'img/account/꽃 3.png' %}" alt='flower3' title='flower3'/>
-
-            </div>
             <img id='chat_s'src="{% static 'img/account/채팅5 1.png' %}" alt='chat' title='chat'/>
+            </div>
+            
     <form action="" method="POST" class='inputboxs_sign'>
         {% csrf_token %}
 
         {% for form in forms %}
     <div>
-        <label for="{{ form.id_for_label }}">{{ form.label }}</label>
         {{ form }}
     </div>
     {% endfor %}
@@ -35,7 +34,7 @@
     {% for form in forms %}
     {{ form.errors}}
     {% endfor %}
-    <button type="submit" name="signup-submit" value="signup" class='button'>회원가입하기</button>
+    <button type="submit" name="signup-submit" value="signup" class='signBtn'>회원가입하기</button>
     </form>
 </div>
 </div>
