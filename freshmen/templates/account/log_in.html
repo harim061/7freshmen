@@ -12,11 +12,32 @@
   </div>
   <img id="chat_s" src="{% static 'img/Logo.png' %}" alt="chat" title="chat" />
 
-  <form action="" method="POST" class="inputboxs">
-    {% csrf_token %} {% for form in forms %}
-    <div>
-      <label for="{{ form.id_for_label }}">{{ form.label }}</label>
-      {{ form }}
+
+                <img id='chat_s'src="{% static 'img/account/채팅5 1.png' %}" alt='chat' title='chat'/>
+            </div>
+
+
+        <form action="" method="POST" class='inputboxs'>
+            {% csrf_token %}
+
+            {% for form in forms %}
+        <div>
+
+            {{ form }}
+        </div>
+        {% endfor %}
+
+        {% for form in forms %}
+        {{ form.errors}}
+        {% endfor %}
+        <button type="submit" name="login-submit" value="login" class='Loginbutton'>로그인하기</button>
+        <div class="id_password">
+            <span onclick="location.href='FindID.html'">아이디</span>
+            <span>/</span>
+            <span onclick="location.href='FindPW.html'">비밀번호 찾기</span>
+        </div>
+    </form>
+
     </div>
     {% endfor %}
     <div onclick="location.href='/logout/'">로그아웃</div>
