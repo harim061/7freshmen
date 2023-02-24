@@ -448,3 +448,43 @@ padding:5px 5px 5px 5px;
     color: #8C8C8C;
 }
 
+/* 복사 */
+
+#button_link .inputbox
+{
+    display: none;
+    visibility: hidden;
+    position: absolute;
+}
+
+#button_link
+{
+    display: flex;
+    justify-content: center;
+    height: 45px;
+}
+
+#copy_button
+{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 12px;
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+
+    background: #D9D9D9;
+    border-radius: 5px;
+    border-color:  #D9D9D9;
+    z-index: 3;
+    margin:10px;
+    padding:3px;
+    /* position: absolute; */
+    width:50px;
+    /* float: right; */
+    position: absolute;
+    left:230px;
+    bottom: -2px;;
+}
