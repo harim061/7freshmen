@@ -33,11 +33,13 @@
         </button>
         <p class="alert_text" id="smaller_alert"></p>
       </section>
-
-      <form name="question" id="question" method="post">
+     
+      <div id="over">
+      <form name="question" id="question" method="post" >
+        
         {% csrf_token %}
-
-        <section class="question_warp">
+        
+        <section class="question_warp" >
           <div class="question_list">
             <div class="question_num">1</div>
             <input
@@ -80,6 +82,8 @@
           </p>
         </section>
 
+      </div>
+        
         <button type="submit" style="display: none" id="submitQ"></button>
       </form>
     </div>
