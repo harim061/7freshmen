@@ -246,9 +246,8 @@ button {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin: auto;
   margin-left: 26px;
-  margin-block-end: 51px;
-  position: fixed;
   bottom: 0;
+  margin-top: -3vh;
 }
 
 .complete_text {
@@ -256,11 +255,11 @@ button {
   justify-content: center;
   align-items: center;
 
-  width: 291px;
-  height: 291px;
+  width: 230px;
+  height: 230px;
   background: #ffffff;
   margin: auto;
-  margin-top: 59px;
+  margin-top: 20px;
   margin-bottom: 32px;
   border-radius: 100%;
 }
@@ -268,7 +267,7 @@ button {
 .complete_text p {
   font-family: "yg-jalnan";
   color: #ff9f9f;
-  font-size: 50px;
+  font-size: 33px;
   text-align: center;
   padding-top: 10px;
 }
@@ -278,10 +277,11 @@ button {
   justify-content: center;
   align-items: center;
 
-  width: 268px;
-  height: 268px;
+  width: 210px;
+  height: 210px;
   border: #ffe4e2 solid 6px;
   border-radius: 100%;
+  
 }
 
 .chatBalloon {

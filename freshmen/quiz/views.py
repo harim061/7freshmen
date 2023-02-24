@@ -52,13 +52,10 @@ def addQuestion(request):
         context= {'quizform':quizform}
 
         if request.method=='POST':
-            quizform=addQuestionForm(request.POST)
-            if quizform.is_valid():
-                quiz = quizform.save(commit=False)
-                quiz.writer = request.user
-                quiz.save()
-                return redirect('/')
+            quiz = QuesModel.objects.create(writer = request.user,question = request.POST.getlist("question[]"),op1 = request.POST.getlist("op1[]"),op2 = request.POST.getlist("op2[]"))
+            quiz.save()
+            return render(request,'templates/quiz2/MakeQComplete.html', context)
         context={'quizform':quizform}
-        return render(request,'templates/quiz2/addQuestion.html',context)
+        return render(request,'templates/quiz2/makeQ.html', context)
     else: 
         return redirect('quiz:home') 
