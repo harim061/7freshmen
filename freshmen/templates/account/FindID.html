@@ -1,4 +1,6 @@
-{% extends 'elipse_base.html' %} {% block content %}
+{% extends 'elipse_base.html' %} 
+{% load static %}
+{% block content %}
 
         <div class="ground">
             <div class="background">
@@ -8,11 +10,19 @@
             </div>
             <img id='chat_s'src="{% static 'img/Logo.png' %}" alt='chat' title='chat'/>
             <div class='find_input'>
-                <div id='findtext'>아이디 찾기</div>
-                <input class='inputbox' placeholder=' 닉네임을 입력하세요' onfocus="this.placeholder=''" 
-                onblur="this.placeholder=' 닉네임을 입력하세요'"></input>
+                <form method="post">
+                    {%csrf_token%}
+                    <div id='findtext'>아이디 찾기</div>
+                    <input name="username" class='inputbox' placeholder=' 닉네임을 입력하세요' onfocus="this.placeholder=''" 
+                    onblur="this.placeholder=' 닉네임을 입력하세요'"></input>
+                    {% if not id %}
+                    {{ message }}
+                    {% endif %}
+
+                    <div class='find_button'><button class='button' type="submit">확인</button></div>
+                </form>
             </div>
-            <div class='find_button'><button class='button' onClick="location.href='FindShowID.html'">확인</button></div>
+
         </div>
 
 {% endblock %}
