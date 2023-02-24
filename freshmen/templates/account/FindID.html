@@ -10,17 +10,13 @@
                 <img id='logo_s' src="{% static 'img/logo2.png' %}" alt='logo' title='logo'/>
                 <img id='chat_s'src="{% static 'img/Logo.png' %}" alt='chat' title='chat'/>
             </div>
-        <div>
-                <form method="post" class='start_button2'>
+            <img id='chat_s'src="{% static 'img/Logo.png' %}" alt='chat' title='chat'/>
+            <div class='warp'>
+                <form method="post">
                     {%csrf_token%}
-                    <div id='findtext'>아이디 찾기</div>
-                    <input name="username" class='inputbox' placeholder=' 닉네임을 입력하세요' onfocus="this.placeholder=''" 
-                    onblur="this.placeholder=' 닉네임을 입력하세요'"></input>
-                    {% if not id %}
-                    {{ message }}
-                    {% endif %}
-
-            <div class='find_button'><button class='button' type="submit">확인</button></div>
+                    <label for="username" class="form_title">아이디 찾기</div>
+                    <input name="username" class='inputbox' placeholder='아이디를 입력하세요'/>
+                    <button class='button' type="submit">확인</button>
                 </form>
             </div>
 
