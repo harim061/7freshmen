@@ -2,13 +2,16 @@
 {% load static %}
 {% block main_area %}
 <link rel='stylesheet' href="{% static 'css/GuestBook.css' %}">
+<link rel='stylesheet' href="{% static 'css/commentWrite.css' %}">
 
-<div class="root">
+
     {% include "header.html" %}
     <div class='NameBoxContainer' style="margin-top: 15px;">
         <strong>{{ username }}</strong>
         님의 방명록
     </div>
+
+
 <form action="" method="POST"  class="writeGB">
     {% csrf_token %}
 
@@ -19,6 +22,7 @@
 
 <button type="submit" name="login-submit" value="login" class='saveBtn'>저장하기</button>
 
+
 </form>
-</div>
+
 {% endblock %}

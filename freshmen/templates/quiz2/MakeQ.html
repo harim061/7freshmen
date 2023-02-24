@@ -1,4 +1,5 @@
-{% load static %}
+
+{% load static %} 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +17,9 @@
   <body>
     <div class="root">
       <div class="header">
+
+        {% include "header.html" %}
+
         <div class="inform_text">
           <p>나의 TMI를 다른 사람들에게 맞출 수 있게 문제를 내보세요!</p>
         </div>
@@ -82,4 +86,6 @@
       </form>
     </div>
   </body>
+
 </html>
+

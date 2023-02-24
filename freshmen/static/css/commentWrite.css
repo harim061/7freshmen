@@ -1,0 +1,78 @@
+
+.writeGB{
+    width: fit-content;
+    margin:  0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+#id_name{
+    width: 140px;
+    height: 40px;
+
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding:0 5px 0 5px;
+}
+
+#id_name::placeholder{
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #8C8C8C;
+}
+
+
+.writeGB .saveBtn{
+    margin: 0 auto;
+    margin-top:10vh;
+   
+
+        width: 108px;
+        height: 45px;
+        float:right;
+    
+        background: #FFBEBE;
+        border-radius: 15px;
+        border: none;
+        color:white;
+        margin-right: 20px;
+        margin-top:5vh;
+        font-size: 18px;
+        font-weight: 700;
+    
+
+}
+
+#id_comment{
+    width: 289px;
+    height: 186px;
+    
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    padding : 10px;
+    resize: none;
+}
+
+#id_comment::placeholder{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #8C8C8C;
+}
