@@ -5,6 +5,10 @@
   font-weight: normal;
   font-style: normal;
 }
+#over{
+  background-color: #FFE4E2;
+  overflow-y: hidden;
+}
 
 button {
   cursor: pointer;
@@ -23,6 +27,7 @@ button {
   height: 33px;
   justify-content: center;
   align-items: center;
+
 }
 
 .inform_text > p {
@@ -63,6 +68,7 @@ button {
   width: 94px;
   height: 23px;
   background-color: white;
+
 }
 
 .inform_chatBalloon:after {
