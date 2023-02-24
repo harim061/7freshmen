@@ -1,16 +1,17 @@
 {% extends 'elipse_base.html' %} 
 {% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/Login.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Start.css' %}" />
 
-        <div class="ground">
-            <div class="background">
-            </div>
+
+
             <div class="banner_s">
                 <img id='logo_s' src="{% static 'img/logo2.png' %}" alt='logo' title='logo'/>
+                <img id='chat_s'src="{% static 'img/Logo.png' %}" alt='chat' title='chat'/>
             </div>
-            <img id='chat_s'src="{% static 'img/Logo.png' %}" alt='chat' title='chat'/>
-            <div class='find_input'>
-                <form method="post">
+        <div>
+                <form method="post" class='start_button2'>
                     {%csrf_token%}
                     <div id='findtext'>아이디 찾기</div>
                     <input name="username" class='inputbox' placeholder=' 닉네임을 입력하세요' onfocus="this.placeholder=''" 
@@ -19,10 +20,8 @@
                     {{ message }}
                     {% endif %}
 
-                    <div class='find_button'><button class='button' type="submit">확인</button></div>
+            <div class='find_button'><button class='button' type="submit">확인</button></div>
                 </form>
             </div>
-
-        </div>
 
 {% endblock %}

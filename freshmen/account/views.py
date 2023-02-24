@@ -108,12 +108,14 @@ def login(request):
 @login_required
 def profile(request):
     profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
-
+    context = {'profileForm':profileForm}
     if request.method == 'POST':
         profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
 
         if profileForm.is_valid():
-            profileForm.save()
+            new_form = Profile()
+            new_form.school =profileForm.cleaned_data['school']
+            new_form.save()
             return render(request,'templates/account/profile.html',context)
     else:
         profileForm = ProfileForm(instance=request.user.profile)

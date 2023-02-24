@@ -1,7 +1,10 @@
-{% extends 'elipse_base.html' %} {% load static %} {% block content %}
+{% extends 'elipse_base.html' %} 
+{% load static %} 
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/Start.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'css/login.css' %}" media="screen">
 
-<div class="ground">
-  <div class="background"></div>
+
   <div class="banner_s">
     <img
       id="logo_s"
@@ -9,21 +12,21 @@
       alt="logo"
       title="logo"
     />
+    <img id="chat_s" src="{% static 'img/Logo.png' %}" alt="chat" title="chat" />
   </div>
-  <img id="chat_s" src="{% static 'img/Logo.png' %}" alt="chat" title="chat" />
 
   <div class="find_input">
     <div id="findtext">비밀번호 찾기</div>
-    <p>
+    <p class="emailPW">
       비밀번호를 잊어버리셨나요?<br />
       가입하신 이메일을 입력해 주세요.<br />
       잠시 후 해당 이메일로 비밀번호 재설정 메일이 발송됩니다.
     </p>
     <form method="POST">
       {% csrf_token %} {{ password_reset_form }}
-      <button type="submit">전송</button>
+
+      <div class='find_button'><button class='button' type="submit">전송</button></div>
     </form>
   </div>
-</div>
 
 {% endblock %}

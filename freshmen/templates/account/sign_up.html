@@ -1,18 +1,11 @@
+{% extends 'elipse_base.html' %}
 {% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/Login.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Start.css' %}" />
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
-    <link rel="stylesheet" href="{% static 'css/Login.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/Start.css' %}" >
-</head>
-<body>
-    <div class="root">
+
         <div class="ground">
 
             <div class="banner_s">
@@ -38,5 +31,4 @@
     </form>
 </div>
 </div>
-</body>
-</html>
+{% endblock %}
