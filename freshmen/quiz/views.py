@@ -16,7 +16,7 @@ def solveName(request, pk):
         user.quiz_writer = quiz_user
         return redirect("solveQuiz", user.pk)
     return render(request, "/")
-
+    
 def solveQuiz(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)
     quiz_user = get_object_or_404(QuesModel, writer=user.quiz_writer)
@@ -54,7 +54,9 @@ def addQuestion(request):
         if request.method=='POST':
             quiz = QuesModel.objects.create(writer = request.user,question = request.POST.getlist("question[]"),op1 = request.POST.getlist("op1[]"),op2 = request.POST.getlist("op2[]"))
             quiz.save()
+
             return render(request,'templates/quiz2/MakeQComplete.html', context)
+
 
         context={'quizform':quizform}
         return render(request,'templates/quiz2/makeQ.html', context)
