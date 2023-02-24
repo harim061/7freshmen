@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'flower_base.html' %}
 {% load static %}
 
-{% block main_area %}
+{% block content %}
 <link rel='stylesheet' href="{% static 'css/GuestBook.css' %}">
 
     {% include "header.html" %}
@@ -10,7 +10,6 @@
 
         <a class="plus" href="/guestbook/addcomment/{{pk}}" ><div>+</div></a>
 
-   
 
         <div class='NameBoxContainer' style="margin-top: 15px;">
             <strong>{{ name }}</strong>

@@ -33,6 +33,19 @@
   z-index: 2;
 
 }
+
+.start_button2 {
+
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  z-index: 2;
+  margin-top: 30vh;
+
+}
 .button {
   display: block;
   width: 248px;

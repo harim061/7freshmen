@@ -1,19 +1,8 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
-    <link rel="stylesheet" href="{% static 'css/Login.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/Start.css' %}" >
-</head>
-<body>
-    <div class="root">
-        <div class="ground">
+{% extends 'elipse_base.html' %}
+ {% load static %} 
+ {% block content %}
+ <link rel="stylesheet" href="{% static 'css/Start.css' %}" media="screen">
+ <link rel="stylesheet" href="{% static 'css/login.css' %}" media="screen">
 
             <div class="banner_s">
                 <img id='logo_s' src="{% static 'img/logo2.png' %}" alt='logo' title='logo2'/>
@@ -25,12 +14,12 @@
     <div class="emailgo">
         <div class="email">
             입력하신 이메일로 인증 링크가<br> 전송되었습니다.<br>
-            이메일에서 인증을 완료해주세요.
+            이메일에서 인증을 완료해주세요.<br>
+            만약 메일이 오지 않는다면, 이메일 주소를 다시 한번 확인해 주시고, 스팸 폴더를 확인해 주세요.
         </div>
 
         <button class="loginGo" onclick="location.href='/login/'">로그인 </button>
     </div>
 </div>
 </div>
-</body>
-</html>
+{% endblock %}

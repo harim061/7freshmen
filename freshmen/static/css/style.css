@@ -20,10 +20,18 @@ body {
   background-size: cover;
 }
 
+.flower_background{
+  background-image: url("../img/flower_background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 @media screen and (max-width: 450px) {
   body {
     margin: 0;
     background-color: rgb(54, 54, 54);
+    overflow: hidden;
   }
 
   .root {

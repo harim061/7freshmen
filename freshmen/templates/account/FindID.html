@@ -1,12 +1,14 @@
 {% extends 'elipse_base.html' %} 
 {% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/Login.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Start.css' %}" />
 
-        <div class="ground">
-            <div class="background">
-            </div>
+
+
             <div class="banner_s">
                 <img id='logo_s' src="{% static 'img/logo2.png' %}" alt='logo' title='logo'/>
+                <img id='chat_s'src="{% static 'img/Logo.png' %}" alt='chat' title='chat'/>
             </div>
             <img id='chat_s'src="{% static 'img/Logo.png' %}" alt='chat' title='chat'/>
             <div class='warp'>
@@ -17,7 +19,5 @@
                     <button class='button' type="submit">확인</button>
                 </form>
             </div>
-
-        </div>
 
 {% endblock %}
