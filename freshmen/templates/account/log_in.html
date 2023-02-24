@@ -2,48 +2,65 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
-    <link rel="stylesheet" href="{% static 'css/Login.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/Start.css' %}" >
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/Start.css' %}" />
+  </head>
+  <body>
     <div class="root">
-        <div class="ground">
-            <div class="banner_s">
-                <img id='logo_s' src="{% static 'img/logo2.png' %}" alt='logo2' title='logo'/>
-                <img id='flower2_s' src="{% static 'img/account/꽃 2.png' %}"  alt='flower2' title='flower2'/>
-                <img id='flower3_s' src="{% static 'img/account/꽃 3.png' %}" alt='flower3' title='flower3'/>
+      <div class="ground">
+        <div class="banner_s">
+          <img
+            id="logo_s"
+            src="{% static 'img/logo2.png' %}"
+            alt="logo2"
+            title="logo"
+          />
+          <img
+            id="flower2_s"
+            src="{% static 'img/account/꽃 2.png' %}"
+            alt="flower2"
+            title="flower2"
+          />
+          <img
+            id="flower3_s"
+            src="{% static 'img/account/꽃 3.png' %}"
+            alt="flower3"
+            title="flower3"
+          />
 
-                <img id='chat_s'src="{% static 'img/account/채팅5 1.png' %}" alt='chat' title='chat'/>
-            </div>
-
-
-        <form action="" method="POST" class='inputboxs'>
-            {% csrf_token %}
-
-            {% for form in forms %}
-        <div>
-
-            {{ form }}
+          <img
+            id="chat_s"
+            src="{% static 'img/account/채팅5 1.png' %}"
+            alt="chat"
+            title="chat"
+          />
         </div>
-        {% endfor %}
 
-        {% for form in forms %}
-        {{ form.errors}}
-        {% endfor %}
-        <button type="submit" name="login-submit" value="login" class='Loginbutton'>로그인하기</button>
-        <div class="id_password">
+        <form action="" method="POST" class="inputboxs">
+          {% csrf_token %} {% for form in forms %}
+          <div>{{ form }}</div>
+          {% endfor %} {% for form in forms %} {{ form.errors}} {% endfor %}
+          <button
+            type="submit"
+            name="login-submit"
+            value="login"
+            class="Loginbutton"
+          >
+            로그인하기
+          </button>
+          <div class="id_password">
             <span onclick="location.href='FindID.html'">아이디</span>
             <span>/</span>
             <span onclick="location.href='FindPW.html'">비밀번호 찾기</span>
         </div>
+
     </form>
     </div>
-    </div>
-</body>
+  </body>
 </html>

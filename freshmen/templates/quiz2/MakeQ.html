@@ -1,3 +1,4 @@
+
 {% load static %} 
 
 <!DOCTYPE html>
@@ -16,11 +17,14 @@
   <body>
     <div class="root">
       <div class="header">
+
         {% include "header.html" %}
+
         <div class="inform_text">
           <p>나의 TMI를 다른 사람들에게 맞출 수 있게 문제를 내보세요!</p>
         </div>
       </div>
+
       <section class="buttons">
         <button onclick="add_question()" class="question_update">+</button>
         <div class="inform_chatBalloon">
@@ -61,6 +65,7 @@
               type="text"
               placeholder="정답 : ex) 떡볶이"
             />
+
             <div class="vs_circle">VS</div>
 
             <input
@@ -71,12 +76,16 @@
               placeholder="오답 : ex) 치킨"
             />
           </div>
+
           <p class="alert_text">
             정답은 왼쪽 칸에 오답은 오른쪽 칸에 적어주세요!
           </p>
         </section>
+
         <button type="submit" style="display: none" id="submitQ"></button>
       </form>
     </div>
   </body>
+
 </html>
+

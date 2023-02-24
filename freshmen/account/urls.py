@@ -10,6 +10,7 @@ urlpatterns = [
     path('findid/', views.find_id, name='findid'),
     path('activate/<str:uid64>/<str:token>', views.activate, name='activate'),
     path('password_reset/', views.password_reset_request, name="password_reset"),
+    path('logout/', views.logout, name='logout'),
     # path('findpassword/', views.find_password, name='findpassword'),
     path('logout/', views.logout, name='logout'),
     path('profile/',views.profile,name="profile"),

@@ -10,17 +10,18 @@
         <strong>{{ username }}</strong>
         님의 방명록
     </div>
-    <form class="writeGB"  action="" method="POST">
-        {% csrf_token %}
 
-        {% for f in form %}
-        
+
+<form action="" method="POST"  class="writeGB">
+    {% csrf_token %}
+
+    {% for f in form %}
+
         {{ f }}
-        
-        {% endfor %}
+    {% endfor %}
 
-        <button type="submit" name="login-submit" value="login" class='saveBtn'>저장하기</button>
-    </form>
+<button type="submit" name="login-submit" value="login" class='saveBtn'>저장하기</button>
+
 
 </form>
 
