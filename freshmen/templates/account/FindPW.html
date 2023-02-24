@@ -1,21 +1,29 @@
-{% extends 'elipse_base.html' %} {% block content %}
-
+{% extends 'elipse_base.html' %} {% load static %} {% block content %}
 
 <div class="ground">
-    <div class="background">
-    </div>
-    <div class="banner_s">
-        <img id='logo_s' src="{% static 'img/logo2.png' %}" alt='logo' title='logo'/>
+  <div class="background"></div>
+  <div class="banner_s">
+    <img
+      id="logo_s"
+      src="{% static 'img/logo2.png' %}"
+      alt="logo"
+      title="logo"
+    />
+  </div>
+  <img id="chat_s" src="{% static 'img/Logo.png' %}" alt="chat" title="chat" />
 
-    </div>
-    <img id='chat_s'src="{% static 'img/Logo.png' %}" alt='chat' title='chat'/>
-
-    <div class='find_input'>
-        <div id='findtext'>비밀번호 찾기</div>
-        <input class='inputbox' placeholder=' 아이디를 입력하세요' onfocus="this.placeholder=''" 
-        onblur="this.placeholder=' 아이디를 입력하세요'"></input>
-    </div>
-    <div class='find_button'><button class='button' onClick="location.href='FindShowPW.html'">확인</button></div>
+  <div class="find_input">
+    <div id="findtext">비밀번호 찾기</div>
+    <p>
+      비밀번호를 잊어버리셨나요?<br />
+      가입하신 이메일을 입력해 주세요.<br />
+      잠시 후 해당 이메일로 비밀번호 재설정 메일이 발송됩니다.
+    </p>
+    <form method="POST">
+      {% csrf_token %} {{ password_reset_form }}
+      <button type="submit">전송</button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

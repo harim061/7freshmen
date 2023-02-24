@@ -1,4 +1,4 @@
-{% extends 'elipse_base.html' %} {% block content %}
+{% extends 'elipse_base.html' %} {% load static %} {% block content %}
 
 <div class="ground">
   <div class="background"></div>
@@ -13,12 +13,18 @@
   <img id="chat_s" src="{% static 'img/Logo.png' %}" alt="chat" title="chat" />
 
   <div class="findtext">
-    <div id="findtext">한벛꽃님의 아이디는</div>
-    <div class="inputbox">likelion210</div>
+    {% if id %}
+
+    <div id="findtext">{{user.user_name}}님의 아이디는</div>
+    <div class="inputbox">{{user.user_id}}</div>
     <div id="findtext">입니다</div>
+    {% else %}
+    <div id="findtext">아이디가 존재하지 않습니다</div>
+
+    {% endif %}
   </div>
   <div id="to_login">
-    <button class="button" onClick="location.href='Login.html'">확인</button>
+    <button class="button" onClick="location.href='/main2'">확인</button>
   </div>
 </div>
 

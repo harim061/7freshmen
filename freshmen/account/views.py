@@ -134,11 +134,12 @@ def find_id(request):
             if user is not None:
                 id = user.user_id
                 context = {'id':id}
-                return render(request, 'templates/account/accountfindid.html', context)
+                return render(request, 'templates/account/FindShowID.html', context)
         except:
             messages.error(request, '존재하지 않는 닉네임입니다.')
+            return render(request, 'templates/account/FindShowID.html', context)
     context={}
-    return render(request,'templates/account/findid.html',context)
+    return render(request,'templates/account/FindID.html',context)
 
 # def find_password(request):
 #     context = {}
@@ -188,7 +189,7 @@ def password_reset_request(request):
 	password_reset_form = PasswordResetForm()
 	return render(
 		request=request,
-		template_name='account/password_reset.html',
+		template_name='account/FindPW.html',
 		context={'password_reset_form': password_reset_form})
 
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
