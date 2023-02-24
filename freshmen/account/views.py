@@ -27,7 +27,7 @@ from django.conf import settings
 
 
 def main(request):
-    return render(request,'templates/main.html')
+    return render(request,'templates/main1.html')
 def main2(request):
     return render(request,'templates/main2.html')
 # Create your views here.
