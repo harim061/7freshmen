@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/Frofile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/Start.css' %}" >
+</head>
+<body>
+    <div class="root">
+        <div class="ground">
+            
+            <div id="profile">
+                <div id="profile_title">내 정보</div>
+                <div id="profile_background">
+                    <form method="post" enctype="multipart/form-data">
+                        <label id='chooseFile_button'for="chooseFile">+</label>
+                        <input id='chooseFile' type="file" accept="image/*" onchange="loadFile(this)" placeholder="click">
+                    </form>
+                </div>
+            </div>
+
+            <form action="" method="POST"  class='information'>
+                {% csrf_token %}
+    
+            {% for form in profileForm %}
+            <div>
+                <label for="{{ form.id_for_label }}">{{ form.label }}</label>
+                {{ form }}
+            </div>
+            {% endfor %}
+    
+            {% for form in forms %}
+            {{ form.errors}}
+            {% endfor %}
+
+            <div id="profile_button">
+                <button type="submit" id="save_button">저장</button>
+            </div>
+        </form>
+            
+        </div>
+    </div>
+
+    <script src="{% static 'js/Profile.js' %}"></script>
+</body>
+</html>
+
