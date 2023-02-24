@@ -208,18 +208,71 @@ class ProfileForm(forms.ModelForm):
         error_messages={'required' : '나이를 입력해주세요.'}
     )
 
+    live = forms.CharField(
+        max_length=128,
+        label='자취유무',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class' : 'live',
+                'placeholder' : '자취 유/무'
+            }
+        )
+    )
+
+    favfood = forms.CharField(
+        max_length=128,
+        label='음식',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class' : 'favfood',
+                'placeholder' : '내가 선호하는 음식은?'
+            }
+        )
+    )
+
+    drink = forms.CharField(
+        max_length=128,
+        label='주량',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class' : 'drink',
+                'placeholder' : '나의 주량은?'
+            }
+        )
+    )
+
+    hometown = forms.CharField(
+        max_length=128,
+        label='고향',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class' : 'hometown',
+                'placeholder' : '나의 고향은?'
+            }
+        )
+    )
+
     field_order = [
         'school',
         'major',
         'gender',
         'mbti',
-        'age'
+        'age',
+        'live',
+        'favfood',
+        'drink',
+        'hometown'
     ]
 
     class Meta:
         model = Profile
         fields = [
-            'school','major','gender','mbti','age'
+            'school','major','gender','mbti','age',
+            'live','favfood','drink','hometown'
         ]
 
     def clean(self):
@@ -230,3 +283,8 @@ class ProfileForm(forms.ModelForm):
         self.gender = cleaned_data.get('gender','')
         self.mbti = cleaned_data.get('mbti','')
         self.age = cleaned_data.get('age','')
+
+        self.live = cleaned_data.get('live','')
+        self.favfood = cleaned_data.get('favfood','')
+        self.drink = cleaned_data.get('drink','')
+        self.hometown = cleaned_data.get('hometown','')

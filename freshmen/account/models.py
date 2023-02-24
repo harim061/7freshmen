@@ -94,7 +94,8 @@ class Profile(models.Model):
     age = models.IntegerField(null=True)
     image = models.ImageField(blank=True, null=True, upload_to='profile/')
     major = models.CharField(max_length=128, null=True, blank=False)
-    live = models.CharField(max_length=16, choices=LIVE_CHOICES, null=True)
+
+    live = models.CharField(max_length=128, choices=LIVE_CHOICES, null=True)
     favfood = models.CharField(max_length=128, null=True, blank=False)
     drink = models.CharField(max_length=128, null=True, blank=False)
     hometown = models.CharField(max_length=128, null=True, blank=False)
