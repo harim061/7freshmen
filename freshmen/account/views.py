@@ -60,11 +60,8 @@ def signup(request):
             mail_subject = "[친해지길 바라] 회원가입 인증 메일입니다."
             email = EmailMessage(mail_subject, message, to=[signup_form.user_id])
             email.send()
-            return HttpResponse(
-                '<div style="font-size: 40px; width: 100%; height:100%; display:flex; text-align:center; '
-                'justify-content: center; align-items: center;">'
-                '입력하신 이메일<span>로 인증 링크가 전송되었습니다.</span>'
-                '</div>'
+            return render(
+                request,'templates/account/email.html'
             )
             return render(request,'templates/account/Sign.html',{'user':user})
         else:
@@ -82,7 +79,7 @@ def activate(request, uid64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        return render(request,'templates/account/log_in.html')
+        return redirect('account:login')
     else:
         return HttpResponse('비정상적인 접근입니다.')
 
@@ -99,17 +96,18 @@ def login(request):
         if loginform.is_valid():
             request.session['login_session'] = loginform.login_session
             request.session.set_expiry(0)
-            return render(request,'templates/account/profile.html')
+            # return render(request,'templates/account/profile.html')
+            return redirect('account:profile')
         else:
             context['forms'] = loginform
             if loginform.errors:
                 for value in loginform.errors.values():
                     context['error'] = value
         return render(request, 'templates/account/log_in.html', context)
-    
 @login_required
 def profile(request):
-    
+    profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
+
     if request.method == 'POST':
         profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
 
@@ -121,7 +119,7 @@ def profile(request):
     profileForm = ProfileForm()
     context = {'profileForm':profileForm}
 
-    return render(request,'templates/account/profile.html',context)
+    return render(request,'templates/account/profile2.html',context)
 
 def find_id(request):
     context = {}
