@@ -43,7 +43,7 @@ const add_question = () => {
     <div class="question_list">
       <div class="question_num"></div>
       <input
-        name="question"
+        name="question[]"
         class="question_input"
         type="text"
         placeholder="문제를 써주세요 ex)내가 좋아하는 음식은?"
@@ -59,7 +59,7 @@ const add_question = () => {
 
     <div class="answer_warp">
       <input
-        name="answer_true"
+        name="op1[]"
         class="answer"
         id="answer_true"
         type="text"
@@ -69,7 +69,7 @@ const add_question = () => {
       <div class="vs_circle">VS</div>
 
       <input
-        name="answer_false"
+        name="op2[]"
         class="answer"
         id="answer_false"
         type="text"
