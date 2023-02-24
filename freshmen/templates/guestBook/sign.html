@@ -5,22 +5,19 @@
 
 <div class="root">
     {% include "header.html" %}
-<form action="" method="POST" >
+    <div class='NameBoxContainer' style="margin-top: 15px;">
+        <strong>{{ username }}</strong>
+        님의 방명록
+    </div>
+<form action="" method="POST"  class="writeGB">
     {% csrf_token %}
 
-    {% for form in forms %}
-    <div>
-        <label for="{{ form.id_for_label }}">{{ form.label }}</label>
-        {{ form }}
-    </div>
+    {% for f in form %}
+
+        {{ f }}
     {% endfor %}
 
-    {% for form in forms %}
-    {{ form.errors}}
-
-    {% endfor %}
-
-<button type="submit" name="login-submit" value="login" class='button'>저장하기</button>
+<button type="submit" name="login-submit" value="login" class='saveBtn'>저장하기</button>
 
 </form>
 </div>
