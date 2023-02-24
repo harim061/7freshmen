@@ -161,6 +161,7 @@ def password_reset_request(request):
 		if password_reset_form.is_valid():
 			data = password_reset_form.cleaned_data['email']
 			associated_users = get_object_or_404(User,user_id=data)
+                        
 			if associated_users.exists():
 				for user in associated_users:
 					subject = '[친해지길 바라] 비밀번호 재설정'
