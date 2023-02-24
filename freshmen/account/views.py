@@ -25,6 +25,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.conf import settings
 
+
 def main(request):
     return render(request,'templates/main.html')
 def main2(request):
