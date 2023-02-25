@@ -18,12 +18,11 @@ def solveName(request, pk):
         user.quiz_writer = quiz
         user.save()
         return redirect("quiz:solveQuiz", user.pk)
-    return render(request, "templates/quiz2/GuessQ.html")
+    return render(request, "templates/quiz2/GuessQ.html", {'pk':pk})
     
 def solveQuiz(request, pk):
     user = SolveQuiz.objects.get(pk=pk)
     quiz_writer = user.quiz_writer
-   
 
     question = []
     op1 = []
@@ -72,15 +71,25 @@ def solveQuiz(request, pk):
         quiz.append(question[i])
         quizs.append(quiz)
 
-    context = {'quizs':quizs, 'pk': pk}
+    context = {'quiz1':quizs[0], 'quiz2':quizs[1], 'quiz3':quizs[2], 'quiz4':quizs[3], 'quiz5':quizs[4], 'pk': pk}
 
-    num = len(user.answer)
     if request.POST:
-        user.answer = user.answer + request.POST['answer']
-        if request.POST['answer'] == quiz_writer.ans[num]:
-            user.solve_num += 1
-            user.save()
-        return render(request, "templates/quiz/QuizDetail.html", context)
+        answer1 = request.POST['answer1']
+        answer2 = request.POST['answer2']
+        answer3 = request.POST['answer3']
+        answer4 = request.POST['answer4']
+        answer5 = request.POST['answer5']
+        answer = []
+        answer.append(answer1)
+        answer.append(answer2)
+        answer.append(answer3)
+        answer.append(answer4)
+        answer.append(answer5)
+        for i in range(0,5):
+            if answer[i] == op1[i]:
+                user.solve_num += 1
+        user.save()
+        return render(request, "templates/quiz2/result.html", {'solve_num':user.solve_num})
     return render(request, "templates/quiz/QuizDetail.html", context)
 
 def result(request, pk):
@@ -93,7 +102,7 @@ def each_result(request, pk):
     nickname = results.nickname
     score = results.solve_num
 
-    return render(request, "사람 마다 결과값", {"nickname":nickname, 'score':score})
+    return render(request, "templates/quiz2/QuizResult.html", {"nickname":nickname, 'score':score})
 
 @login_required()
 def addQuestion(request):
