@@ -12,6 +12,21 @@
   height: 350px;
 }
 
+/* scroll */
+#over::-webkit-scrollbar {
+  width: 5px;
+}
+#over::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 10px;
+}
+#over::-webkit-scrollbar-track {
+  /* background-color: grey; */
+  opacity: 0.8;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
+
 button {
   cursor: pointer;
 }
