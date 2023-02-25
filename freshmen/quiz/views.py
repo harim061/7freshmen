@@ -3,6 +3,7 @@ from .forms import *
 from .models import *
 from django.contrib.auth.decorators import login_required
 from account.models import User
+import random
 
 # Create your views here.
 
@@ -16,18 +17,30 @@ def solveName(request, pk):
         quiz = get_object_or_404(QuesModel, writer=quiz_user)
         user.quiz_writer = quiz
         user.save()
-        return redirect("solveQuiz", user.pk)
+        return redirect("quiz:solveQuiz", user.pk)
     return render(request, "templates/quiz2/GuessQ.html")
     
 def solveQuiz(request, pk):
-    user = get_object_or_404(SolveQuiz, pk=pk)
-    quiz_user = get_object_or_404(QuesModel, writer=user.quiz_writer)
+    user = SolveQuiz.objects.get(pk=pk)
+    quiz_writer = user.quiz_writer
 
-    context = {'question':quiz_user.question, 'op1':quiz_user.op1, 'op2':quiz_user.op2, 'pk': pk}
+    quizs = []
+    for i in range(0,5):
+        quiz = []
+        quiz.append(quiz_writer.question[i])
+        quiz.append(quiz_writer.op1[i])
+        quiz.append(quiz_writer.op2[i])
+
+        quizs.append(quiz)
+    
+    random.shuffle(quizs)
+
+    context = {'quizs':quizs, 'pk': pk}
+
     num = len(user.answer)
     if request.POST:
         user.answer = user.answer + request.POST['answer']
-        if request.POST['answer'] == quiz_user.ans[num]:
+        if request.POST['answer'] == quiz_writer.ans[num]:
             user.solve_num += 1
             user.save()
         return render(request, "templates/quiz/QuizDetail.html", context)

@@ -144,6 +144,11 @@ class LoginForm(forms.Form):
                 self.pwd = 0
                 return self.add_error('user_pw', '비밀번호가 일치하지 않습니다.')
             
+<<<<<<< Updated upstream
+=======
+            self.usr = user_id
+            self.pwd = user_pw
+>>>>>>> Stashed changes
 # 프로필 폼
 class ProfileForm(forms.ModelForm):
     school = forms.CharField(
