@@ -102,7 +102,7 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-            return render(request,'templates/account/profile.html')
+            return render(request,'templates/account/profile2.html')
             # return redirect('account:profile')
         else:
             context['forms'] = loginform
