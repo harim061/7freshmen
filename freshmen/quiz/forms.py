@@ -57,7 +57,7 @@ class addQuestionForm(forms.ModelForm):
         question = cleaned_data.get('question','')
         op1 = cleaned_data.get('op1','')
         op2 = cleaned_data.get('op2','')
-        ans = op1
+        ans = cleaned_data.get('op1','')
 
         self.question = question
         self.op1 = op1

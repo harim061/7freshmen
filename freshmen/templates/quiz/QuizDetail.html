@@ -19,7 +19,17 @@
 
 
 <div class="root">
-    {% include 'header.html '%}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" media="screen">
+
+    <div class="header">
+        <div class="ImgBox">
+            <img
+                class="LogoImg"
+                src="{% static 'img/Logo_s.png' %}"
+                alt="chatBallon"
+            />
+        </div>
+    </div>
 
     <div class="nameBox">
         <div class='NameBoxContainer' style="margin-top: 15px;">
@@ -30,20 +40,51 @@
     <div class="scroll">
     <form name="question" id="question" method="post" >
         {% csrf_token %}
-
-    {% for q in quizs %}
- 
-<hr class="hr"/>
-        <div class="Qname">{{q.2}}</div>
+    <hr class="hr"/>
+        <div class="Qname">{{quiz1.2}}</div>
     
         <div class="select">
-            <input class="radi" type="checkbox" value="{{q.0}}" name="{{q.2}}" id="op1"><label for="op1">{{q.0}}</label>
+            <input class="radi" type="checkbox" value="{{quiz1.0}}" name="answer1" id="op1"><label for="op1">{{quiz1.0}}</label>
             <span class="vs">vs</span>
-            <input class="radi" type="checkbox" value="{{q.1}}"  name="{{q.2}}" id="op2"><label for="op2">{{q.1}}</label>
+            <input class="radi" type="checkbox" value="{{quiz1.1}}"  name="answer1" id="op2"><label for="op2">{{quiz1.1}}</label>
         </div>
 
-    {% endfor %}
+    <hr class="hr"/>
+        <div class="Qname">{{quiz2.2}}</div>
     
+        <div class="select">
+            <input class="radi" type="checkbox" value="{{quiz2.0}}" name="answer2" id="op1"><label for="op1">{{quiz2.0}}</label>
+            <span class="vs">vs</span>
+            <input class="radi" type="checkbox" value="{{quiz2.1}}"  name="answer2" id="op2"><label for="op2">{{quiz2.1}}</label>
+        </div>
+
+    <hr class="hr"/>
+        <div class="Qname">{{quiz3.2}}</div>
+    
+        <div class="select">
+            <input class="radi" type="checkbox" value="{{quiz3.0}}" name="answer3" id="op1"><label for="op1">{{quiz3.0}}</label>
+            <span class="vs">vs</span>
+            <input class="radi" type="checkbox" value="{{quiz3.1}}"  name="answer3" id="op2"><label for="op2">{{quiz3.1}}</label>
+        </div>
+
+    <hr class="hr"/>
+        <div class="Qname">{{quiz4.2}}</div>
+    
+        <div class="select">
+            <input class="radi" type="checkbox" value="{{quiz4.0}}" name="answer4" id="op1"><label for="op1">{{quiz4.0}}</label>
+            <span class="vs">vs</span>
+            <input class="radi" type="checkbox" value="{{quiz4.1}}"  name="answer4" id="op2"><label for="op2">{{quiz4.1}}</label>
+        </div>
+
+    <hr class="hr"/>
+        <div class="Qname">{{quiz5.2}}</div>
+    
+        <div class="select">
+            <input class="radi" type="checkbox" value="{{quiz5.0}}" name="answer5" id="op1"><label for="op1">{{quiz5.0}}</label>
+            <span class="vs">vs</span>
+            <input class="radi" type="checkbox" value="{{quiz5.1}}"  name="answer5" id="op2"><label for="op2">{{quiz5.1}}</label>
+        </div>
+
     <div class="btnBody">
     <button type="submit" value="submit" id="submitQ" class="submitBtn">제출하기</button>
         </div>
