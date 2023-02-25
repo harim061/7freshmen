@@ -139,9 +139,9 @@ class LoginForm(forms.Form):
             # except exceptions.VerifyMismatchError:
             except Exception:
                 return self.add_error('user_pw', '비밀번호가 일치하지 않습니다.')
-
-            self.login_session = user.user_id
-
+            
+            self.usr = user_id
+            self.pwd = user_pw
 # 프로필 폼
 class ProfileForm(forms.ModelForm):
     school = forms.CharField(
@@ -170,60 +170,40 @@ class ProfileForm(forms.ModelForm):
         error_messages={'required' : '전공/학부를 입력해주세요.'}
     )
 
-    gender = forms.CharField(
-        max_length=16,
+    gender = forms.ChoiceField(
         label='성별',
         required=True,
-        widget=forms.TextInput(
-            attrs={
-                'class' : 'gender',
-                'placeholder' : '성별'
-            }
-        ),
+        choices=Profile.GENDER_CHOICES,
         error_messages={'required' : '성별을 선택해주세요.'}
     )
 
-    mbti = forms.CharField(
-        max_length=16,
+    mbti = forms.ChoiceField(
         label='MBTI',
         required=True,
-        widget=forms.TextInput(
-            attrs={
-                'class' : 'mbti',
-                'placeholder' : 'MBTI'
-            }
-        ),
+        choices=Profile.MBTI_CHOICES,
         error_messages={'required' : 'MBTI를 선택해주세요.'}
     )
 
     age = forms.IntegerField(
-        label='age',
+        label='나이',
         required=True,
         widget=forms.TextInput(
             attrs={
                 'class' : 'age',
-                'placeholder' : '성별'
+                'placeholder' : '나이'
             }
         ),
         error_messages={'required' : '나이를 입력해주세요.'}
     )
 
-    live = forms.CharField(
-        max_length=128,
+    live = forms.ChoiceField(
         label='자취유무',
-        required=True,
-        widget=forms.TextInput(
-            attrs={
-                'class' : 'live',
-                'placeholder' : '자취 유/무'
-            }
-        )
+        choices=Profile.LIVE_CHOICES,
     )
 
     favfood = forms.CharField(
         max_length=128,
         label='음식',
-        required=True,
         widget=forms.TextInput(
             attrs={
                 'class' : 'favfood',
@@ -235,7 +215,6 @@ class ProfileForm(forms.ModelForm):
     drink = forms.CharField(
         max_length=128,
         label='주량',
-        required=True,
         widget=forms.TextInput(
             attrs={
                 'class' : 'drink',
@@ -247,13 +226,20 @@ class ProfileForm(forms.ModelForm):
     hometown = forms.CharField(
         max_length=128,
         label='고향',
-        required=True,
         widget=forms.TextInput(
             attrs={
                 'class' : 'hometown',
                 'placeholder' : '나의 고향은?'
             }
         )
+    )
+    
+    image = forms.ImageField(
+        label = '프로필 이미지',
+    )
+
+    timetable = forms.ImageField(
+        label = '시간표',
     )
 
     field_order = [
@@ -265,26 +251,28 @@ class ProfileForm(forms.ModelForm):
         'live',
         'favfood',
         'drink',
-        'hometown'
+        'hometown',
+        'image',
+        'timetable',
     ]
 
     class Meta:
         model = Profile
         fields = [
-            'school','major','gender','mbti','age',
-            'live','favfood','drink','hometown'
+            'school','major','gender','mbti','age','image',
+            'live','favfood','drink','hometown','timetable',
         ]
 
-    def clean(self):
-        cleaned_data = super().clean()
+    # def clean(self):
+    #     cleaned_data = super().clean()
 
-        self.school = cleaned_data.get('school','')
-        self.major = cleaned_data.get('major','')
-        self.gender = cleaned_data.get('gender','')
-        self.mbti = cleaned_data.get('mbti','')
-        self.age = cleaned_data.get('age','')
+    #     self.school = cleaned_data.get('school','')
+    #     self.major = cleaned_data.get('major','')
+    #     self.gender = cleaned_data.get('gender','')
+    #     self.mbti = cleaned_data.get('mbti','')
+    #     self.age = cleaned_data.get('age','')
 
-        self.live = cleaned_data.get('live','')
-        self.favfood = cleaned_data.get('favfood','')
-        self.drink = cleaned_data.get('drink','')
-        self.hometown = cleaned_data.get('hometown','')
+    #     self.live = cleaned_data.get('live','')
+    #     self.favfood = cleaned_data.get('favfood','')
+    #     self.drink = cleaned_data.get('drink','')
+    #     self.hometown = cleaned_data.get('hometown','')
