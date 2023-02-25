@@ -23,8 +23,12 @@ def solveName(request, pk):
 def solveQuiz(request, pk):
     user = SolveQuiz.objects.get(pk=pk)
     quiz_writer = user.quiz_writer
+<<<<<<< HEAD
+   
+=======
     user2 = User.objects.get(pk=quiz_writer)
     username = user2.username
+>>>>>>> 262977b60f2c061abc5ec3c7da454dd599d2dcb6
 
     question = []
     op1 = []
@@ -81,13 +85,20 @@ def solveQuiz(request, pk):
         if request.POST['answer'] == quiz_writer.ans[num]:
             user.solve_num += 1
             user.save()
+<<<<<<< HEAD
         return render(request, "templates/quiz/QuizDetail.html", context)
     return render(request, "templates/quiz/QuizDetail.html", context)
+=======
+        
+    quiz = get_object_or_404(QuesModel, id=num)
+
+    return render(request, "templates/quiz/QuizNum.html", {'quiz':quiz})
+>>>>>>> 8c206d82cc12d971591ecb00abba9d188ef17fce
 
 def result(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)
     total_score = user.solve_num
-    return render(request, "결과 html", {"user":user, 'total_score':total_score})
+    return render(request, "templates/quiz2/result.html", {"user":user, 'total_score':total_score})
     
 def each_result(request, pk):
     results = get_object_or_404(SolveQuiz, quiz_writer = pk)

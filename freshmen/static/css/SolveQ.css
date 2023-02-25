@@ -1,0 +1,124 @@
+.select {
+    padding: 15px 10px;
+    }
+    .select input[type=radio]{
+    display: none;
+    }
+    .select input[type=radio]+label{
+        width: 122px;
+        height: 50px;
+        text-align: center;
+        box-sizing: border-box;
+        background: #FFFFFF;
+        border: 3px solid #FFBEBE;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .select input[type=radio]+label{
+    background-color: #fff;
+    color: #333;
+    }
+    .select input[type=radio]:checked+label{
+    background-color: #FFBEBE;
+    color: #333;
+    }
+
+.Qname{
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    width: 300px;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.input{
+    color:black
+}
+
+.select{
+    display: flex;
+    justify-content: center;
+}
+
+.vs{
+    border-radius: 50%;
+    width: 23.94px;
+    height: 23.94px;
+    background: #FFFFFF;
+    color:#8C8C8C;
+    text-align: center;
+    margin : 0 8px 0 8px;
+    margin-top: 10px;
+}
+.oBox{
+    width: 122px;
+    height: 79px;
+    text-align: center;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 3px solid #FFBEBE;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.xBox{
+    width: 122px;
+    height: 79px;
+    text-align: center;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 3px solid #FFBEBE;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll{
+    margin-top: 20px;
+    height: 55vh;
+    overflow-y: scroll;
+}
+
+
+.scroll::-webkit-scrollbar{
+    width: 5px; 
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #FFBEBE; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: #fff; 
+}
+
+
+.hr{
+   
+border: 1.5px solid #FFBEBE;
+}
+.btnBody{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+.submitBtn{
+
+    width: 108px;
+    height: 45px;
+
+    background: #FFBEBE;
+    border-radius: 15px;
+    border: none;
+    
+}
