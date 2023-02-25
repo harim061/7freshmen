@@ -100,8 +100,10 @@ def login(request):
             # request.session.set_expiry(0)
             user = auth.authenticate(request, username=loginform.usr, password=loginform.pwd)
 
-            if user is not None:
+            if user is not None and loginform.pwd != 0:
                 auth.login(request, user)
+            else:
+                return render(request, 'templates/account/log_in.html', context)
             return render(request,'templates/account/profile2.html')
             # return redirect('account:profile')
         else:
