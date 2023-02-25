@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div> 
-                <form class="complete_text" method="post">
+                <form class="complete_text" method="post" action="{% url 'quiz:solveQuiz' user.id %}">
                     {% csrf_token %}
                     <input name="nickname" id="inner_circle" class="gq"
                         type="text"

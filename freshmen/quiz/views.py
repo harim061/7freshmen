@@ -14,6 +14,7 @@ def solveName(request, pk):
         if request.GET['nickname'] == "":
             user.nickname = "익명"
         user.quiz_writer = quiz_user
+        user.save()
         return redirect("solveQuiz", user.pk)
     return render(request, "templates/quiz2/GuessQ.html")
     
