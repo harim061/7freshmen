@@ -21,6 +21,38 @@
         </div>
       </div>
 
+      <button class="button" id="share">공유하기</button>
+      <div class="chatBalloon">
+        <p>다른사람이 볼 수 있게 <br />공유해주세요!</p>
+      </div>
+      <button class="button" id="profile" onClick="location.href='/profile/'">프로필</button>
+    </div>
+  </body>
+</html>
+{% endblock %}
+{% load static %} 
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main</title>
+    <link rel="stylesheet" href="{% static 'css/MakeQ.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+  </head>
+  <body>
+    <div class="root">
+        {% include "header.html" %}
+      <div class="complete_text">
+        <div id="inner_circle">
+          <p>문제 출제<br> 완료!</p>
+        </div>
+      </div>
+
       <div id="button_link">
         <div class="inputbox">
             <div id="link">link</div>
