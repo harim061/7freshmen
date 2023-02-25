@@ -23,17 +23,15 @@ def solveQuiz(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)
     quiz_user = get_object_or_404(QuesModel, writer=user.quiz_writer)
 
-    num = 1
+    context = {'question':quiz_user.question, 'op1':quiz_user.op1, 'op2':quiz_user.op2, 'pk': pk}
+    num = len(user.answer)
     if request.POST:
-        num = int(request.POST['quiz_id'])+1
         user.answer = user.answer + request.POST['answer']
-        if request.POST['answer'] == quiz_user.ans[num-2]:
+        if request.POST['answer'] == quiz_user.ans[num]:
             user.solve_num += 1
             user.save()
-        
-    quiz = get_object_or_404(QuesModel, id=num)
-
-    return render(request, "templates/quiz/QuizDetail.html", {'quiz':quiz})
+        return render(request, "templates/quiz/QuizDetail.html", context)
+    return render(request, "templates/quiz/QuizDetail.html", context)
 
 def result(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)

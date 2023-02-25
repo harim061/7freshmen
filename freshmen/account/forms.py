@@ -133,15 +133,17 @@ class LoginForm(forms.Form):
             except User.DoesNotExist:
                 return self.add_error('user_id','아이디가 존재하지 않습니다.')
             
+            self.usr = user_id
+            self.pwd = user_pw
+
             try:
                 # PasswordHasher().verify(user.password,user_pw)
                 check_password(user.password, user_pw)
             # except exceptions.VerifyMismatchError:
             except Exception:
+                self.pwd = 0
                 return self.add_error('user_pw', '비밀번호가 일치하지 않습니다.')
             
-            self.usr = user_id
-            self.pwd = user_pw
 # 프로필 폼
 class ProfileForm(forms.ModelForm):
     school = forms.CharField(
