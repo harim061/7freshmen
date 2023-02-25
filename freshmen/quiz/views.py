@@ -24,13 +24,26 @@ def solveQuiz(request, pk):
     user = SolveQuiz.objects.get(pk=pk)
     quiz_writer = user.quiz_writer
 
+    question = []
+    op1 = []
+    op2 = []
     quizs = []
+    i=2
+    while True:
+        question.append(quiz_writer.question[i])
+        op1.append(quiz_writer.op1[i])
+        op2.append(quiz_writer.op2[i])
+        i += 5
+        if i>22:
+            break
+    
     for i in range(0,5):
         quiz = []
-        quiz.append(quiz_writer.question[i])
-        quiz.append(quiz_writer.op1[i])
-        quiz.append(quiz_writer.op2[i])
+        quiz.append(op1[i])
+        quiz.append(op2[i])
+        random.shuffle(quiz)
 
+        quiz.append(question[i])
         quizs.append(quiz)
     
     random.shuffle(quizs)

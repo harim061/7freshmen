@@ -100,17 +100,11 @@ def login(request):
             # request.session.set_expiry(0)
             user = auth.authenticate(request, username=loginform.usr, password=loginform.pwd)
 
-<<<<<<< Updated upstream
             if user is not None and loginform.pwd != 0:
                 auth.login(request, user)
             else:
                 return render(request, 'templates/account/log_in.html', context)
             return render(request,'templates/account/profile2.html')
-=======
-            if user is not None:
-                auth.login(request, user)
-            return render(request,'templates/account/profile.html')
->>>>>>> Stashed changes
             # return redirect('account:profile')
         else:
             context['forms'] = loginform
@@ -140,6 +134,7 @@ def profile(request):
     new.gender = request.POST['gender']
     new.mbti = request.POST['mbti']
     new.age = request.POST['age']
+    new.image = request.POST['image']
     new.live = request.POST['live']
     new.favfood = request.POST['favfood']
     new.drink = request.POST['drink']
@@ -147,6 +142,25 @@ def profile(request):
     new.timetable = request.FILES.get('timetable')
     new.save()
     return redirect('/')
+
+def show_profile(request):
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    context = {
+        'school':profile.school,
+        'major':profile.major,
+        'gender':profile.gender,
+        'mbti':profile.mbti,
+        'age':profile.age,
+        'live':profile.live,
+        'favfood':profile.favfood,
+        'drink':profile.drink,
+        'hometown':profile.hometown,
+        'image':profile.image,
+        'timetable':profile.timetable,
+    }
+
+    return render(request, 'html 연결 소망중', context)
 
 def find_id(request):
     context = {}
