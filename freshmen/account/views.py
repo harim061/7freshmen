@@ -100,17 +100,11 @@ def login(request):
             # request.session.set_expiry(0)
             user = auth.authenticate(request, username=loginform.usr, password=loginform.pwd)
 
-<<<<<<< Updated upstream
             if user is not None and loginform.pwd != 0:
                 auth.login(request, user)
             else:
                 return render(request, 'templates/account/log_in.html', context)
             return render(request,'templates/account/profile2.html')
-=======
-            if user is not None:
-                auth.login(request, user)
-            return render(request,'templates/account/profile.html')
->>>>>>> Stashed changes
             # return redirect('account:profile')
         else:
             context['forms'] = loginform
