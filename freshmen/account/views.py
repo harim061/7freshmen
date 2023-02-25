@@ -61,11 +61,8 @@ def signup(request):
             mail_subject = "[친해지길 바라] 회원가입 인증 메일입니다."
             email = EmailMessage(mail_subject, message, to=[signup_form.user_id])
             email.send()
-            return HttpResponse(
-                '<div style="font-size: 40px; width: 100%; height:100%; display:flex; text-align:center; '
-                'justify-content: center; align-items: center;">'
-                '입력하신 이메일<span>로 인증 링크가 전송되었습니다.</span>'
-                '</div>'
+            return render(
+                request,'templates/account/email.html'
             )
             return render(request,'templates/account/Sign.html',{'user':user})
         else:
@@ -83,7 +80,7 @@ def activate(request, uid64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        return render(request,'templates/account/log_in.html')
+        return redirect('account:login')
     else:
         return HttpResponse('비정상적인 접근입니다.')
 
@@ -100,29 +97,32 @@ def login(request):
         if loginform.is_valid():
             request.session['login_session'] = loginform.login_session
             request.session.set_expiry(0)
-            return render(request,'templates/account/profile.html')
+            # return render(request,'templates/account/profile.html')
+            return redirect('account:profile')
         else:
             context['forms'] = loginform
             if loginform.errors:
                 for value in loginform.errors.values():
                     context['error'] = value
         return render(request, 'templates/account/log_in.html', context)
-    
 @login_required
 def profile(request):
-    
+    profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
+    context = {'profileForm':profileForm}
     if request.method == 'POST':
         profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
 
         if profileForm.is_valid():
-            profileForm.save()
+            new_form = Profile()
+            new_form.school =profileForm.cleaned_data['school']
+            new_form.save()
             return render(request,'templates/account/profile.html',context)
     else:
         profileForm = ProfileForm(instance=request.user.profile)
     profileForm = ProfileForm()
     context = {'profileForm':profileForm}
 
-    return render(request,'templates/account/profile.html',context)
+    return render(request,'templates/account/profile2.html',context)
 
 def find_id(request):
     context = {}
@@ -134,11 +134,12 @@ def find_id(request):
             if user is not None:
                 id = user.user_id
                 context = {'id':id}
-                return render(request, 'templates/account/accountfindid.html', context)
+                return render(request, 'templates/account/FindShowID.html', context)
         except:
             messages.error(request, '존재하지 않는 닉네임입니다.')
+            return render(request, 'templates/account/FindShowID.html', context)
     context={}
-    return render(request,'templates/account/findid.html',context)
+    return render(request,'templates/account/FindID.html',context)
 
 # def find_password(request):
 #     context = {}
@@ -157,38 +158,43 @@ def find_id(request):
 #     return render(request,'templates/account/findpassword.html',context)
 
 def password_reset_request(request):
-	if request.method == "POST":
-		password_reset_form = PasswordResetForm(request.POST)
-		if password_reset_form.is_valid():
-			data = password_reset_form.cleaned_data['email']
-			associated_users = get_object_or_404(User,user_id=data)
-			if associated_users.exists():
-				for user in associated_users:
-					subject = '[친해지길 바라] 비밀번호 재설정'
-					email_template_name = "account/password_reset_email.txt"
-					c = {
-						"email": user.user_id,
-						# local: '127.0.0.1:8000', prod: 'givwang.herokuapp.com'
-						'domain': settings.HOSTNAME,
-						'site_name': 'givwang',
-						# MTE4
-						"uid": urlsafe_base64_encode(force_bytes(user.pk)),
-						"user": user,
-						# Return a token that can be used once to do a password reset for the given user.
-						'token': default_token_generator.make_token(user),
-						# local: http, prod: https
-						'protocol': settings.PROTOCOL,
-					}
-					email = render_to_string(email_template_name, c)
-					try:
-						send_mail(subject, email, 'givwang.official@gmail.com' , [user.email], fail_silently=False)
-					except BadHeaderError:
-						return HttpResponse('Invalid header found.')
-					return redirect("/password_reset/done/")
-	password_reset_form = PasswordResetForm()
-	return render(
+    current_site = get_current_site(request)
+
+    if request.method == "POST":
+        password_reset_form = PasswordResetForm(request.POST)
+        try:
+            if password_reset_form.is_valid():
+                data = password_reset_form.cleaned_data['email']
+                associated_users = get_object_or_404(User,user_id=data)
+                if associated_users is not None:
+                    subject = '[친해지길 바라] 비밀번호 재설정'
+                    email_template_name = "account/password_reset_email.txt"
+                    c = {
+                        "email": associated_users.user_id,
+                        # local: '127.0.0.1:8000'
+                        'domain': current_site.domain,
+                        'site_name': '7blossom',
+                        # MTE4
+                        "uid": urlsafe_base64_encode(force_bytes(associated_users.pk)),
+                        "user": associated_users,
+                        # Return a token that can be used once to do a password reset for the given user.
+                        'token': default_token_generator.make_token(associated_users),
+                        # local: http, prod: https
+                        # 'protocol': settings.PROTOCOL,
+                    }
+                    email = render_to_string(email_template_name, c)
+                    try:
+                        send_mail(subject, email, '7freshmen@gmail.com' , [associated_users.user_id], fail_silently=False)
+                    except BadHeaderError:
+                        return HttpResponse('Invalid header found.')
+                    return redirect("/password_reset/done/")
+        except:
+            # messages.error(request, '존재하지 않는 아이디입니다.')
+            return HttpResponse('존재하지 않는 아이디입니다.')
+    password_reset_form = PasswordResetForm()
+    return render(
 		request=request,
-		template_name='account/password_reset.html',
+		template_name='account/FindPW.html',
 		context={'password_reset_form': password_reset_form})
 
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):

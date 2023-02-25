@@ -38,7 +38,8 @@ class addQuestionForm(forms.ModelForm):
     field_order = [
         'question',
         'op1',
-        'op2'
+        'op2',
+
     ]
 
     class Meta:

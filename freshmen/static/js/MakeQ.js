@@ -70,6 +70,7 @@ const add_question = () => {
       정답은 왼쪽 칸에 오답은 오른쪽 칸에 적어주세요!
     </p>
   </section>`;
+  
   if (!Qnum_check(Q_num)) {
     return;
   }

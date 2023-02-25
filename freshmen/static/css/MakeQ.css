@@ -6,6 +6,11 @@
   font-style: normal;
 }
 
+#over {
+  background-color: #ffe4e2;
+  overflow-y: hidden;
+}
+
 button {
   cursor: pointer;
 }
@@ -13,6 +18,7 @@ button {
 .header {
   position: sticky;
   top: 0;
+  z-index: 2;
 }
 
 .inform_text {
@@ -65,7 +71,7 @@ button {
   background-color: white;
 }
 
-.inform_chatBalloon:after {
+.inform_chatBalloon::after {
   content: "";
   position: absolute;
   left: 5px;
@@ -246,6 +252,7 @@ button {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin: auto;
   margin-left: 26px;
+  margin-top: -5vh;
   bottom: 0;
   margin-top: -3vh;
 }
@@ -259,7 +266,7 @@ button {
   height: 230px;
   background: #ffffff;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 32px;
   border-radius: 100%;
 }

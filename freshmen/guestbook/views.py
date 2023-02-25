@@ -1,3 +1,4 @@
+from audioop import reverse
 from django.shortcuts import render,redirect,get_object_or_404
 
 from account.models import User
@@ -16,8 +17,7 @@ def guestbook(request, pk):
     comments = Comment.objects.filter(person=pk)
     user = get_object_or_404(User, pk=pk)
     user_name = user.username
-    context = {'comments':comments, 'name':user_name}
-
+    context = {'comments':comments, 'name':user_name,'pk':pk}
 
     return render(request,'templates/guestBook/guestbook.html', context)
 
@@ -37,6 +37,7 @@ def guestbook(request, pk):
 def add_comment(request, pk):
     main_user = get_object_or_404(User, pk=pk) # 방명록 주인
     main_user_name = main_user.username # html에서 이렇게 사용
+
     form = CommentForm()
     context = {'username' : main_user_name, 'pk':main_user.pk,'form':form}
 
@@ -49,4 +50,5 @@ def add_comment(request, pk):
             new_comment.person = main_user
             new_comment.save()
         return redirect('guestbook:guestbook',pk=pk)
+
     return render(request, 'templates/guestbook/sign.html',context)

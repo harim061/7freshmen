@@ -1,9 +1,18 @@
-{% extends 'elipse_base.html' %} {% block content %}
+{% extends 'elipse_base.html' %}
+{% load static %}
 
-<div class="banner">
-  <img id="logo" src="{% static 'img/logo2.png' %}" alt="logo" title="logo" />\
-</div>
-<img id="chat" src="{% static 'img/Logo.png' %}" alt="chat" title="chat" />
-<div id="touch" onclick="location.href='Start2.html'">화면을 터치해 주세요</div>
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/Start.css' %}" media="screen">
 
+    <div class="root" onClick="location.href='/main2/'">
+        <div class="banner">
+            <img id='logo' src="{% static 'img/logo2.png' %}"alt='logo' title='logo'/>
+            <img id='chat'src="{% static 'img/Logo.png' %}" alt='chat' title='chat'/>
+        </div>
+
+        <div class='start_button'>
+            <div id="touch_msg" >화면을 눌러주세요</div>
+        </div>
+    </div>
+    
 {% endblock %}

@@ -11,8 +11,9 @@
 #logo_s
 {
     position:absolute;
-    left:30px;
+
     width:180px;
+    margin-left : 30px;
 }
 #flower2_s
 {
@@ -80,7 +81,7 @@
     width: fit-content;
     margin: 0 auto;
     margin-top: 10vh;
-
+    align-items: center;
 }
 
 /* button */
@@ -104,12 +105,13 @@
 .find_button
 {
     display:flex;
-    position: absolute;
-    top:410px;
-    width:400px;
+
+    width:200px;
     z-index:2;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
+    margin-top: 10px;
 }
 .find_button .button,#login_button .button, #to_login .button,#sign_button .button
 {
@@ -168,31 +170,117 @@
 
 #to_login
 {
-    position: absolute;
-    top:420px;
-    left:110px;
+    display: flex;
+    justify-content: center;
     z-index:2;
+    margin-top: 5vh;
 }
 
+.find_input4{
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    margin-top: 20vh;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 18px;
+letter-spacing: -0.04em;
+text-align: center;
+
+color: #5F5F5F;
+}
 .find_input
 {
-    position: absolute;
-    top:250px;
-    left:45px;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
     z-index: 2;
+    margin-top: 20vh;
+}
+.find_input2 p{
+    padding: 0 5px 0 5px;
+    word-break:keep-all;
+}
+.find_input2{
+        display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    margin-top: 20vh;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 18px;
+letter-spacing: -0.04em;
+text-align: center;
+
+color: #5F5F5F;
 }
 
+.find_input3{
+    display: flex;
+margin: 0 auto;
+flex-direction: column;
+align-items: center;
+z-index: 2;
+margin-top: 10vh;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 18px;
+letter-spacing: -0.04em;
+text-align: center;
+
+color: #5F5F5F;
+word-break: keep-all;
+}
 .findtext
 {
-    position: absolute;
+
     z-index: 3;
-    top:230px;
-    left:41px;
+
+    display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20vh;
+}
+#id_new_password1, #id_new_password2{
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    padding: 8px 10px 8px 10px;
+    margin-left: 5px;
+}
+#id_email{
+    background: #FFFFFF;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    padding: 8px 10px 8px 10px;
+    margin-left: 5px;
+}
+.emailPW{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+    text-align: center;
+
 }
 .findtext #findtext
 {
+    text-align: center;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -201,22 +289,21 @@
 
 .find_input #findtext
 {
-    position: absolute;
-    top:-15px;
-    left:15px;
+    justify-content: center;
 }
 #findtext
 {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 17px;
     /* identical to box height */
 
     letter-spacing: -0.04em;
 
     color: #5F5F5F;
+    margin-bottom: 15px;
 }
 
 
@@ -247,8 +334,8 @@
     box-sizing: border-box;
     width: 248px;
     background: #FFFFFF;
-border: 2px solid #FFBEBE;
-border-radius: 10px;
+    border: 2px solid #FFBEBE;
+    border-radius: 10px;
 padding:5px 5px 5px 5px;
 }
 
@@ -301,4 +388,103 @@ padding:5px 5px 5px 5px;
     line-height: 25px;
     letter-spacing: -0.04em;
     margin-bottom: 10px;
+}
+
+.errorlist{
+    margin: 0 auto;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #FF5C5C;
+}
+
+.emailgo{
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15vh;
+    
+}
+
+.loginGo{
+    display: block;
+    width: 248px;
+    height: 45px;
+    background: #ffbebe;
+    color: white;
+    border-radius: 15px;
+    border-color: #ffbebe;
+    z-index: 3;
+    margin-left : 10px;
+    margin-top:5vh;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+    text-align: center;
+    
+}
+
+.email{
+    padding: 0 20px 0 20px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+
+    color: #8C8C8C;
+}
+
+/* 복사 */
+
+#button_link .inputbox
+{
+    display: none;
+    visibility: hidden;
+    position: absolute;
+}
+
+#button_link
+{
+    display: flex;
+    justify-content: center;
+    height: 45px;
+}
+
+#copy_button
+{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 12px;
+    letter-spacing: -0.04em;
+
+    color: #5F5F5F;
+
+    background: #D9D9D9;
+    border-radius: 5px;
+    border-color:  #D9D9D9;
+    z-index: 3;
+    margin:10px;
+    padding:3px;
+    /* position: absolute; */
+    width:50px;
+    /* float: right; */
+    position: absolute;
+    left:230px;
+    bottom: -2px;;
 }
