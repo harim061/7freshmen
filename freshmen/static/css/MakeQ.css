@@ -264,6 +264,7 @@ button {
   margin-left: 26px;
   margin-top: -5vh;
   bottom: 0;
+  margin-top: -3vh;
 }
 
 .complete_text {
@@ -297,6 +298,7 @@ button {
   height: 210px;
   border: #ffe4e2 solid 6px;
   border-radius: 100%;
+  
 }
 
 .chatBalloon {

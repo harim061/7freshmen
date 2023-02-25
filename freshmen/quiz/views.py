@@ -11,11 +11,11 @@ def solveName(request, pk):
         quiz_user = get_object_or_404(User, pk=pk)
         user = SolveQuiz()
         user.nickname = request.GET['nickname']
-        if request.GET['name'] == "":
+        if request.GET['nickname'] == "":
             user.nickname = "익명"
         user.quiz_writer = quiz_user
         return redirect("solveQuiz", user.pk)
-    return render(request, "/")
+    return render(request, "templates/quiz2/GuessQ.html")
     
 def solveQuiz(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)
