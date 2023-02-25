@@ -388,7 +388,7 @@ input {
   margin: 0 auto;
 }
 
-.input_style > img {
+#timetable_image {
   width: 230px;
 }
 
