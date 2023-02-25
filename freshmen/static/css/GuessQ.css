@@ -96,7 +96,10 @@
     font-size: 50px;
     font-weight: 700;
 }
-
+.quizBtn{
+    display: flex;
+    justify-content: center;
+}
 
 .touch{
 
@@ -107,9 +110,15 @@
     line-height: 24px;
     letter-spacing: -0.04em;
 
-    color: #8C8C8C;
+    color: white;
     text-align: center;
+    margin:  0 auto;
     margin-top: 60px;
+    
+    background: #FFBEBE;
+    border: 2px solid #FFBEBE;
+    border-radius: 15px;
+    padding: 3px 5px 3px 5px;
 
 }
 
