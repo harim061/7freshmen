@@ -1,0 +1,123 @@
+{% extends 'elipse_base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/Frofile.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Login.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Start.css' %}" />
+
+<body>
+  <div class="ground">
+    <div id="upper_warp">
+      <div class="mobile_btn">
+        <input type="checkbox" id="hamburger" />
+        <label for="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="sidebar">
+          <div id="menu_title"><a href="">메뉴</a></div>
+          <div class="nav_mobile">
+            <div class="menu_list"><a href="">문제 출제하기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">문제 공유하기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">방명록 보기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">맞춘 개수 보기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">로그아웃</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="profile_title">
+        <div id="profile_title">내 정보</div>
+      </div>
+    </div>
+
+    <form method="post">
+      <div id="profile">
+        <div id="profile_background">
+          <img src="{{profile.timetable}}" />
+        </div>
+      </div>
+
+      <div class="inform_warp">
+        <div class="input_select">{{user.username}}</div>
+        <div id="userName">{{user.username}}</div>
+        <div id="userName">{{user.username}}</div>
+        <div id="userName">{{user.username}}</div>
+        <div id="userName">{{user.username}}</div>
+        <div id="userName">{{user.username}}</div>
+
+        <input type="text" name="school" placeholder="학교 : " />
+        <input type="text" name="major" placeholder="전공/학부 : " />
+        <select name="gender" class="input_select">
+          <option value="">성별 선택</option>
+          <option value="남">남</option>
+          <option value="여">여</option>
+        </select>
+        <select name="mbti" class="input_select">
+          <option value="">MBTI 선택</option>
+          <option value="ISTJ">ISTJ</option>
+          <option value="ISFJ">ISFJ</option>
+          <option value="INFJ">INFJ</option>
+          <option value="INTJ">INTJ</option>
+          <option value="ISTP">ISTP</option>
+          <option value="ISFJ">ISFJ</option>
+          <option value="ISFP">ISFP</option>
+          <option value="INFP">INFP</option>
+          <option value="INTP">INTP</option>
+          <option value="ESTJ">ESTJ</option>
+          <option value="ESFJ">ESFJ</option>
+          <option value="ENFJ">ENFJ</option>
+          <option value="ENTJ">ENTJ</option>
+          <option value="ESTP">ESTP</option>
+          <option value="ESFJ">ESFJ</option>
+          <option value="ESFP">ESFP</option>
+          <option value="ENFP">ENFP</option>
+          <option value="ENTP">ENTP</option>
+        </select>
+
+        <input type="text" name="age" placeholder="나이 : " />
+        <select name="live" class="input_select">
+          <option value="">자취 유/무 선택</option>
+          <option value="유">자취해요!</option>
+          <option value="무">자취안해요!</option>
+        </select>
+        <input
+          type="text"
+          name="favfood"
+          placeholder="내가 선호하는 음식은 : "
+        />
+        <input
+          type="text"
+          name="drink"
+          placeholder="나의 주량은? (예시 - 소주 한병): "
+        />
+        <input type="text" name="hometown" placeholder="나의 고향은? : " />
+
+        <div class="timetable_container">
+          <button type="button" id="userName" onclick="input_click()">
+            클릭해서 시간표 사진을 올려주세요!
+          </button>
+        </div>
+        <input
+          id="timetable"
+          name="timetable"
+          accept="image/*"
+          onchange="setThumbnail(event);"
+          type="file"
+          style="display: none"
+        />
+        <div id="image_container" class="input_style"></div>
+      </div>
+
+      <div id="profile_button">
+        <button type="submit" id="save_button">저장</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="{% static 'js/Profile.js' %}"></script>
+</body>
+{% endblock %}
