@@ -134,6 +134,7 @@ def profile(request):
     new.gender = request.POST['gender']
     new.mbti = request.POST['mbti']
     new.age = request.POST['age']
+    new.image = request.POST['image']
     new.live = request.POST['live']
     new.favfood = request.POST['favfood']
     new.drink = request.POST['drink']
@@ -141,6 +142,25 @@ def profile(request):
     new.timetable = request.FILES.get('timetable')
     new.save()
     return redirect('/')
+
+def show_profile(request):
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    context = {
+        'school':profile.school,
+        'major':profile.major,
+        'gender':profile.gender,
+        'mbti':profile.mbti,
+        'age':profile.age,
+        'live':profile.live,
+        'favfood':profile.favfood,
+        'drink':profile.drink,
+        'hometown':profile.hometown,
+        'image':profile.image,
+        'timetable':profile.timetable,
+    }
+
+    return render(request, 'html 연결 소망중', context)
 
 def find_id(request):
     context = {}

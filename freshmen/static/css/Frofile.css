@@ -121,11 +121,12 @@ input:focus {
   margin: 10px;
   padding: 3px;
 }
-#img_container {
+#image_container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .information .inputbox::placeholder {
   color: #5f5f5f;
   font-weight: 400;
@@ -355,6 +356,17 @@ input[id="hamburger"]:checked + label + div {
   align-items: center;
 }
 
+.input_select {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 2px solid #ffbebe;
+  border-radius: 15px;
+  width: 289px;
+  height: 45px;
+  padding: 10px;
+  margin: 10px;
+}
+
 input {
   box-sizing: border-box;
   background: #ffffff;
@@ -364,6 +376,16 @@ input {
   height: 45px;
   padding: 10px;
   margin: 10px;
+}
+
+.input_style {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 2px solid #ffbebe;
+  border-radius: 15px;
+  width: 289px;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 #userName {
