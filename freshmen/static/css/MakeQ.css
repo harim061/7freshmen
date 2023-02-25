@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: "yg-jalnan";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
@@ -10,6 +11,21 @@
   background-color: #ffe4e2;
   overflow-y: auto;
   height: 350px;
+}
+
+/* scroll */
+#over::-webkit-scrollbar {
+  width: 5px;
+}
+#over::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 10px;
+}
+#over::-webkit-scrollbar-track {
+  /* background-color: grey; */
+  opacity: 0.8;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
 }
 
 button {
@@ -340,3 +356,4 @@ button {
   margin-left: -10px;
   margin-top: -10px;
 }
+
