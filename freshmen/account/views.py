@@ -134,14 +134,14 @@ def profile(request):
     new.gender = request.POST['gender']
     new.mbti = request.POST['mbti']
     new.age = request.POST['age']
-    new.image = request.POST['image']
+    new.image = request.FILES.get('image')
     new.live = request.POST['live']
     new.favfood = request.POST['favfood']
     new.drink = request.POST['drink']
     new.hometown = request.POST['hometown']
     new.timetable = request.FILES.get('timetable')
     new.save()
-    return redirect('/')
+    return render(request, 'templates/account/profile_show.html')
 
 def show_profile(request):
     user = request.user
@@ -160,7 +160,7 @@ def show_profile(request):
         'timetable':profile.timetable,
     }
 
-    return render(request, 'html 연결 소망중', context)
+    return render(request, 'templates/account/profile_show.html', context)
 
 def find_id(request):
     context = {}

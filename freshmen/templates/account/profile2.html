@@ -34,12 +34,17 @@
       </div>
     </div>
 
-    <form method="post">
+    <form
+      action="{% url 'account:profile' %}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
       <div id="profile">
         <div id="profile_background">
           <label id="chooseFile_button" for="chooseFile">+</label>
           <input
-            name="portrait"
+            name="image"
             id="chooseFile"
             type="file"
             accept="image/*"
