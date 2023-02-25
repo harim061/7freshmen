@@ -7,13 +7,18 @@ from account.models import User
 # Create your views here.
 
 def solveName(request, pk):
-    if request.GET:
+    if request.POST:
         quiz_user = get_object_or_404(User, pk=pk)
         user = SolveQuiz()
-        user.nickname = request.GET['nickname']
-        if request.GET['nickname'] == "":
+        user.nickname = request.POST['nickname']
+        if request.POST['nickname'] == "":
             user.nickname = "익명"
+<<<<<<< HEAD
         user.quiz_writer = quiz_user
+=======
+        quiz = get_object_or_404(QuesModel, writer=quiz_user)
+        user.quiz_writer = quiz
+>>>>>>> 29d12bbcc607396792175273a8bd525cb4ea2091
         user.save()
         return redirect("solveQuiz", user.pk)
     return render(request, "templates/quiz2/GuessQ.html")

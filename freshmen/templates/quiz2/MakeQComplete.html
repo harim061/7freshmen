@@ -1,7 +1,10 @@
 
+<<<<<<< HEAD
 {% load static %} 
 {% block content %}
 
+=======
+>>>>>>> 29d12bbcc607396792175273a8bd525cb4ea2091
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,13 +15,17 @@
     <link rel="stylesheet" href="{% static 'css/MakeQ.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <script src="{% static 'js/share.js' %}"></script>
   </head>
   <body>
     <div class="root">
-        {% include "header.html" %}
+      {% include "header.html" %}
       <div class="complete_text">
         <div id="inner_circle">
-          <p>문제 출제<br> 완료!</p>
+          <p>
+            문제 출제<br />
+            완료!
+          </p>
         </div>
       </div>
 
