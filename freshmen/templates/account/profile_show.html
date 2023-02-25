@@ -48,13 +48,23 @@
         <div id="userName">성별 : {{user.profile.gender}}</div>
         <div id="userName">MBTI : {{user.profile.mbti}}</div>
         <div id="userName">나이 : {{user.profile.age}}</div>
-        <div id="userName">자취 유/무 : {{user.profile.live}}</div>
+        {% if user.profile.live %}
+          <div id="userName">자취 유/무 : {{user.profile.live}}</div>
+        {% endif %}
+        {% if user.profile.favfood %}
         <div id="userName">내가 선호하는 음식은? : {{user.profile.favfood}}</div>
+        {% endif %}
+        {% if user.profile.drink %}
         <div id="userName">나의 주량은? : {{user.profile.drink}}</div>
+        {% endif %}
+        {% if user.profile.hometown %}
         <div id="userName">나의 고향은? : {{user.profile.hometown}}</div>
+        {% endif %}
+        {% if user.profile.timetable %}
         <div class="input_style">내 시간표는? : 
             <img src="{{ user.profile.timetable.url }}" />
         </div>
+        {% endif %}
 
       <div id="profile_button">
         <button type="button" id="save_button">공유</button>
