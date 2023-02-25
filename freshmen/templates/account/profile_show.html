@@ -37,83 +37,27 @@
     <form method="post">
       <div id="profile">
         <div id="profile_background">
-          <img src="{{profile.timetable}}" />
+          <img id="profile_background" src="{{ user.profile.image.url }}" />
         </div>
       </div>
 
       <div class="inform_warp">
-        <div class="input_select">{{user.username}}</div>
         <div id="userName">{{user.username}}</div>
-        <div id="userName">{{user.username}}</div>
-        <div id="userName">{{user.username}}</div>
-        <div id="userName">{{user.username}}</div>
-        <div id="userName">{{user.username}}</div>
-
-        <input type="text" name="school" placeholder="학교 : " />
-        <input type="text" name="major" placeholder="전공/학부 : " />
-        <select name="gender" class="input_select">
-          <option value="">성별 선택</option>
-          <option value="남">남</option>
-          <option value="여">여</option>
-        </select>
-        <select name="mbti" class="input_select">
-          <option value="">MBTI 선택</option>
-          <option value="ISTJ">ISTJ</option>
-          <option value="ISFJ">ISFJ</option>
-          <option value="INFJ">INFJ</option>
-          <option value="INTJ">INTJ</option>
-          <option value="ISTP">ISTP</option>
-          <option value="ISFJ">ISFJ</option>
-          <option value="ISFP">ISFP</option>
-          <option value="INFP">INFP</option>
-          <option value="INTP">INTP</option>
-          <option value="ESTJ">ESTJ</option>
-          <option value="ESFJ">ESFJ</option>
-          <option value="ENFJ">ENFJ</option>
-          <option value="ENTJ">ENTJ</option>
-          <option value="ESTP">ESTP</option>
-          <option value="ESFJ">ESFJ</option>
-          <option value="ESFP">ESFP</option>
-          <option value="ENFP">ENFP</option>
-          <option value="ENTP">ENTP</option>
-        </select>
-
-        <input type="text" name="age" placeholder="나이 : " />
-        <select name="live" class="input_select">
-          <option value="">자취 유/무 선택</option>
-          <option value="유">자취해요!</option>
-          <option value="무">자취안해요!</option>
-        </select>
-        <input
-          type="text"
-          name="favfood"
-          placeholder="내가 선호하는 음식은 : "
-        />
-        <input
-          type="text"
-          name="drink"
-          placeholder="나의 주량은? (예시 - 소주 한병): "
-        />
-        <input type="text" name="hometown" placeholder="나의 고향은? : " />
-
-        <div class="timetable_container">
-          <button type="button" id="userName" onclick="input_click()">
-            클릭해서 시간표 사진을 올려주세요!
-          </button>
+        <div id="userName">학교 : {{user.profile.school}}</div>
+        <div id="userName">전공/학부 : {{user.profile.major}}</div>
+        <div id="userName">성별 : {{user.profile.gender}}</div>
+        <div id="userName">MBTI : {{user.profile.mbti}}</div>
+        <div id="userName">나이 : {{user.profile.age}}</div>
+        <div id="userName">자취 유/무 : {{user.profile.live}}</div>
+        <div id="userName">내가 선호하는 음식은? : {{user.profile.favfood}}</div>
+        <div id="userName">나의 주량은? : {{user.profile.drink}}</div>
+        <div id="userName">나의 고향은? : {{user.profile.hometown}}</div>
+        <div class="input_style">내 시간표는? : 
+            <img src="{{ user.profile.timetable.url }}" />
         </div>
-        <input
-          id="timetable"
-          name="timetable"
-          accept="image/*"
-          onchange="setThumbnail(event);"
-          type="file"
-          style="display: none"
-        />
-        <div id="image_container" class="input_style"></div>
-      </div>
 
       <div id="profile_button">
-        <button type="submit" id="save_button">저장</button>
+        <button type="button" id="save_button">공유</button>
       </div>
     </form>
   </div>
