@@ -1,27 +1,54 @@
-{% extends 'templates/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="{% static 'css/GuessQ.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Header.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/SolveQ.css' %}" />
+<link rel='stylesheet' href="{% static 'css/GuestBook.css' %}">
+<script src="{% static 'js/MakeQ.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>Document</title>
+</head>
 
-{% block main_area %}
-        <div class="GoQuizBox">
-            <div class="nameBox">
-                <div class='NameBoxContainer'>
-                    <strong>한벚꽃</strong> 님의 문제
-                </div>
-            </div>
-            <div class="QuizBox"> 
-                <div class="number"><p>1</p></div>
-                <div class='QuizContainer'>
-                    <p>문제 내용</p>
-                </div>
+<body>
 
-                <div class='AnsContainer'>
-                    <span class="oBox"><p>정답</p></span>
-                    <span class="vs">vs</span>
-                    <span class="xBox"><p>오답</p></span>
-                </div>
 
-                <div class="next"><p>다음 문제</p></div>
-            </div>
+<div class="root">
+    {% include 'header.html '%}
+
+    <div class="nameBox">
+        <div class='NameBoxContainer' style="margin-top: 15px;">
+            <strong></strong>
+            님의 방명록
         </div>
     </div>
+    <div class="scroll">
+    <form name="question" id="question" method="post" >
+        {% csrf_token %}
+
+    {% for q in quizs %}
+ 
+<hr class="hr"/>
+        <div class="Qname">{{q.2}}</div>
+    
+        <div class="select">
+            <input class="radi" type="checkbox" value="{{q.0}}" name="{{q.2}}" id="op1"><label for="op1">{{q.0}}</label>
+            <span class="vs">vs</span>
+            <input class="radi" type="checkbox" value="{{q.1}}"  name="{{q.2}}" id="op2"><label for="op2">{{q.1}}</label>
+        </div>
+
+    {% endfor %}
+    
+        <div class="submitBtn">
+    <button type="submit" value="submit" id="submitQ" class="submitBtn">제출하기</button>
+        </div>
+    </form>
+</div>
+</div>
 </body>
-{% endblock %}
+</html>

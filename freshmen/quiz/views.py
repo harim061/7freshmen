@@ -23,17 +23,54 @@ def solveName(request, pk):
 def solveQuiz(request, pk):
     user = SolveQuiz.objects.get(pk=pk)
     quiz_writer = user.quiz_writer
+   
 
+    question = []
+    op1 = []
+    op2 = []
     quizs = []
+
+    q = quiz_writer.question
+    p1 = quiz_writer.op1
+    p2 = quiz_writer.op2
+
+    a = q.find(',')
+    question.append(q[2:a-1]) # 1번 문제
+    q = q[a+3:]
+
+    b = p1.find(',')
+    op1.append(p1[2:b-1]) # 1번 문제
+    p1 = p1[b+3:]
+
+    c = p2.find(',')
+    op2.append(p2[2:c-1]) # 1번 문제
+    p2 = p2[c+3:]
+
+    for j in range(0,3):
+        a = q.find(',')
+        question.append(q[:a-1]) # 2번, 3번, 4번 문제
+        q = q[a+3:]
+
+        b = p1.find(',')
+        op1.append(p1[:b-1]) # 2번, 3번, 4번 문제
+        p1 = p1[b+3:]
+
+        c = p2.find(',')
+        op2.append(p2[:c-1]) # 2번, 3번, 4번 문제
+        p2 = p2[c+3:]
+        
+    question.append(q[:-2])
+    op1.append(p1[:-2])
+    op2.append(p2[:-2])
+    
     for i in range(0,5):
         quiz = []
-        quiz.append(quiz_writer.question[i])
-        quiz.append(quiz_writer.op1[i])
-        quiz.append(quiz_writer.op2[i])
+        quiz.append(op1[i])
+        quiz.append(op2[i])
+        random.shuffle(quiz)
 
+        quiz.append(question[i])
         quizs.append(quiz)
-    
-    random.shuffle(quizs)
 
     context = {'quizs':quizs, 'pk': pk}
 
@@ -49,7 +86,7 @@ def solveQuiz(request, pk):
 def result(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)
     total_score = user.solve_num
-    return render(request, "결과 html", {"user":user, 'total_score':total_score})
+    return render(request, "templates/quiz2/result.html", {"user":user, 'total_score':total_score})
     
 def each_result(request, pk):
     results = get_object_or_404(SolveQuiz, quiz_writer = pk)
