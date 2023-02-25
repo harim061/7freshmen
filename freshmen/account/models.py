@@ -81,6 +81,12 @@ class Profile(models.Model):
         ('INFP','INFP'),
     }
     
+    LIVE_CHOICES ={
+        ('None','None'),
+        ('Y', '유'), 
+        ('N', '무'),
+    }
+    
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     school = models.CharField(max_length=128, null=True, blank=False)
     major = models.CharField(max_length=128, null=True, blank=False)
