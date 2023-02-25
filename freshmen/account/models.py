@@ -57,36 +57,6 @@ class User(AbstractUser):
 
 class Profile(models.Model):
 
-    GENDER_CHOICES = {
-        ('male','남성'),
-        ('female','여성'),
-    }
-
-    MBTI_CHOICES = {
-        ('ESTJ','ESTJ'),
-        ('ESTP','ESTP'),
-        ('ESFJ','ESFJ'),
-        ('ESFP','ESFP'),
-        ('ENTJ','ENTJ'),
-        ('ENTP','ENTP'),
-        ('ENFJ','ENFJ'),
-        ('ENFP','ENFP'),
-        ('ISTJ','ISTJ'),
-        ('ISTP','ISTP'),
-        ('ISFJ','ISFJ'),
-        ('ISFP','ISFP'),
-        ('INTJ','INTJ'),
-        ('INTP','INTP'),
-        ('INFJ','INFJ'),
-        ('INFP','INFP'),
-    }
-
-    LIVE_CHOICES ={
-        ('None','None'),
-        ('Y', '유'), 
-        ('N', '무'),
-    }
-
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     school = models.CharField(max_length=128, null=True, blank=False)
     major = models.CharField(max_length=128, null=True, blank=False)
