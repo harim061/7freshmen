@@ -44,7 +44,6 @@ function input_click() {
 }
 
 function Save() {
-  console.log("hi");
   var input = document.getElementsByClassName("inputbox");
   for (var i = 0; i < input.length; i++) {
     var item = input.item(i);

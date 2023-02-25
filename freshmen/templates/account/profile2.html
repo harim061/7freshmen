@@ -55,9 +55,13 @@
       </div>
 
       <div class="inform_warp">
-        <div id="userName">{{user.username}}</div>
-        <input type="text" name="school" placeholder="학교 : " />
-        <input type="text" name="major" placeholder="전공/학부 : " />
+        <div id="userName" style="text-align: center;">{{user.username}}</div>
+        <div class="inputbox">
+          학교 : <input type="text" name="school"/>
+        </div>
+        <div class="inputbox">
+          전공/학부 : <input type="text" name="major"/>
+        </div>
         <select name="gender" class="input_select">
           <option value="">성별 선택</option>
           <option value="남">남</option>
@@ -84,24 +88,31 @@
           <option value="ENFP">ENFP</option>
           <option value="ENTP">ENTP</option>
         </select>
-
-        <input type="text" name="age" placeholder="나이 : " />
+        <div class="inputbox">
+          나이 : <input type="text" name="age"/>
+        </div>
         <select name="live" class="input_select">
           <option value="">자취 유/무 선택</option>
           <option value="유">자취해요!</option>
           <option value="무">자취안해요!</option>
         </select>
-        <input
+        <div class="inputbox">
+        내가 선호하는 음식은 : 
+          <input
           type="text"
-          name="favfood"
-          placeholder="내가 선호하는 음식은 : "
-        />
-        <input
-          type="text"
-          name="drink"
-          placeholder="나의 주량은? (예시 - 소주 한병): "
-        />
-        <input type="text" name="hometown" placeholder="나의 고향은? : " />
+          name="favfood" style="width: 120px;"/>
+        </div>
+        <div class="inputbox">
+        나의 주량은? (예시 - 소주 한병): 
+          <input
+            type="text"
+            name="drink" style="width:90px;"
+          />
+        </div>
+        <div class="inputbox">
+          나의 고향은? : 
+          <input type="text" name="hometown"/>
+        </div>
 
         <div class="timetable_container">
           <button type="button" id="userName" onclick="input_click()">
