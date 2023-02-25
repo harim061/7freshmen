@@ -388,6 +388,10 @@ input {
   margin: 0 auto;
 }
 
+.input_style > img {
+  width: 230px;
+}
+
 #userName {
   box-sizing: border-box;
   background: #ffffff;
