@@ -1,5 +1,4 @@
-{% load static %} 
-{% block content %}
+{% load static %} {% block content %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,13 +10,17 @@
     <link rel="stylesheet" href="{% static 'css/MakeQ.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <script src="{% static 'js/share.js' %}"></script>
   </head>
   <body>
     <div class="root">
-        {% include "header.html" %}
+      {% include "header.html" %}
       <div class="complete_text">
         <div id="inner_circle">
-          <p>문제 출제<br> 완료!</p>
+          <p>
+            문제 출제<br />
+            완료!
+          </p>
         </div>
       </div>
 
@@ -54,16 +57,15 @@
       </div>
 
       <div id="button_link">
-        <div class="inputbox">
-            <div id="link">link</div>
-            <button id="copy_button" onclick="Copy()">복사</button>
-        </div>
+        <button class="button" id="copy" onclick="Copy()">링크 복사</button>
         <button class="button" id="share" onclick="Share()">공유하기</button>
       </div>
       <div class="chatBalloon">
         <p>다른사람이 볼 수 있게 <br />공유해주세요!</p>
       </div>
-      <button class="button" id="profile" onClick="location.href='/profile/'">프로필</button>
+      <button class="button" id="profile" onClick="location.href='/profile/'">
+        프로필
+      </button>
     </div>
   </body>
 </html>
