@@ -32,7 +32,7 @@ def solveQuiz(request, pk):
         
     quiz = get_object_or_404(QuesModel, id=num)
 
-    return render(request, "templates/quiz/QuizDetail.html", {'quiz':quiz})
+    return render(request, "templates/quiz/QuizNum.html", {'quiz':quiz})
 
 def result(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)
