@@ -8,21 +8,16 @@
 <div class="GuessQ">
     <div class="nameBox">
 
-        <a class="plus" href="/guestbook/addcomment/{{pk}}" ><div>+</div></a>
-
-
         <div class='NameBoxContainer' style="margin-top: 15px;">
             <strong>{{ name }}</strong>
-            님의 방명록
+            님의 문제 맞춘 사람들
         </div>
+        <div>몇명</div>
     </div>
 
     <div class="guestBook">
-        {% for c in comments %}
-        {% if c.person == request.user %}
-        <div>{{ c.name }} : {{ c.comment }}</div>
-        {% endif %}
-        {% endfor %}
+        <div>새내기 : 3/5</div>
+
     </div>
 
 </div>

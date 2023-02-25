@@ -23,12 +23,7 @@ def solveName(request, pk):
 def solveQuiz(request, pk):
     user = SolveQuiz.objects.get(pk=pk)
     quiz_writer = user.quiz_writer
-<<<<<<< HEAD
    
-=======
-    user2 = User.objects.get(pk=quiz_writer)
-    username = user2.username
->>>>>>> 262977b60f2c061abc5ec3c7da454dd599d2dcb6
 
     question = []
     op1 = []
@@ -77,7 +72,7 @@ def solveQuiz(request, pk):
         quiz.append(question[i])
         quizs.append(quiz)
 
-    context = {'quizs':quizs, 'pk': pk, 'username':username}
+    context = {'quizs':quizs, 'pk': pk}
 
     num = len(user.answer)
     if request.POST:
@@ -85,15 +80,8 @@ def solveQuiz(request, pk):
         if request.POST['answer'] == quiz_writer.ans[num]:
             user.solve_num += 1
             user.save()
-<<<<<<< HEAD
         return render(request, "templates/quiz/QuizDetail.html", context)
     return render(request, "templates/quiz/QuizDetail.html", context)
-=======
-        
-    quiz = get_object_or_404(QuesModel, id=num)
-
-    return render(request, "templates/quiz/QuizNum.html", {'quiz':quiz})
->>>>>>> 8c206d82cc12d971591ecb00abba9d188ef17fce
 
 def result(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)
@@ -109,7 +97,7 @@ def each_result(request, pk):
 
 @login_required()
 def addQuestion(request):
-    if request.user.is_staff:
+    if request.user.is_active:
         quizform=addQuestionForm()
         context= {'quizform':quizform}
 
