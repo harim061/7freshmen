@@ -80,8 +80,15 @@ def solveQuiz(request, pk):
         if request.POST['answer'] == quiz_writer.ans[num]:
             user.solve_num += 1
             user.save()
+<<<<<<< HEAD
         return render(request, "templates/quiz/QuizDetail.html", context)
     return render(request, "templates/quiz/QuizDetail.html", context)
+=======
+        
+    quiz = get_object_or_404(QuesModel, id=num)
+
+    return render(request, "templates/quiz/QuizNum.html", {'quiz':quiz})
+>>>>>>> 8c206d82cc12d971591ecb00abba9d188ef17fce
 
 def result(request, pk):
     user = get_object_or_404(SolveQuiz, pk=pk)
