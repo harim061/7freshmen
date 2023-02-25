@@ -1,54 +1,76 @@
-{% load static %}
+{% extends 'elipse_base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/Frofile.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Login.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Start.css' %}" />
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="{% static 'css/Frofile.css' %}">
-    <link rel="stylesheet" href="{% static 'css/Login.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/Start.css' %}" >
-</head>
 <body>
-    <div class="root">
-        <div class="ground">
-            
-            <div id="profile">
-                <div id="profile_title">내 정보</div>
-                <div id="profile_background">
-                    <form method="post" enctype="multipart/form-data">
-                        <label id='chooseFile_button'for="chooseFile">+</label>
-                        <input id='chooseFile' type="file" accept="image/*" onchange="loadFile(this)" placeholder="click">
-                    </form>
-                </div>
-            </div>
-
-            <form action="" method="POST"  class='information'>
-                {% csrf_token %}
-    
-            {% for form in profileForm %}
-            <div>
-                <label for="{{ form.id_for_label }}">{{ form.label }}</label>
-                {{ form }}
-            </div>
-            {% endfor %}
-    
-            {% for form in forms %}
-            {{ form.errors}}
-            {% endfor %}
-
-            <div id="profile_button">
-                <button type="submit" id="save_button">저장</button>
-            </div>
-        </form>
-            
+  <div class="ground">
+    <div id="upper_warp">
+      <div class="mobile_btn">
+        <input type="checkbox" id="hamburger" />
+        <label for="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="sidebar">
+          <div id="menu_title"><a href="">메뉴</a></div>
+          <div class="nav_mobile">
+            <div class="menu_list"><a href="">문제 출제하기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">문제 공유하기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">방명록 보기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">맞춘 개수 보기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">로그아웃</a></div>
+          </div>
         </div>
+      </div>
+      <div class="profile_title">
+        <div id="profile_title">내 정보</div>
+      </div>
     </div>
 
-    <script src="{% static 'js/Profile.js' %}"></script>
-</body>
-</html>
+    <form>
+      <div id="profile">
+        <div id="profile_background">
+          <label id="chooseFile_button" for="chooseFile">+</label>
+          <input
+            id="chooseFile"
+            type="file"
+            accept="image/*"
+            onchange="loadFile(this)"
+          />
+        </div>
+      </div>
 
+      <div class="inform_warp">
+        <input type="text" placeholder="이름 : " />
+        <input type="text" placeholder="전공/학부 : " />
+        <input type="text" placeholder="성별 : " />
+        <input type="text" placeholder="MBTI : " />
+        <input type="text" placeholder="나이 : " />
+        <input type="text" placeholder="자취 유/무 (선택) : " />
+        <input type="text" placeholder="내가 선호하는 음식은 (선택) : " />
+        <input type="text" placeholder="나의 주량은? (선택) : " />
+        <input type="text" placeholder="나의 고향은? (선택) : " />
+        <input
+          accept="image/*"
+          onchange="loadFile(this)"
+          type="file"
+          placeholder="내 시간표는? (선택) : "
+        />
+      </div>
+
+      <div id="profile_button">
+        <button type="submit" id="save_button">저장</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="{% static 'js/Profile.js' %}"></script>
+</body>
+{% endblock %}

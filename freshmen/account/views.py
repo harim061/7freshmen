@@ -24,7 +24,7 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.conf import settings
-
+from django.contrib import auth
 
 def main(request):
     return render(request,'templates/main1.html')
@@ -95,34 +95,52 @@ def login(request):
         loginform = LoginForm(request.POST)
 
         if loginform.is_valid():
-            request.session['login_session'] = loginform.login_session
-            request.session.set_expiry(0)
-            # return render(request,'templates/account/profile.html')
-            return redirect('account:profile')
+            # request.session['login_session'] = loginform.user_id
+            # print(loginform.user_id)
+            # request.session.set_expiry(0)
+            user = auth.authenticate(request, username=loginform.usr, password=loginform.pwd)
+
+            if user is not None and loginform.pwd != 0:
+                auth.login(request, user)
+            else:
+                return render(request, 'templates/account/log_in.html', context)
+            return render(request,'templates/account/profile2.html')
+            # return redirect('account:profile')
         else:
             context['forms'] = loginform
             if loginform.errors:
                 for value in loginform.errors.values():
                     context['error'] = value
         return render(request, 'templates/account/log_in.html', context)
-@login_required
+    
+# @login_required()
+# def profile(request):
+#     profile = request.user.profile
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, request.FILES, instance=profile)
+#         if form.is_valid():
+#             form.save()
+#         return redirect('/')
+#     else:
+#         form = ProfileForm(instance=profile)
+#     return render(request, 'templates/account/profile.html', {'profileForm':form})
+
 def profile(request):
-    profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
-    context = {'profileForm':profileForm}
-    if request.method == 'POST':
-        profileForm = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
-
-        if profileForm.is_valid():
-            new_form = Profile()
-            new_form.school =profileForm.cleaned_data['school']
-            new_form.save()
-            return render(request,'templates/account/profile.html',context)
-    else:
-        profileForm = ProfileForm(instance=request.user.profile)
-    profileForm = ProfileForm()
-    context = {'profileForm':profileForm}
-
-    return render(request,'templates/account/profile2.html',context)
+    user = request.user
+    print(user.username)
+    new = Profile.objects.get(user=user)
+    new.school = request.POST['school']
+    new.major = request.POST['major']
+    new.gender = request.POST['gender']
+    new.mbti = request.POST['mbti']
+    new.age = request.POST['age']
+    new.live = request.POST['live']
+    new.favfood = request.POST['favfood']
+    new.drink = request.POST['drink']
+    new.hometown = request.POST['hometown']
+    new.timetable = request.FILES.get('timetable')
+    new.save()
+    return redirect('/')
 
 def find_id(request):
     context = {}

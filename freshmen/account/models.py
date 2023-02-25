@@ -56,7 +56,7 @@ class User(AbstractUser):
         return self.user_id
 
 class Profile(models.Model):
-
+    
     GENDER_CHOICES = {
         ('male','남성'),
         ('female','여성'),
@@ -80,44 +80,44 @@ class Profile(models.Model):
         ('INFJ','INFJ'),
         ('INFP','INFP'),
     }
-
+    
     LIVE_CHOICES ={
+        ('None','None'),
         ('Y', '유'), 
         ('N', '무'),
     }
-
+    
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     school = models.CharField(max_length=128, null=True, blank=False)
     major = models.CharField(max_length=128, null=True, blank=False)
-    gender = models.CharField(max_length=16, choices=GENDER_CHOICES, null=True)
-    mbti = models.CharField(max_length=16, choices=MBTI_CHOICES, null=True)
+    gender = models.CharField(max_length=16, blank=False, null=True)
+    mbti = models.CharField(max_length=16, blank=False, null=True)
     age = models.IntegerField(null=True)
     image = models.ImageField(blank=True, null=True, upload_to='profile/')
-    major = models.CharField(max_length=128, null=True, blank=False)
 
-    live = models.CharField(max_length=128, choices=LIVE_CHOICES, null=True)
-    favfood = models.CharField(max_length=128, null=True, blank=False)
-    drink = models.CharField(max_length=128, null=True, blank=False)
-    hometown = models.CharField(max_length=128, null=True, blank=False)
+    live = models.CharField(max_length=128, blank=True, null=True)
+    favfood = models.CharField(max_length=128, null=True, blank=True)
+    drink = models.CharField(max_length=128, null=True, blank=True)
+    hometown = models.CharField(max_length=128, null=True, blank=True)
     timetable = models.ImageField(blank=True, null=True, upload_to='profile/')
-
-    # @receiver(post_save,sender=User)
-    # def create_user_profile(sender,instance,created,**kwargs):
-    #     if created:
-    #         Profile.objects.create(user=instance)
-    
-    # @receiver(post_save,sender=User)
-    # def save_user_profile(sender, instance, **kwargs):
-    #     instance.profile.save()
 
     def __str__(self):
         return f'{self.user.username} Profile'
     
-    def save(self):
-        super().save()
-        img = Image.open(self.image.path)
+    @receiver(post_save,sender=User)
+    def create_user_profile(sender,instance,created,**kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+    
+    @receiver(post_save,sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
+    
+    # def save(self):
+    #     super().save()
+    #     img = Image.open(self.image.path)
 
-        if img.height>300 or img.width>300:
-            output_size = (300,300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+    #     if img.height>300 or img.width>300:
+    #         output_size = (300,300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)

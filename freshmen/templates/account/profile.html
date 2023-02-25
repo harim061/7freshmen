@@ -15,7 +15,7 @@
 <body>
     <div class="root">
         <div class="ground">
-            <div class="mobile_btn">
+            <!-- <div class="mobile_btn">
                 <input type="checkbox" id="hamburger" />
                 <label for="hamburger">
                   <span></span>
@@ -45,21 +45,45 @@
                         <input id='chooseFile' type="file" accept="image/*" onchange="loadFile(this)" placeholder="click">
                     </form>
                 </div>
-            </div>
+            </div> -->
 
-            <form action="" method="POST"  class='information'>
+            <form action="{% url 'account:profile' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-    
-            {% for form in profileForm %}
-            <div>
-                <label for="{{ form.id_for_label }}">{{ form.label }}</label>
-                {{ form }}
-            </div>
-            {% endfor %}
-    
-            {% for form in forms %}
-            {{ form.errors}}
-            {% endfor %}
+
+                <div class="ci_content">학교</div>
+                <div class="ci_blank"><input required type="text" name="school" style="width: 55%;"></div>
+
+                <div class="ci_content">전공</div>
+                <div class="ci_blank"><input required type="text" name="major" style="width: 55%;"></div>
+
+                <div class="ci_content">성별</div>
+                <div class="ci_blank"><input type="text" name="gender" style="width: 55%;"></div>
+
+                <div class="ci_content">MBTI</div>
+                <div class="ci_blank"><input type="text" name="mbti" style="width: 55%;"></div>
+
+                <div class="ci_content">나이</div>
+                <div class="ci_blank"><input required type="text" name="age" style="width: 55%;"></div>
+
+                {% if profile.image %}
+                    <p><img src="{{ profile.image.url }}" alt="iamge"></p>
+                {% endif %}
+
+                <div class="ci_content">자취 유무</div>
+                <div class="ci_blank"><input type="text" name="live" style="width: 55%;"></div>
+
+                <div class="ci_content">좋아하는 음식</div>
+                <div class="ci_blank"><input type="text" name="favfood" style="width: 55%;"></div>
+
+                <div class="ci_content">주량</div>
+                <div class="ci_blank"><input ype="text" name="drink" style="width: 55%;"></div>
+
+                <div class="ci_content">고향</div>
+                <div class="ci_blank"><input required type="text" name="hometown" style="width: 55%;"></div>
+
+                {% if profile.timetable %}
+                    <p><img src="{{ profile.timetable.url }}" alt="timetalbe"></p>
+                {% endif %}
 
             <div id="profile_button">
                 <button type="submit" id="save_button">저장</button>

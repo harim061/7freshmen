@@ -1,0 +1,31 @@
+{% extends 'flower_base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" src="{% static 'css/MakeQ.css' %}" />
+<link rel="stylesheet" href="{% static 'css/GuessQ.css' %}" > 
+<link rel="stylesheet" href="{% static 'css/GoQuiz.css' %}" > 
+{% include 'header.html' %}
+
+        <div class="GuessQ">
+            <div class="nameBox">
+                <div class='NameBoxContainer'>
+                    <strong>한벚꽃</strong> 님의 문제
+                </div>
+            </div>
+            <div> 
+                <form class="complete_text" method="post" action="{% url 'quiz:solveName' user.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input name="nickname" id="inner_circle" class="gq"
+                        type="text"
+                        placeholder='내 이름을 써주세요'
+                    >                   
+                    </input>
+                    <button type="submit"class='touch' value="nickname">화면을 터치해 주세요</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
