@@ -25,6 +25,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.conf import settings
 from django.contrib import auth
+from django.views.decorators.csrf import csrf_exempt
 
 def main(request):
     return render(request,'templates/main1.html')
@@ -84,6 +85,7 @@ def activate(request, uid64, token):
     else:
         return HttpResponse('비정상적인 접근입니다.')
 
+@csrf_exempt
 def login(request):
     loginform = LoginForm()
     context = {'forms':loginform}
@@ -104,7 +106,12 @@ def login(request):
                 auth.login(request, user)
             else:
                 return render(request, 'templates/account/log_in.html', context)
-            return render(request,'templates/account/profile2.html')
+            
+            profile = Profile.objects.get(user=user)
+            if not profile.school:
+                return render(request,'templates/account/profile2.html')
+            else:
+                return render(request, 'templates/account/profile_show.html')
             # return redirect('account:profile')
         else:
             context['forms'] = loginform
@@ -134,13 +141,33 @@ def profile(request):
     new.gender = request.POST['gender']
     new.mbti = request.POST['mbti']
     new.age = request.POST['age']
+    new.image = request.FILES.get('image')
     new.live = request.POST['live']
     new.favfood = request.POST['favfood']
     new.drink = request.POST['drink']
     new.hometown = request.POST['hometown']
     new.timetable = request.FILES.get('timetable')
     new.save()
-    return redirect('/')
+    return render(request, 'templates/account/profile_show.html')
+
+def show_profile(request):
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    context = {
+        'school':profile.school,
+        'major':profile.major,
+        'gender':profile.gender,
+        'mbti':profile.mbti,
+        'age':profile.age,
+        'live':profile.live,
+        'favfood':profile.favfood,
+        'drink':profile.drink,
+        'hometown':profile.hometown,
+        'image':profile.image,
+        'timetable':profile.timetable,
+    }
+
+    return render(request, 'templates/account/profile_show.html', context)
 
 def find_id(request):
     context = {}
@@ -220,7 +247,7 @@ class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     success_url = reverse_lazy('account:login')
 
 def logout(request):
-    request.session.flush()
+    auth.logout(request)
     return redirect('/')
 
 # 로그인 상태인지 확인하는 view

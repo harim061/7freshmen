@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+
+{% load static %} 
+{% block content %}
+>>>>>>> 262977b60f2c061abc5ec3c7da454dd599d2dcb6
 
 <<<<<<< HEAD
 {% load static %} 
@@ -15,22 +21,21 @@
     <link rel="stylesheet" href="{% static 'css/MakeQ.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/header.css' %}" />
-    <script src="{% static 'js/share.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}"></link>
   </head>
   <body>
     <div class="root">
       {% include "header.html" %}
       <div class="complete_text">
         <div id="inner_circle">
-          <p>
-            문제 출제<br />
-            완료!
-          </p>
+          <p>문제 출제<br> 완료!</p>
         </div>
       </div>
-
       <div id="button_link">
-        <button class="button" id="copy" onclick="Copy()">링크 복사</button>
+        <div class="inputbox">
+          <div id="link">link</div>
+          <button id="copy_button" onclick="Copy()">복사</button>
+        </div>
         <button class="button" id="share" onclick="Share()">공유하기</button>
       </div>
       <div class="chatBalloon">
@@ -40,6 +45,7 @@
         프로필
       </button>
     </div>
+  <script src="../../static/js/Share.js"></script>
   </body>
 </html>
 {% endblock %}

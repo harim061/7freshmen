@@ -1,0 +1,77 @@
+{% extends 'elipse_base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/Frofile.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Login.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/Start.css' %}" />
+
+<body>
+  <div class="ground">
+    <div id="upper_warp">
+      <div class="mobile_btn">
+        <input type="checkbox" id="hamburger" />
+        <label for="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="sidebar">
+          <div id="menu_title"><a href="">메뉴</a></div>
+          <div class="nav_mobile">
+            <div class="menu_list"><a href="">문제 출제하기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">문제 공유하기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">방명록 보기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">맞춘 개수 보기</a></div>
+            <hr />
+            <div class="menu_list"><a href="">로그아웃</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="profile_title">
+        <div id="profile_title">내 정보</div>
+      </div>
+    </div>
+
+    <form method="post">
+      <div id="profile">
+        <div id="profile_background">
+          <img id="profile_background" src="{{ user.profile.image.url }}" />
+        </div>
+      </div>
+
+      <div class="inform_warp">
+        <div id="userName">{{user.username}}</div>
+        <div id="userName">학교 : {{user.profile.school}}</div>
+        <div id="userName">전공/학부 : {{user.profile.major}}</div>
+        <div id="userName">성별 : {{user.profile.gender}}</div>
+        <div id="userName">MBTI : {{user.profile.mbti}}</div>
+        <div id="userName">나이 : {{user.profile.age}}</div>
+        {% if user.profile.live %}
+          <div id="userName">자취 유/무 : {{user.profile.live}}</div>
+        {% endif %}
+        {% if user.profile.favfood %}
+        <div id="userName">내가 선호하는 음식은? : {{user.profile.favfood}}</div>
+        {% endif %}
+        {% if user.profile.drink %}
+        <div id="userName">나의 주량은? : {{user.profile.drink}}</div>
+        {% endif %}
+        {% if user.profile.hometown %}
+        <div id="userName">나의 고향은? : {{user.profile.hometown}}</div>
+        {% endif %}
+        {% if user.profile.timetable %}
+        <div class="input_style">내 시간표는? : 
+            <img id="timetable_image" src="{{ user.profile.timetable.url }}" />
+        </div>
+        {% endif %}
+
+      <div id="profile_button">
+        <button type="button" id="save_button">공유</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="{% static 'js/Profile.js' %}"></script>
+</body>
+{% endblock %}

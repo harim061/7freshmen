@@ -23,7 +23,12 @@ def solveName(request, pk):
 def solveQuiz(request, pk):
     user = SolveQuiz.objects.get(pk=pk)
     quiz_writer = user.quiz_writer
+<<<<<<< HEAD
    
+=======
+    user2 = User.objects.get(pk=quiz_writer)
+    username = user2.username
+>>>>>>> 262977b60f2c061abc5ec3c7da454dd599d2dcb6
 
     question = []
     op1 = []
@@ -72,7 +77,7 @@ def solveQuiz(request, pk):
         quiz.append(question[i])
         quizs.append(quiz)
 
-    context = {'quizs':quizs, 'pk': pk}
+    context = {'quizs':quizs, 'pk': pk, 'username':username}
 
     num = len(user.answer)
     if request.POST:

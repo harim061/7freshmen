@@ -50,24 +50,24 @@
   height: 300px;
 }
 /* scroll */
-.information::-webkit-scrollbar {
+.inform_warp::-webkit-scrollbar {
   width: 5px;
 }
-.information::-webkit-scrollbar-thumb {
+.inform_warp::-webkit-scrollbar-thumb {
   background-color: gray;
   border-radius: 10px;
 }
-.information::-webkit-scrollbar-track {
+.inform_warp::-webkit-scrollbar-track {
   /* background-color: grey; */
   opacity: 0.8;
   border-radius: 10px;
   box-shadow: inset 0px 0px 5px white;
 }
 
-.information .inputbox {
+.inform_warp .inputbox {
   margin: 5px;
-  width: 280px;
-  height: 40px;
+  width: 289px;
+  height: 45px;
   font-size: 12px;
   padding: 10px;
   color: #5f5f5f;
@@ -79,7 +79,9 @@
 input:focus {
   outline: none;
 }
-.input {
+input {
+  position: sticky;
+  display: inline-block;
   border: none;
   height: auto;
   width: auto;
@@ -89,12 +91,11 @@ input:focus {
   font-size: 13px;
   line-height: 16px;
   /* identical to box height */
-
   letter-spacing: -0.04em;
-
+  left:30px;
   color: #5f5f5f;
 }
-.input::placeholder {
+input::placeholder {
   font-size: 12px;
   color: #5f5f5f;
   font-weight: 400;
@@ -121,11 +122,12 @@ input:focus {
   margin: 10px;
   padding: 3px;
 }
-#img_container {
+#image_container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .information .inputbox::placeholder {
   color: #5f5f5f;
   font-weight: 400;
@@ -355,7 +357,7 @@ input[id="hamburger"]:checked + label + div {
   align-items: center;
 }
 
-input {
+.input_select {
   box-sizing: border-box;
   background: #ffffff;
   border: 2px solid #ffbebe;
@@ -364,6 +366,31 @@ input {
   height: 45px;
   padding: 10px;
   margin: 10px;
+}
+
+/* input {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 2px solid #ffbebe;
+  border-radius: 15px;
+  width: 289px;
+  height: 45px;
+  padding: 10px;
+  margin: 10px;
+} */
+
+.input_style {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 2px solid #ffbebe;
+  border-radius: 15px;
+  width: 289px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+#timetable_image {
+  width: 230px;
 }
 
 #userName {
@@ -379,11 +406,17 @@ input {
 
 .inform_warp {
   margin-top: 20px;
-  display: block;
-  justify-content: center;
+  display: flex;
+  /* justify-content: center; */
   align-items: center;
-  text-align: center;
+  /* text-align: center; */
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 300px;
 }
+
+.mobile_btn{
+  position: absolute;
+  top:70px;
+  left: 15px;
+} 

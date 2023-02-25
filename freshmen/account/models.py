@@ -99,7 +99,7 @@ class Profile(models.Model):
     favfood = models.CharField(max_length=128, null=True, blank=True)
     drink = models.CharField(max_length=128, null=True, blank=True)
     hometown = models.CharField(max_length=128, null=True, blank=True)
-    timetable = models.ImageField(blank=True, null=True, upload_to='profile/')
+    timetable = models.ImageField(blank=True, null=True, upload_to='timetable/')
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -112,4 +112,13 @@ class Profile(models.Model):
     @receiver(post_save,sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
- 
+    
+    # def save(self):
+    #     super().save()
+    #     img = Image.open(self.image.path)
+
+    #     if img.height>300 or img.width>300:
+    #         output_size = (300,300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)
+

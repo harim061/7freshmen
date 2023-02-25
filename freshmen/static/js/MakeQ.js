@@ -40,6 +40,8 @@ const add_question = () => {
         class="question_input"
         type="text"
         placeholder="문제를 써주세요 ex)내가 좋아하는 음식은?"
+        onfocus="this.placeholder=''"
+        onblur="this.placeholder='문제를 써주세요 ex)내가 좋아하는 음식은?'"
       />
       <button
         type="button"
@@ -56,6 +58,8 @@ const add_question = () => {
         id="answer_true"
         type="text"
         placeholder="정답 : ex) 떡볶이"
+        onfocus="this.placeholder=''"
+        onblur="this.placeholder='정답 : ex) 떡볶이'"
       />
       <div class="vs_circle">VS</div>
       <input
@@ -64,6 +68,8 @@ const add_question = () => {
         id="answer_false"
         type="text"
         placeholder="오답 : ex) 치킨"
+        onfocus="this.placeholder=''"
+        onblur="this.placeholder='오답 : ex)치킨'"
       />
     </div>
     <p class="alert_text">

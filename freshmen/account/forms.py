@@ -143,7 +143,7 @@ class LoginForm(forms.Form):
             except Exception:
                 self.pwd = 0
                 return self.add_error('user_pw', '비밀번호가 일치하지 않습니다.')
-
+            
 # 프로필 폼
 class ProfileForm(forms.ModelForm):
     school = forms.CharField(

@@ -20,30 +20,30 @@ function loadFile(input) {
   container.appendChild(newImage);
 }
 
-function loadFile_time(input) {
-  var file = timetable.files[0];
-  console.log(timetable.files);
+function setThumbnail(event) {
+  var reader = new FileReader();
+  var container = document.querySelector("div#image_container");
 
-  var newImage = document.createElement("img");
-  newImage.setAttribute("class", "img");
-  newImage.src = URL.createObjectURL(file);
+  reader.onload = function (event) {
+    var img = document.createElement("img");
+    img.setAttribute("src", event.target.result);
 
-  var container = document.querySelector(".timetable_container");
+    while (container.hasChildNodes()) {
+      //자식 요소가 있는지 확인-false가 될때까지 반복
+      container.removeChild(container.firstChild); // 첫번째 자식 요소를 삭제
+    }
 
-  while (container.hasChildNodes()) {
-    //자식 요소가 있는지 확인-false가 될때까지 반복
-    container.removeChild(container.firstChild); // 첫번째 자식 요소를 삭제
-  }
-  container.appendChild(newImage);
+    container.appendChild(img);
+    img.style.width = "130px";
+  };
 
-  newImage.style.width = "130px";
-  newImage.style.height = "130px";
-
-  console.log(node.src);
+  reader.readAsDataURL(event.target.files[0]);
+}
+function input_click() {
+  document.querySelector("#timetable").click();
 }
 
 function Save() {
-  console.log("hi");
   var input = document.getElementsByClassName("inputbox");
   for (var i = 0; i < input.length; i++) {
     var item = input.item(i);
